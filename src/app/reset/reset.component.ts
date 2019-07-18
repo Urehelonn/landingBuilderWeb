@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 
 @Component({
-  selector: 'app-forgot',
-  templateUrl: './forgot.component.html',
-  styleUrls: ['./forgot.component.scss']
+  selector: 'app-reset',
+  templateUrl: './reset.component.html',
+  styleUrls: ['./reset.component.scss']
 })
-export class ForgotComponent implements OnInit {
+export class ResetComponent implements OnInit {
 
   constructor() { }
 
