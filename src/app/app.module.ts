@@ -8,7 +8,6 @@ import {FormsModule} from '@angular/forms';
 import { ResetComponent} from './reset/reset.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -1,36 +1,48 @@
-<div class="row justify-content-center">
- <div class="box-content">
-    <h3 class="text-center">Forgot your password?</h3>
-    <br>
-    <form class="centerBox" #emailForm="ngForm" (ngSubmit)="submitClicked(emailForm)">
-      <div class="row">
-        <div class="form-group">
-          <div class="col-md-12">
-            <p style="font-size:80%">Please enter the email address that you used to register, we will send you an email to reset your password.</p>
-            <br>
-            <label>E-mail Address </label>
-            <br>
-            <input type="email" name="email" style="width: 300px" ngModel #email="ngModel" email required>
-            <div *ngIf="email.invalid && (email.dirty || email.touched)"
-                 class="alert alert-danger">
-              <div *ngIf="email.errors.required" >
-                Email is required.
-              </div>
-              <div *ngIf="email.errors.email">
-                Your email address is invalid.
-              </div>
+<section class="shop-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="box-content">
+              <h3 class="text-center">Forgot your password?</h3>
+              <br>
+              <form class="logregform" #emailForm="ngForm" (ngSubmit)="submitClicked(emailForm)">
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <p style="font-size:80%">Please enter the email address that you used to register, we will send
+                        you an email to reset your password.</p>
+                      <br>
+                      <label>E-mail Address </label>
+                      <br>
+                      <input type="email" name="email" ngModel #email="ngModel" email required>
+                      <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                           class="alert alert-danger">
+                        <div *ngIf="email.errors.required">
+                          Email is required.
+                        </div>
+                        <div *ngIf="email.errors.email">
+                          Your email address is invalid.
+                        </div>
+                      </div>
+                      <br><br>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="space20"></div>
+                    <button type="submit" class="btn btn-default pull-right" style="float: right"
+                            [disabled]="!emailForm.valid">Send
+                    </button>
+                  </div>
+                </div>
+              </form>
             </div>
-            <br><br>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="space20"></div>
-          <button type="submit" class="btn btn-default pull-right" style="float: right" [disabled]="!emailForm.valid">Send</button>
-        </div>
-      </div>
-    </form>
+    </div>
   </div>
-</div>
-
+</section>
