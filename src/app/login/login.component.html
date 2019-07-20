@@ -1,0 +1,69 @@
+<section class="shop-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row shop-login justify-content-center">
+                    <div class="col-md-6">
+                        <div class="box-content">
+                            <h3 class="text-center">Existing Customer</h3>
+                            <br>
+                            <div class="alert " role="alert" *ngIf="response" [ngClass]="{'alert-warning': !response.success, 'alert-success': response.success}">>
+                                {{response.message}}
+                            </div>
+                            <form class="logregform" [formGroup]="loginForm">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label>Username or E-mail Address</label>
+                                            <input type="text" formControlName="username" class="form-control"
+                                                   maxlength="32">
+                                            <div class="alert alert-danger" role="alert"
+                                                 *ngIf="loginForm.get('username').touched && loginForm.get('username').hasError('required')">
+                                                This field is required.
+                                            </div>
+                                            <div class="alert alert-warning" role="alert"
+                                                 *ngIf="loginForm.get('username').touched && !loginForm.get('username').hasError('required') &&loginForm.get('username').errors?.email">
+                                                Please enter correct email, example@email.com
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <!-- todo: add forgot route-->
+                                            <a class="pull-right">(Lost Password?)</a>
+                                            <label>Password</label>
+                                            <input type="password" formControlName="password" class="form-control"
+                                                   maxlength="32">
+                                            <div class="alert alert-danger" role="alert"
+                                                 *ngIf="loginForm.get('password').touched && loginForm.get('password').hasError('required')">
+                                                This field is required.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                            <span class="remember-box checkbox">
+                                                <label for="rememberme">
+                                                <input type="checkbox" id="rememberme" formControlName="rememberMe">
+                                                    Remember Me
+                                                </label>
+                                            </span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button (click)="login()" class="btn btn-default pull-right">Login</button>
+                                        <!--<google-login-button (socialUser)="getSocialUser($event)" [style]="'round'"></google-login-button>-->
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

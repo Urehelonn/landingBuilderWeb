@@ -1,0 +1,78 @@
+<section class="shop-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row shop-login justify-content-center">
+                    <div class="col-md-6">
+                        <div class="box-content">
+                            <h3 class="text-center">Register An Account</h3>
+                            <br>
+                            <div class="alert " role="alert" *ngIf="response" [ngClass]="{'alert-warning': !response.success, 'alert-success': response.success}">>
+                                {{response.message}}
+                            </div>
+                            <form class="logregform" [formGroup]="registerForm">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label>E-mail Address</label>
+                                            <input type="text" formControlName="username" class="form-control">
+                                            <div class="alert alert-danger" role="alert"
+                                                 *ngIf="registerForm.get('username').touched && registerForm.get('username').hasError('required')">
+                                                This field is required.
+                                            </div>
+                                            <div class="alert alert-warning" role="alert"
+                                                 *ngIf="registerForm.get('username').touched && !registerForm.get('username').hasError('required') &&registerForm.get('username').errors?.email">
+                                                Please check format, example@email.com
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix space20"></div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Password</label>
+                                            <input type="password" formControlName="password" class="form-control">
+                                            <div class="alert alert-danger" role="alert"
+                                                 *ngIf="registerForm.get('password').touched && registerForm.get('password').hasError('required')">
+                                                * Required
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Re-enter Password</label>
+                                            <input type="password" formControlName="passwordConfirm"
+                                                   class="form-control">
+                                            <div class="alert alert-danger" role="alert"
+                                                 *ngIf="registerForm.get('passwordConfirm').touched && registerForm.get('passwordConfirm').hasError('required')">
+                                                * Required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger" role="alert"
+                                     *ngIf="registerForm.hasError('passwordConfirm')">
+                                    Password doesn't match, please check
+                                </div>
+                                <div *ngIf="!registerForm.get('password').hasError('required')&&!registerForm.get('passwordConfirm').hasError('required')">
+                                    <div class="alert alert-danger" role="alert"
+                                         *ngIf="registerForm.get('password').hasError('minlength') || registerForm.get('password').hasError('maxlength')
+                                        || registerForm.get('passwordConfirm').hasError('minlength') || registerForm.get('passwordConfirm').hasError('maxlength')">
+                                        {{"Password has to be length of " + MIN_PSWD_LENGTH + "~" + MAX_PSWD_LENGTH + " characters"}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="space20"></div>
+                                        <button (click)="register()" class="btn btn-default pull-right">
+                                            Register
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
