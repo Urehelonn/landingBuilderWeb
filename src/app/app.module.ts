@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
@@ -11,8 +12,8 @@ import { SignupComponent } from './signup/signup.component';
 
 // routes value
 const appRoutes: Routes = [
-  { path: './signup', component: SignupComponent },
-  { path: '**', component: SignupComponent },
+  { path: 'signup', component: SignupComponent },
+  // { path: '**', component: SignupComponent },
   ]
 
 @NgModule({
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       // { enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
