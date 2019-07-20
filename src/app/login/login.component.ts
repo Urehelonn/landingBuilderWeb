@@ -59,7 +59,8 @@ export class LoginComponent implements OnInit {
             return;
         }
         const formData = this.loginForm.value;
-        this.authService.login({username: formData['username'], password: formData['password']}).subscribe(
+        let user = {username: formData['username'], password: formData['password']};
+        this.authService.login(user).subscribe(
             data => {
                 // todo: handle login success - server
                 if (data.result) {

@@ -55,13 +55,12 @@ export class RegisterComponent implements OnInit {
         }
         console.log(this.registerForm.value);
         const formData = this.registerForm.value;
-        let userObject = {
+        let requestBodyuserObject = {
             username: formData["username"],
             password: formData["password"]
         }
-        this.authService.register(userObject).subscribe(
+        this.authService.register(requestBodyuserObject).subscribe(
             responseBody => {
-                console.log(responseBody);
                 // todo: handle login success - server
                 if (responseBody.result) {
                     this.response = {
