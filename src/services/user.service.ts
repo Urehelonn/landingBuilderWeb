@@ -11,10 +11,12 @@ export class UserService {
   }
 
   public login(user: any): Observable<any> {
+    console.log('from service');
     return this.http.post(`http://localhost:8080/api/login`, user);
   }
 
   public register(user: any): Observable<any> {
+    console.log('from service');
     return this.http.post(`http://localhost:8080/api/register`, user);
   }
 

@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import {UserService} from '../services/user.service';
 import { LoginComponent } from './login/login.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 // routes value
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
       appRoutes,
       // { enableTracing: true } // <-- debugging purposes only
     ),
+    HttpClientModule,
     ReactiveFormsModule
   ],
   providers: [UserService],
