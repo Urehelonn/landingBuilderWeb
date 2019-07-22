@@ -37,7 +37,7 @@
                         <div *ngIf="f.get('password').getError('required')">
                           Password is required.
                         </div>
-                        <div *ngIf="f.get('password').getError('maxLength')||f.get('password').getError('minLength')">
+                        <div *ngIf="f.get('password').getError('maxlength')||f.get('password').getError('minlength')">
                           Password must between 5 - 20 characters.
                         </div>
                       </div>

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
-import {validate} from 'codelyzer/walkerFactory/walkerFn';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -12,13 +12,13 @@ export class SignupComponent implements OnInit {
   f = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]),
-    repassword: new FormControl('', [Validators.required, this.passwordConfirming])
+    repassword: new FormControl('', [Validators.required, this.passwordConfirming.bind(this)])
   });
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
-    console.log(this.f);
   }
 
   regiSubmit() {
@@ -27,9 +27,13 @@ export class SignupComponent implements OnInit {
     this.f.reset();
   }
 
-  passwordConfirming(control: AbstractControl): { invalid: boolean } {
-    return control.value === this.f.get('repassword') ?
-      {invalid: true} : {invalid: true};
+  passwordConfirming(control: AbstractControl): { passwordConfirming: boolean } {
+    if (this.f) {
+      return control.value === this.f.value.password ?
+        null : {passwordConfirming: true};
+    }
+    // console.log(this.f.controls(password).value);
+    return null;
   }
 
 }
