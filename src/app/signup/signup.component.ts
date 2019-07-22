@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {validate} from 'codelyzer/walkerFactory/walkerFn';
 
 @Component({
   selector: 'app-signup',
@@ -10,8 +11,8 @@ export class SignupComponent implements OnInit {
 
   f = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
-    repassword: new FormControl('', [Validators.required])
+    password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]),
+    repassword: new FormControl('', [Validators.required, this.passwordConfirming])
   });
 
   constructor() { }
@@ -21,10 +22,14 @@ export class SignupComponent implements OnInit {
   }
 
   regiSubmit() {
-
     console.log(this.f.value);
     // clear form
     this.f.reset();
+  }
+
+  passwordConfirming(control: AbstractControl): { invalid: boolean } {
+    return control.value === this.f.get('repassword') ?
+      {invalid: true} : {invalid: true};
   }
 
 }

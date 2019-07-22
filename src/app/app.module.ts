@@ -8,18 +8,22 @@ import {FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
+import {UserService} from '../services/user.service';
+import { LoginComponent } from './login/login.component';
 
 
 // routes value
 const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },
+  { path: 'login', component: LoginComponent },
   // { path: '**', component: SignupComponent },
   ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent
+    SignupComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,7 @@ const appRoutes: Routes = [
     ),
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

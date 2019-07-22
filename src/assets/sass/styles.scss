@@ -1,0 +1,8 @@
+@import './fonts';
+/* You can add global styles to this file, and also import other style files */
+@import './master';
+@import "./mixins";
+@import "./mobile";
+@import "./variables";
+/* Bootstrap advanced & smart import (less import & function enough) */
+//@import '~bootstrap/dist/css/bootstrap';

@@ -1,0 +1,340 @@
+#all_body {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
+    font-family: "Raleway", sans-serif;
+    text-transform: uppercase;
+    color: #4b4741;
+    text-align: center;
+    font-weight: 800;
+  }
+
+  /**
+  global common styles
+   */
+  .pull-right {
+    float: right !important;
+  }
+
+  .checkbox input {
+    margin-right: 10px;
+  }
+
+  a {
+    color: #337ab7;
+  }
+
+  .form-group {
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  /* ================================================
+     Shop
+     ================================================ */
+
+  .shop-content {
+    padding: 60px 0;
+    font-family: Josefin Sans;
+  }
+
+  .shop-content aside h5 {
+    font-weight: 800;
+  }
+
+  .shop-cat {
+    padding: 0;
+  }
+
+  .shop-cat li {
+    list-style: none;
+    font-size: 13px;
+    color: #0a0a0a;
+    font-family: Josefin Sans;
+    margin-bottom: 20px;
+    position: relative;
+    text-transform: uppercase;
+  }
+
+  .shop-cat li i {
+    font-size: 13px;
+    color: #0A0A0A;
+    position: absolute;
+    top: 5px;
+    right: 0px;
+  }
+
+  .shop-cat li:last-child {
+    margin-bottom: 0px;
+  }
+
+  .shop-cat li a {
+    color: #0a0a0a;
+    padding-right: 35px;
+    position: relative;
+    width: 100%;
+    display: table;
+  }
+
+  .shop-cat li a:hover {
+    color: #f9c56a;
+  }
+
+  .shop-grid {
+    margin-bottom: 40px;
+    display: table;
+    width: 100%;
+  }
+
+  .shop-grid select {
+    padding: 0 20px;
+    width: 262px;
+    height: 42px;
+    background-color: #fff;
+    border: solid 1px #eae9e7;
+    float: left;
+  }
+
+  .sg-list {
+    margin-left: 18px;
+    float: left;
+  }
+
+  .sg-list a {
+    color: #6e7682;
+    font-size: 18px;
+    width: 42px;
+    height: 42px;
+    line-height: 40px;
+    background-color: #fff;
+    border: solid 1px #eae9e7;
+    float: left;
+    text-align: center;
+    margin-left: 12px;
+  }
+
+  .shop-grid span {
+    color: #0a0a0a;
+    font-size: 16px;
+    padding-top: 9px;
+    display: table;
+    float: right;
+  }
+
+
+  /*
+     Billing
+     ------- */
+
+  .logregform .form-group {
+    width: 100%;
+  }
+
+  .billing-details select {
+    height: 40px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    border-radius: 0px;
+    border: medium none !important;
+    box-shadow: none !important;
+    background-color: #F3F1ED;
+  }
+
+  .logregform input[type=text],
+  .billing-details input[type=text],
+  .logregform input[type=password],
+  .billing-details input[type=password] {
+    height: 40px;
+    border-radius: 0px;
+    border: medium none !important;
+    box-shadow: none !important;
+    background-color: #F3F1ED;
+    margin-bottom: 15px;
+    font-size: 15px;
+  }
+
+  .billing-details textarea {
+    border-radius: 0px;
+    border: medium none !important;
+    box-shadow: none !important;
+    background-color: #F3F1ED;
+    margin-bottom: 15px;
+    font-size: 15px;
+  }
+
+  .logregform label,
+  .billing-details label {
+    font-size: 16px;
+    font-weight: 700;
+    color: #666;
+  }
+
+  .payment-method .col-md-4 span {
+    display: inline-block;
+    margin-left: 9px;
+    position: relative;
+    top: -1px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .payment-method form span {
+    text-transform: none;
+    font-size: 15px;
+    margin-left: 9px;
+  }
+
+  .payment-method p {
+    font-size: 16px;
+    line-height: 25px;
+    margin-bottom: 10px;
+  }
+
+  .table.extra-padding tbody tr th,
+  .table.extra-padding tbody tr td {
+    padding: 15px;
+  }
+
+  .logregform {
+    border: 1px solid #e2e2e2;
+    padding: 50px;
+  }
+
+  .ma-address h3 {
+    margin: 0 0 10px;
+  }
+
+  .ma-address {
+    border: 1px solid #ddd;
+    padding: 25px;
+  }
+
+  .ma-address h4 {
+    text-transform: uppercase;
+    margin: 30px 0 10px;
+    text-align: left;
+  }
+
+  .ma-address h4 a {
+    font-size: 14px;
+    margin-left: 5px;
+  }
+
+  .ma-address p {
+    font-size: 17px;
+  }
+
+  .ma-address a {
+    color: #F9C56A;
+  }
+
+  .gallery-item img {
+    width: 100%;
+  }
+
+
+  /* ================================================
+     Forms & Buttons
+     ================================================ */
+
+  .form-group {
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  .form-group label {
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    border-radius: 0px;
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    background-color: #f3f1ed;
+    padding: 10px 15px;
+  }
+
+  .btn {
+    border-radius: 0;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    padding: 12px 15px 8px;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    margin-bottom: 0;
+    font-size: 14px;
+    display: inline-block;
+  }
+
+  .btn-default {
+    background-color: #f9c56a;
+  }
+
+  .btn-default:hover {
+    background-color: #f7b239;
+  }
+
+  .btn-secondary {
+    background-color: #e9e5dd;
+    color: #8c8881;
+    border: 1px solid #e9e5dd;
+  }
+
+  .btn-secondary:hover {
+    background-color: #d5cdbe;
+    border: 1px solid #e9e5dd;
+  }
+
+  .btn-default:hover,
+  .btn-default:focus,
+  .btn-default.focus,
+  .btn-default:active,
+  .btn-default.active,
+  .open > .dropdown-toggle.btn-default {
+    background-color: #f7b239;
+    border-color: #f7b239;
+  }
+
+  .btn-default.disabled,
+  .btn-default[disabled],
+  fieldset[disabled] .btn-default,
+  .btn-default.disabled:hover,
+  .btn-default[disabled]:hover,
+  fieldset[disabled] .btn-default:hover,
+  .btn-default.disabled:focus,
+  .btn-default[disabled]:focus,
+  fieldset[disabled] .btn-default:focus,
+  .btn-default.disabled.focus,
+  .btn-default[disabled].focus,
+  fieldset[disabled] .btn-default.focus,
+  .btn-default.disabled:active,
+  .btn-default[disabled]:active,
+  fieldset[disabled] .btn-default:active,
+  .btn-default.disabled.active,
+  .btn-default[disabled].active,
+  fieldset[disabled] .btn-default.active {
+    background-color: #f7b239;
+  }
+
+  .btn-lg {
+    font-weight: 700;
+    padding: 15px 40px;
+  }
+}
