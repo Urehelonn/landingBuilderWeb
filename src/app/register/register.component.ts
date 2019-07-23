@@ -55,10 +55,10 @@ export class RegisterComponent implements OnInit {
         }
         console.log(this.registerForm.value);
         const formData = this.registerForm.value;
-        let requestBodyuserObject = {
-            username: formData["username"],
-            password: formData["password"]
-        }
+        const requestBodyuserObject = {
+            username: formData.username,
+            password: formData.password
+        };
         this.authService.register(requestBodyuserObject).subscribe(
             responseBody => {
                 // todo: handle login success - server
@@ -66,13 +66,13 @@ export class RegisterComponent implements OnInit {
                     this.response = {
                         message: "register successfully, login you account in login page",
                         success: true
-                    }
+                    };
                 }
                 if (responseBody.error) {
                     this.response = {
                         message: "register failed, username already exists",
                         success: false
-                    }
+                    };
                 }
             },
             error => {
@@ -81,7 +81,7 @@ export class RegisterComponent implements OnInit {
                 this.response = {
                     message: "Oops, something wrong",
                     success: false
-                }
+                };
             },
             () => {
             }
@@ -91,10 +91,10 @@ export class RegisterComponent implements OnInit {
 
 /** A hero's name can't match the hero's alter ego */
 export const passwordConfirm: ValidatorFn = (formGroup: FormGroup): ValidationErrors | null => {
-    const passwordControl = formGroup.get('password');
-    const passwordConfirmControl = formGroup.get('passwordConfirm');
+    const passwordControl = formGroup.get("password");
+    const passwordConfirmControl = formGroup.get("passwordConfirm");
     const isEqual = passwordControl.value.toString().trim() === passwordConfirmControl.value.toString().trim();
     const bothTouched = passwordControl.touched && passwordConfirmControl.touched;
-    const bothFilled = !(passwordControl.hasError('required') || passwordConfirmControl.hasError('required'));
+    const bothFilled = !(passwordControl.hasError("required") || passwordConfirmControl.hasError("required"));
     return bothTouched && bothFilled && !isEqual ? {password: true, passwordConfirm: true} : null;
 };
