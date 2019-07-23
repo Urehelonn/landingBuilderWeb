@@ -34,6 +34,9 @@ export class LoginComponent implements OnInit {
           success: true
         };
         console.log('login succeed');
+
+        // store token to local
+        localStorage.setItem('access_token', u.result);
       }
       if (u.error) {
         this.response = {
@@ -57,6 +60,7 @@ export class LoginComponent implements OnInit {
         };
       }
     });
+
 
     // clear form
     this.f.reset();
