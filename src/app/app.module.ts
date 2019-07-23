@@ -9,13 +9,15 @@ import {RegisterComponent} from './register/register.component';
 import {AuthService} from "./auth.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { ResetComponent } from './reset/reset.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         LoginComponent,
         ForgotComponent,
-        RegisterComponent
+        RegisterComponent,
+        ResetComponent
     ],
     imports: [
         BrowserModule,

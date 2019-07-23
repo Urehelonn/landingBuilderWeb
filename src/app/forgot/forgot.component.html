@@ -1,0 +1,44 @@
+<section class="shop-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row shop-login justify-content-center">
+                    <div class="col-md-6">
+                        <div class="box-content">
+                            <h3 class="text-center upper-case">Forgot Password</h3>
+                            <br>
+                            <form class="logregform" [formGroup]="forgotForm">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label>We'll send you an email to reset your password</label>
+                                            <input type="text" placeholder="Please enter your register email"
+                                                   formControlName="username"
+                                                   class="form-control">
+                                            <div class="alert alert-danger" role="alert"
+                                                 *ngIf="forgotForm.get('username').touched && forgotForm.get('username').hasError('required')">
+                                                This field is required.
+                                            </div>
+                                            <div class="alert alert-warning" role="alert"
+                                                 *ngIf="forgotForm.get('username').touched && !forgotForm.get('username').hasError('required') && forgotForm.get('username').errors?.email">
+                                                Please enter correct email, example@email.com
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="row justify-content-end">
+                                    <div class="col-md-6">
+                                        <button type="submit" (click)="forgot()" class="btn btn-default pull-right">
+                                            Send
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
