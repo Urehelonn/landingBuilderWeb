@@ -11,6 +11,9 @@ import { SignupComponent } from './signup/signup.component';
 import {UserService} from '../services/user.service';
 import { LoginComponent } from './login/login.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ProfileComponent } from './profile/profile.component';
+import { NavComponent } from './nav/nav.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 // routes value
@@ -25,6 +28,9 @@ const appRoutes: Routes = [
     AppComponent,
     SignupComponent,
     LoginComponent,
+    ProfileComponent,
+    NavComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
