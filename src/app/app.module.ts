@@ -15,6 +15,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ProcessBarComponent } from './process-bar/process-bar.component';
 
 
 // routes value
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
     NavComponent,
     FooterComponent,
     NotFoundComponent,
+    ProcessBarComponent,
   ],
   imports: [
     BrowserModule,
