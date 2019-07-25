@@ -33,18 +33,18 @@ export class SignupComponent implements OnInit {
         this.response = {
           message: 'register successfully, login your account in login page',
           success: true
-        }
+        };
         console.log('reg succeed');
       }
       if (u.error) {
         this.response = {
           message: 'register failed, username already exists',
           success: false
-        }
+        };
         console.log(u.error);
       }
     }, error => {
-      console.log('error');
+      console.log(error);
       // 200 as ok, other code as error
       this.response = {
         msg: 'Oops, something went wrong!',

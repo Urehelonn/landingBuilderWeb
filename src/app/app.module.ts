@@ -14,14 +14,17 @@ import {HttpClientModule} from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 // routes value
 const appRoutes: Routes = [
+  { path: '', component: ProfileComponent},
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  // { path: '**', component: SignupComponent },
-  ]
+  { path: 'profile', component: ProfileComponent },
+  { path: '**', component: NotFoundComponent },
+  ];
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ const appRoutes: Routes = [
     ProfileComponent,
     NavComponent,
     FooterComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

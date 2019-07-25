@@ -1,1 +1,115 @@
-<p>profile works!</p>
+<!-- Login form content -->
+<section class="shop-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="box-content">
+              <h3 class="text-center">Existing Customer</h3>
+              <br>
+
+              <form class="logregform" [formGroup]="f" (ngSubmit)="profileSubmit()">
+                <div class="row">
+                  <div class="form-group">
+                    <!-- response error msg -->
+                    <!--                    <div *ngIf="response">-->
+                    <!--                      <div class="alert alert-danger" *ngIf="!response.success">-->
+                    <!--                        Please check your username and password again.-->
+                    <!--                      </div>-->
+                    <!--                      <div class="alert alert-success" *ngIf="response.success">-->
+                    <!--                        Register succeed, please go confirm your email address.-->
+                    <!--                      </div>-->
+                    <!--                    </div>-->
+
+                    <!-- first name-->
+                    <div class="col-md-12">
+                      <label>First Name</label>
+                      <input type="text" class="form-control"
+                             formControlName="firstname">
+                      <!-- err msg for firstname-->
+                      <div
+                        *ngIf="(f.get('firstname').dirty || f.get('firstname').touched) && f.get('firstname').invalid"
+                        class="alert alert-danger">
+                        <div *ngIf="f.get('firstname').getError('required')">
+                          First name is required.
+                        </div>
+                        <div *ngIf="f.get('firstname').getError('minlength') ||
+                      f.get('firstname').getError('minlength')">
+                          Fist name's length must between 2 - 20.
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- last name -->
+                    <div class="col-md-12">
+                      <label>Last Name</label>
+                      <input type="text" class="form-control"
+                             formControlName="lastname">
+                      <!-- err msg for lastname-->
+                      <div
+                        *ngIf="(f.get('lastname').dirty || f.get('lastname').touched) && f.get('lastname').invalid"
+                        class="alert alert-danger">
+                        <div *ngIf="f.get('lastname').getError('required')">
+                          Last name is required.
+                        </div>
+                        <div *ngIf="f.get('lastname').getError('maxlength') ||
+                      f.get('lastname').getError('minlength')">
+                          Last name's length must between 2 - 20.
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <!-- old password-->
+                    <div class="form-group">
+                      <div class="col-md-12">
+                        <label>Current Password</label>
+                        <input type="text" class="form-control"
+                               formControlName="password">
+                        <!-- err msg for password-->
+                        <div
+                          *ngIf="f.getError('oldPasswordRequired')"
+                          class="alert alert-danger">
+                            Old password is required if you want to update password.
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- new password -->
+                    <div class="form-group">
+                      <div class="col-md-12">
+                        <label>New Password</label>
+                        <input type="text" class="form-control"
+                               formControlName="newpass">
+                        <!-- err msg for new password-->
+                        <div
+                          *ngIf="(f.get('newpass').dirty || f.get('newpass').touched) && f.get('newpass').invalid"
+                          class="alert alert-danger">
+                          <div *ngIf="f.get('newpass').getError('minlength') ||
+                            f.get('newpass').getError('maxlength')">
+                            Password length must between 5 - 20.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="space20"></div>
+                    <button type="submit" [disabled]="!f.valid" class="btn btn-default pull-right">Update Profile
+                    </button>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
