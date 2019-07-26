@@ -1,0 +1,44 @@
+<div id="body">
+<div id="profile-page">
+
+  <section class="pt-page pt-page-current" data-id="home">
+    <div class="section-inner start-page-content">
+      <div class="page-header">
+        <div class="row">
+          <div class="col-sm-4 col-md-4 col-lg-4">
+            <div class="photo">
+              <img src="https://res.cloudinary.com/dx55oi3py/image/upload/v1564097947/images/photo_dsxha7.png" alt="">
+            </div>
+          </div>
+
+          <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="title-block">
+              <h2>{{user.firstname}} {{user.lastname}}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page-content">
+        <div class="row">
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="about-me">
+              <div class="block-title">
+                <h3>About <span>Me</span></h3>
+              </div>
+              <p> {{user.description}}
+              </p>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <ul class="info-list">
+              <li><span class="title">Address</span><span class="value">{{user.address}}</span></li>
+              <li><span class="title">Phone</span><span class="value">{{user.phone}}</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</div>

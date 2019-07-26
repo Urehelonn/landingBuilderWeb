@@ -20,4 +20,14 @@ export class UserService {
     return this.http.post(`http://localhost:8080/api/register`, user);
   }
 
+  public checkUserProfile(newUserInfo: any): Observable<any>{
+    console.log('angular service called to update user profile');
+    return this.http.get(`http://localhost:8080/api/me`);
+  }
+
+  public updateUserProfile(newUserInfo: any): Observable<any>{
+    console.log('angular service called to update user profile');
+    return this.http.post(`http://localhost:8080/api/me`, newUserInfo);
+  }
+
 }

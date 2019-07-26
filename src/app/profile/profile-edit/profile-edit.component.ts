@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../services/user.service';
+import {UserService} from '../../../services/user.service';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  templateUrl: './profile-edit.component.html',
+  styleUrls: ['./profile-edit.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileEditComponent implements OnInit {
 
   f;
 

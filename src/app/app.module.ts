@@ -11,19 +11,23 @@ import { SignupComponent } from './signup/signup.component';
 import {UserService} from '../services/user.service';
 import { LoginComponent } from './login/login.component';
 import {HttpClientModule} from '@angular/common/http';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProcessBarComponent } from './process-bar/process-bar.component';
+import { HomeComponent } from './home/home.component';
+import { ProfileDetailComponent } from './profile/profile-detail/profile-detail.component';
 
 
 // routes value
 const appRoutes: Routes = [
-  { path: '', component: ProfileComponent},
+  { path: '', component: ProfileEditComponent},
+  { path: 'profile/edit', component: ProfileEditComponent},
+  { path: 'profile', component: ProfileDetailComponent},
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileEditComponent },
   { path: '**', component: NotFoundComponent },
   ];
 
@@ -32,11 +36,13 @@ const appRoutes: Routes = [
     AppComponent,
     SignupComponent,
     LoginComponent,
-    ProfileComponent,
+    ProfileEditComponent,
     NavComponent,
     FooterComponent,
     NotFoundComponent,
     ProcessBarComponent,
+    HomeComponent,
+    ProfileDetailComponent,
   ],
   imports: [
     BrowserModule,
