@@ -6,10 +6,10 @@
         <div class="row justify-content-center">
           <div class="col-md-6">
             <div class="box-content">
-              <h3 class="text-center">Existing Customer</h3>
+              <h3 class="text-center">Profile Update</h3>
               <br>
 
-              <form class="logregform" [formGroup]="f" (ngSubmit)="profileSubmit()">
+              <form *ngIf="f" class="logregform" [formGroup]="f" (ngSubmit)="profileSubmit()">
                 <div class="row">
                   <div class="form-group">
                     <!-- response error msg -->
@@ -26,16 +26,16 @@
                     <div class="col-md-12">
                       <label>First Name</label>
                       <input type="text" class="form-control"
-                             formControlName="firstname">
-                      <!-- err msg for firstname-->
+                             formControlName="firstName">
+                      <!-- err msg for firstName-->
                       <div
-                        *ngIf="(f.get('firstname').dirty || f.get('firstname').touched) && f.get('firstname').invalid"
+                        *ngIf="(f.get('firstName').dirty || f.get('firstName').touched) && f.get('firstName').invalid"
                         class="alert alert-danger">
-                        <div *ngIf="f.get('firstname').getError('required')">
+                        <div *ngIf="f.get('firstName').getError('required')">
                           First name is required.
                         </div>
-                        <div *ngIf="f.get('firstname').getError('minlength') ||
-                      f.get('firstname').getError('minlength')">
+                        <div *ngIf="f.get('firstName').getError('minlength') ||
+                      f.get('firstName').getError('minlength')">
                           Fist name's length must between 2 - 20.
                         </div>
                       </div>
@@ -45,16 +45,16 @@
                     <div class="col-md-12">
                       <label>Last Name</label>
                       <input type="text" class="form-control"
-                             formControlName="lastname">
-                      <!-- err msg for lastname-->
+                             formControlName="lastName">
+                      <!-- err msg for lastName-->
                       <div
-                        *ngIf="(f.get('lastname').dirty || f.get('lastname').touched) && f.get('lastname').invalid"
+                        *ngIf="(f.get('lastName').dirty || f.get('lastName').touched) && f.get('lastName').invalid"
                         class="alert alert-danger">
-                        <div *ngIf="f.get('lastname').getError('required')">
+                        <div *ngIf="f.get('lastName').getError('required')">
                           Last name is required.
                         </div>
-                        <div *ngIf="f.get('lastname').getError('maxlength') ||
-                      f.get('lastname').getError('minlength')">
+                        <div *ngIf="f.get('lastName').getError('maxlength') ||
+                      f.get('lastName').getError('minlength')">
                           Last name's length must between 2 - 20.
                         </div>
                       </div>
