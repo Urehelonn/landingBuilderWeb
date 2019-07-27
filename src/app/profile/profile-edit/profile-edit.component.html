@@ -6,10 +6,10 @@
         <div class="row justify-content-center">
           <div class="col-md-6">
             <div class="box-content">
-              <h3 class="text-center">Existing Customer</h3>
+              <h3 class="text-center">Profile Update</h3>
               <br>
 
-              <form class="logregform" [formGroup]="f" (ngSubmit)="profileSubmit()">
+              <form *ngIf="form" class="logregform" [formGroup]="form" (ngSubmit)="profileSubmit()">
                 <div class="row">
                   <div class="form-group">
                     <!-- response error msg -->
@@ -26,16 +26,16 @@
                     <div class="col-md-12">
                       <label>First Name</label>
                       <input type="text" class="form-control"
-                             formControlName="firstname">
+                             formControlName="firstName">
                       <!-- err msg for firstname-->
                       <div
-                        *ngIf="(f.get('firstname').dirty || f.get('firstname').touched) && f.get('firstname').invalid"
+                        *ngIf="(form.get('firstName').dirty || form.get('firstName').touched) && form.get('firstName').invalid"
                         class="alert alert-danger">
-                        <div *ngIf="f.get('firstname').getError('required')">
+                        <div *ngIf="form.get('firstName').getError('required')">
                           First name is required.
                         </div>
-                        <div *ngIf="f.get('firstname').getError('minlength') ||
-                      f.get('firstname').getError('minlength')">
+                        <div *ngIf="form.get('firstName').getError('minlength') ||
+                      form.get('firstName').getError('minlength')">
                           Fist name's length must between 2 - 20.
                         </div>
                       </div>
@@ -45,21 +45,51 @@
                     <div class="col-md-12">
                       <label>Last Name</label>
                       <input type="text" class="form-control"
-                             formControlName="lastname">
+                             formControlName="lastName">
                       <!-- err msg for lastname-->
                       <div
-                        *ngIf="(f.get('lastname').dirty || f.get('lastname').touched) && f.get('lastname').invalid"
+                        *ngIf="(form.get('lastName').dirty || form.get('lastName').touched) && form.get('lastName').invalid"
                         class="alert alert-danger">
-                        <div *ngIf="f.get('lastname').getError('required')">
+                        <div *ngIf="form.get('lastName').getError('required')">
                           Last name is required.
                         </div>
-                        <div *ngIf="f.get('lastname').getError('maxlength') ||
-                      f.get('lastname').getError('minlength')">
+                        <div *ngIf="form.get('lastName').getError('maxlength') ||
+                      form.get('lastName').getError('minlength')">
                           Last name's length must between 2 - 20.
                         </div>
                       </div>
                     </div>
 
+                    <!-- address -->
+                    <div class="col-md-12">
+                      <label>Address</label>
+                      <input type="text" class="form-control"
+                             formControlName="address">
+                      <div
+                        *ngIf="(form.get('address').dirty || form.get('address').touched) && form.get('address').invalid"
+                        class="alert alert-danger">
+                        <div *ngIf="form.get('address').getError('maxlength') ||
+                      form.get('address').getError('minlength')">
+                          Address' length must between 3 - 40.
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- phone -->
+                    <div class="col-md-12">
+                      <label>Phone</label>
+                      <input type="number" class="form-control" digitOnly
+                             formControlName="phone">
+                      <div
+                        *ngIf="(form.get('phone').dirty || form.get('phone').touched) && form.get('phone').invalid"
+                        class="alert alert-danger">
+                        <div *ngIf="form.get('phone').getError('maxlength') ||
+                      form.get('phone').getError('minlength')">
+                          Phone number must between 7 - 12.
+                        </div>
+                      </div>
+                    </div>
+<!--                    TODO: add number validator -->
 
                     <!-- old password-->
                     <div class="form-group">
@@ -69,7 +99,7 @@
                                formControlName="password">
                         <!-- err msg for password-->
                         <div
-                          *ngIf="f.getError('oldPasswordRequired')"
+                          *ngIf="form.getError('oldPasswordRequired')"
                           class="alert alert-danger">
                             Old password is required if you want to update password.
                         </div>
@@ -84,10 +114,10 @@
                                formControlName="newpass">
                         <!-- err msg for new password-->
                         <div
-                          *ngIf="(f.get('newpass').dirty || f.get('newpass').touched) && f.get('newpass').invalid"
+                          *ngIf="(form.get('newpass').dirty || form.get('newpass').touched) && form.get('newpass').invalid"
                           class="alert alert-danger">
-                          <div *ngIf="f.get('newpass').getError('minlength') ||
-                            f.get('newpass').getError('maxlength')">
+                          <div *ngIf="form.get('newpass').getError('minlength') ||
+                            form.get('newpass').getError('maxlength')">
                             Password length must between 5 - 20.
                           </div>
                         </div>
@@ -99,7 +129,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="space20"></div>
-                    <button type="submit" [disabled]="!f.valid" class="btn btn-default pull-right">Update Profile
+                    <button type="submit" [disabled]="!form.valid" class="btn btn-default pull-right">Update Profile
                     </button>
                   </div>
                 </div>

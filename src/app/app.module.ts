@@ -18,13 +18,16 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProcessBarComponent } from './process-bar/process-bar.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileDetailComponent } from './profile/profile-detail/profile-detail.component';
+import {AuthGuard} from './core/auth.guard';
 
 
 // routes value
 const appRoutes: Routes = [
-  { path: '', component: ProfileEditComponent},
-  { path: 'profile/edit', component: ProfileEditComponent},
-  { path: 'profile', component: ProfileDetailComponent},
+  { path: '', component: HomeComponent},
+  { path: 'profile/edit', component: ProfileEditComponent,
+    canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileDetailComponent,
+    canActivate: [AuthGuard] },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileEditComponent },

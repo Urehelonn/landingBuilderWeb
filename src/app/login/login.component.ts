@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         console.log('login succeed');
 
         // store token to local
-        localStorage.setItem('access_token', u.result);
+        localStorage.setItem('token', u.result);
       }
       if (u.error) {
         this.response = {
@@ -65,5 +65,4 @@ export class LoginComponent implements OnInit {
     // clear form
     this.f.reset();
   }
-
 }
