@@ -1,0 +1,92 @@
+.main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  background: #fbfbfb;
+}
+
+.profile {
+  background: linear-gradient(180deg, #c2ede1 25%, #d5e3df 35%);
+  background-size: cover;
+  background-position: 50% 21%;
+  width: 350px;
+  height: 500px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin: -180px 0 0 -140px;
+  border-radius: 30px;
+  border: none;
+  box-shadow: 0 37.125px 70px -12.125px rgba(0, 0, 0, 0.2);
+  transition: all .3s;
+}
+
+.profileName {
+  margin: 20px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 800;
+  color: #6dbda6;
+  position: relative;
+}
+
+.card-body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+  color: #89ada3;
+  font-size: 18px;
+  margin: 10px;
+}
+
+.profilePic {
+  //background-image: url("https://pixabay.com/get/54e5d4444e51af14f1dc8460825668204022dfe055557041732672d1/user-2517433_640.png");
+  background-image: url("https://res.cloudinary.com/dx55oi3py/image/upload/v1564097947/images/photo_dsxha7.png");
+  background-size: cover;
+  top: 8px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: auto;
+  display: block;
+  z-index: 1;
+  border: 3px solid #89ada3;
+  position: relative;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.profileInfo {
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-top: 1em;
+  font-weight: 200;
+  font-size: 20px;
+  color: #eee;
+  text-align: center;
+}
+
+.material-icons.md-27 {
+  font-size: 27px;
+  vertical-align: text-bottom;
+  color: #6f8f86;
+}
+
+.button {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 15px;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 30px;
+  color: #6f8f86
+}
+
+.button:hover {
+  background: #b6dbd0;
+}
+
