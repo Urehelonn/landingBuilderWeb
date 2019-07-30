@@ -17,6 +17,8 @@ import {ProfileComponent} from './profile/profile.component';
 import {EditProfileComponent} from './edit-profile/edit-profile.component';
 import {AuthGuard} from "./auth.guard";
 import {RouterModule, Routes} from "@angular/router";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ChangePasswordComponent} from './change-password/change-password.component';
 
 const routeConfig: Routes = [
   {path: '', component: HomePageComponent},
@@ -26,6 +28,7 @@ const routeConfig: Routes = [
   {path: 'forgot', component: ForgotComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'profile/edit', component: EditProfileComponent, canActivate: [AuthGuard]},
+  {path: 'changepassword', component: ChangePasswordComponent, canActivate: [AuthGuard]},
   {path: '**', component: NotFoundComponent}
 ];
 
@@ -42,7 +45,8 @@ const routeConfig: Routes = [
     NotFoundComponent,
     HomePageComponent,
     ProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,8 @@ const routeConfig: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routeConfig)
+    RouterModule.forRoot(routeConfig),
+    NgbModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

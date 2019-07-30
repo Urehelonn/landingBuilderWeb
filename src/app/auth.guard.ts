@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
     return false;
   }
 
-  checkLogin(url: string): boolean {
+  checkLogin(): boolean {
     if (localStorage.getItem('token')) {
       return true;
     }

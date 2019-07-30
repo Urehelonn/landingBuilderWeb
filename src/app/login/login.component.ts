@@ -51,8 +51,9 @@ export class LoginComponent implements OnInit {
             message: "Login successfully.",
             success: true
           }
+          localStorage.setItem('user', user.username);
           localStorage.setItem("token", data.result);
-          this.router.navigateByUrl('/profile');
+          this.router.navigateByUrl('/');
         }
       },
       error => {

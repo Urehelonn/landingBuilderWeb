@@ -1,8 +1,8 @@
 <section class="shop-content">
   <div class="container">
     <div class="row shop-login justify-content-center">
-      <div *ngIf="showProfile" class="col-md-6">
-        <!--        <button (click)="toggle()" class="btn btn-default pull-left">Back</button>-->
+      <div class="col-md-6">
+        <!--        <h3 class="text-center" style="color: #5c8a7d">Profile</h3>-->
         <div class="card profile">
           <div class="profilePic"></div>
           <div class="profileName">
@@ -30,89 +30,6 @@
           <button (click)="editProfile()" class="button">Edit Profile</button>
         </div>
       </div>
-      <!--        <div *ngIf="showEditProfile" class="col-md-6">-->
-      <!--          <div class="box-content">-->
-      <!--            <h3 class="text-center">Edit Profile</h3>-->
-      <!--            <br>-->
-      <!--            <form class="logregform" [formGroup]="editProfileForm" (ngSubmit)="edit()">-->
-      <!--              <div class="form-group">-->
-      <!--                <div class="row">-->
-      <!--                  <div class="col-md-6">-->
-      <!--                    <label>First Name</label>-->
-      <!--                    <input type="text" formControlName="firstName" class="form-control" value="{{firstName}}" >-->
-      <!--&lt;!&ndash;                    <div class="alert alert-danger" role="alert"&ndash;&gt;-->
-      <!--&lt;!&ndash;                         *ngIf="editProfileForm.get('firstName').touched && editProfileForm.get('firstName').hasError('required')">&ndash;&gt;-->
-      <!--&lt;!&ndash;                      This field is required.&ndash;&gt;-->
-      <!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-      <!--                  </div>-->
-      <!--                  <div class="col-md-6">-->
-      <!--                    <label>Last Name</label>-->
-      <!--                    <input type="text" formControlName="lastName" class="form-control" value="{{lastName}}">-->
-      <!--                    <div class="alert alert-danger" role="alert"-->
-      <!--                         *ngIf="editProfileForm.get('lastName').touched && editProfileForm.get('lastName').hasError('required')">-->
-      <!--                      This field is required.-->
-      <!--                    </div>-->
-      <!--                  </div>-->
-      <!--                  <div class="col-md-6">-->
-      <!--                    <label>Phone</label>-->
-      <!--                    <input type="text" formControlName="phone" class="form-control" value="{{phone}}">-->
-      <!--                    <div class="alert alert-danger" role="alert"-->
-      <!--                         *ngIf="editProfileForm.get('lastName').touched && editProfileForm.get('lastName').hasError('required')">-->
-      <!--                      This field is required.-->
-      <!--                    </div>-->
-      <!--                  </div>-->
-      <!--                  <div class="col-md-6">-->
-      <!--                    <label>Address</label>-->
-      <!--                    <input type="text" formControlName="address" class="form-control" value="{{address}}">-->
-      <!--                    <div class="alert alert-danger" role="alert"-->
-      <!--                         *ngIf="editProfileForm.get('lastName').touched && editProfileForm.get('lastName').hasError('required')">-->
-      <!--                      This field is required.-->
-      <!--                    </div>-->
-      <!--                  </div>-->
-      <!--                  <div class="col-md-12">-->
-      <!--                    <label>Description</label>-->
-      <!--                    <input type="text" formControlName="description" class="form-control" value="{{description}}">-->
-      <!--                    <div class="alert alert-danger" role="alert"-->
-      <!--                         *ngIf="editProfileForm.get('lastName').touched && editProfileForm.get('lastName').hasError('required')">-->
-      <!--                      This field is required.-->
-      <!--                    </div>-->
-      <!--                  </div>-->
-      <!--                  <div class="col-md-6">-->
-      <!--                    <label>Password</label>-->
-      <!--                    <input type="password" formControlName="password" class="form-control">-->
-      <!--                    <div class="alert alert-danger" role="alert"-->
-      <!--                         *ngIf="(editProfileForm.get('password').touched || editProfileForm.get('passwordConfirm').dirty)&& editProfileForm.get('password').hasError('required')">-->
-      <!--                      This field is required.-->
-      <!--                    </div>-->
-      <!--                  </div>-->
-      <!--                  <div class="col-md-6">-->
-      <!--                    <label>Confirm Password</label>-->
-      <!--                    <input type="password" formControlName="passwordConfirm" class="form-control">-->
-      <!--                    <div class="alert alert-danger" role="alert"-->
-      <!--                         *ngIf="(editProfileForm.get('passwordConfirm').touched || editProfileForm.get('passwordConfirm').dirty) && editProfileForm.get('passwordConfirm').hasError('required')">-->
-      <!--                      This field is required.-->
-      <!--                    </div>-->
-      <!--                  </div>-->
-      <!--                </div>-->
-      <!--              </div>-->
-      <!--              <div *ngIf="!editProfileForm.get('password').hasError('required') || !editProfileForm.get('passwordConfirm').hasError('required')">-->
-      <!--                <div class="alert alert-danger" role="alert"-->
-      <!--                     *ngIf="editProfileForm.get('password').hasError('minlength') || editProfileForm.get('passwordConfirm').hasError('minlength')">-->
-      <!--                  {{"Password must be at least " + MIN_PSWD_LENGTH + " characters." }}-->
-      <!--                </div>-->
-      <!--              </div>-->
-      <!--              <div class="alert alert-danger" role="alert"-->
-      <!--                   *ngIf="editProfileForm.hasError('passwordConfirm')">-->
-      <!--                Passwords do not match.-->
-      <!--              </div>-->
-      <!--              <button (click)="back()" class="btn btn-default pull-left">Back</button>-->
-      <!--              <button (click)="edit()" class="btn btn-default pull-right">Save</button>-->
-      <!--              <div class="alert " role="alert" *ngIf="response" [ngClass]="{'alert-warning': !response.success, 'alert-success': response.success}">>-->
-      <!--                {{response.message}}-->
-      <!--              </div>-->
-      <!--            </form>-->
-      <!--          </div>-->
-      <!--      </div>-->
     </div>
   </div>
 </section>

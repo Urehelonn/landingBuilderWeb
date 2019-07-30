@@ -7,12 +7,12 @@
             <div class="box-content">
               <h3 class="text-center">Edit Profile</h3>
               <br>
-              <form (ngSubmit)="save()" [formGroup]="editProfileForm" class="logregform">
+              <form *ngIf="editProfileForm" [formGroup]="editProfileForm" class="logregform">
                 <div class="form-group">
                   <div class="row">
                     <div class="col-md-6">
                       <label>First Name</label>
-                      <input class="form-control" formControlName="firstName" type="text" value="{{firstName}}">
+                      <input class="form-control" formControlName="firstName" type="text">
                       <div
                         *ngIf="editProfileForm.get('firstName').touched && editProfileForm.get('firstName').hasError('required')"
                         class="alert alert-danger"
@@ -22,7 +22,7 @@
                     </div>
                     <div class="col-md-6">
                       <label>Last Name</label>
-                      <input class="form-control" formControlName="lastName" type="text" value="{{lastName}}">
+                      <input class="form-control" formControlName="lastName" type="text">
                       <div
                         *ngIf="editProfileForm.get('lastName').touched && editProfileForm.get('lastName').hasError('required')"
                         class="alert alert-danger"
@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-md-6">
                       <label>Phone</label>
-                      <input class="form-control" formControlName="phone" type="text" value="{{phone}}">
+                      <input class="form-control" formControlName="phone" type="text">
                       <div
                         *ngIf="editProfileForm.get('phone').touched && editProfileForm.get('phone').hasError('required')"
                         class="alert alert-danger"
@@ -42,7 +42,7 @@
                     </div>
                     <div class="col-md-6">
                       <label>Address</label>
-                      <input class="form-control" formControlName="address" type="text" value="{{address}}">
+                      <input class="form-control" formControlName="address" type="text">
                       <div
                         *ngIf="editProfileForm.get('address').touched && editProfileForm.get('address').hasError('required')"
                         class="alert alert-danger"
@@ -52,7 +52,7 @@
                     </div>
                     <div class="col-md-12">
                       <label>Description</label>
-                      <input class="form-control" formControlName="description" type="text" value="{{description}}">
+                      <input class="form-control" formControlName="description" type="text">
                       <div
                         *ngIf="editProfileForm.get('description').touched && editProfileForm.get('description').hasError('required')"
                         class="alert alert-danger"
@@ -60,35 +60,8 @@
                         This field is required.
                       </div>
                     </div>
-                    <!--          <div class="col-md-6">-->
-                    <!--            <label>Password</label>-->
-                    <!--            <input type="password" formControlName="password" class="form-control">-->
-                    <!--            <div class="alert alert-danger" role="alert"-->
-                    <!--                 *ngIf="(editProfileForm.get('password').touched || editProfileForm.get('passwordConfirm').dirty)&& editProfileForm.get('password').hasError('required')">-->
-                    <!--              This field is required.-->
-                    <!--            </div>-->
-                    <!--          </div>-->
-                    <!--          <div class="col-md-6">-->
-                    <!--            <label>Confirm Password</label>-->
-                    <!--            <input type="password" formControlName="passwordConfirm" class="form-control">-->
-                    <!--            <div class="alert alert-danger" role="alert"-->
-                    <!--                 *ngIf="(editProfileForm.get('passwordConfirm').touched || editProfileForm.get('passwordConfirm').dirty) && editProfileForm.get('passwordConfirm').hasError('required')">-->
-                    <!--              This field is required.-->
-                    <!--            </div>-->
-                    <!--          </div>-->
                   </div>
                 </div>
-                <!--      <div *ngIf="!editProfileForm.get('password').hasError('required') || !editProfileForm.get('passwordConfirm').hasError('required')">-->
-                <!--        <div class="alert alert-danger" role="alert"-->
-                <!--             *ngIf="editProfileForm.get('password').hasError('minlength') || editProfileForm.get('passwordConfirm').hasError('minlength')">-->
-                <!--          {{"Password must be at least " + MIN_PSWD_LENGTH + " characters." }}-->
-                <!--        </div>-->
-                <!--      </div>-->
-                <!--      <div class="alert alert-danger" role="alert"-->
-                <!--           *ngIf="editProfileForm.hasError('passwordConfirm')">-->
-                <!--        Passwords do not match.-->
-                <!--      </div>-->
-                <!--      <button (click)="back()" class="btn btn-default pull-left">Back</button>-->
                 <button (click)="save()" class="btn btn-default pull-right">Save</button>
                 <br><br>
                 <div *ngIf="response"

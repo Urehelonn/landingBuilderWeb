@@ -22,38 +22,25 @@ export class EditProfileComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
-    this.buildForm();
   }
 
   ngOnInit(): void {
-
-
     this.authService.getProfile().subscribe(
       data => {
         if (data.result) {
-
           this.firstName = data.result.firstName;
           this.lastName = data.result.lastName;
           this.phone = data.result.phone;
           this.address = data.result.address;
           this.description = data.result.description;
           console.log(data.result);
-
-          // this.editProfileForm = this.fb.group({
-          //   firstName: [this.firstName, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
-          //   lastName: [this.lastName, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
-          //   phone: [this.phone, [Validators.required]],
-          //   address: [this.address, [Validators.required]],
-          //   description: [this.description, [Validators.required]],
-          //   password: [''],
-          //   confirmPassword: ['', [Validators.minLength(5), Validators.maxLength(20)]]
-          // });
+          this.buildForm();
         }
       });
   }
 
   save() {
-    console.log(this.editProfileForm);
+    //console.log(this.editProfileForm);
     const formData = this.editProfileForm.value;
     this.authService.editProfile(formData).subscribe(
       response => {
@@ -61,10 +48,10 @@ export class EditProfileComponent implements OnInit {
           console.log(response.result);
           alert("You have successfully updated.");
           this.router.navigateByUrl('/profile');
-          this.response = {
-            message: "You have successfully updated.",
-            success: true
-          }
+          // this.response = {
+          //   message: "You have successfully updated.",
+          //   success: true
+          // }
         }
       },
       error => {

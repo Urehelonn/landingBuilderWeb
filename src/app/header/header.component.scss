@@ -17,6 +17,7 @@
     top: 0;
   }
 
+
   .container {
     display: flex;
     align-items: center;
@@ -64,4 +65,44 @@
       color: #f9c56a;
     }
   }
+
+
+  .topnav-right {
+    float: right;
+    padding: 25px;
+  }
+
+  .material-icons {
+    font-size: 28px;
+    vertical-align: text-bottom;
+    color: #ffffff;
+
+    &:hover {
+      color: #f9c56a;
+    }
+
+  }
+
+  .dropdown-item {
+    color: #fff;
+    background-color: #5c554c;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 13px;
+    font-family: "Raleway", sans-serif;
+    transition: all 0.5s ease;
+
+
+    &:hover {
+      color: #f9c56a;
+    }
+
+    &.active {
+      color: #f9c56a;
+    }
+
+  }
+
+
 }
+
