@@ -1,6 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
+import {Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
   });
   response: any = null;
 
-  constructor(private authService: UserService) {
+  constructor(private authService: UserService, private router: Router) {
   }
 
   ngOnInit() {
@@ -34,9 +36,12 @@ export class LoginComponent implements OnInit {
           success: true
         };
         console.log('login succeed');
-
         // store token to local
         localStorage.setItem('token', u.result);
+        this.authService.setIfLogin();
+
+        // redirect
+        this.router.navigateByUrl('/profile');
       }
       if (u.error) {
         this.response = {
@@ -60,7 +65,6 @@ export class LoginComponent implements OnInit {
         };
       }
     });
-
 
     // clear form
     this.f.reset();

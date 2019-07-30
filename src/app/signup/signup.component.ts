@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
+import {Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 
 @Component({
@@ -17,7 +19,7 @@ export class SignupComponent implements OnInit {
   });
   response: any;
 
-  constructor(private authService: UserService) {
+  constructor(private authService: UserService, private router: Router) {
   }
 
   ngOnInit() {
@@ -34,6 +36,8 @@ export class SignupComponent implements OnInit {
           message: 'register successfully, login your account in login page',
           success: true
         };
+        // redirect after register succeed
+        this.router.navigate(['login']);
         console.log('reg succeed');
       }
       if (u.error) {
