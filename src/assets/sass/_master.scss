@@ -1,4 +1,7 @@
 #all_body {
+  padding-top: 100px;
+  padding-bottom: 100px;
+
   h1,
   h2,
   h3,
@@ -337,4 +340,147 @@
     font-weight: 700;
     padding: 15px 40px;
   }
+}
+
+p {
+  font-family: "Josefin Sans", sans-serif;
+  color: #828281;
+  font-size: 22px;
+}
+
+// ================== MENU ========================
+
+.small,
+small {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 700;
+  display: block !important;
+  text-transform: none;
+  text-align: center;
+  margin: 10px 0px 15px 0px;
+}
+
+.page-header {
+  border: none;
+  margin: 80px 0 40px;
+}
+
+.page-header:after {
+  content: "";
+  display: block;
+  position: relative;
+  height: 3px;
+  width: 113px;
+  background-color: #f9c56a;
+  margin: 0px auto;
+}
+
+.menu {
+  padding-bottom: 30px;
+}
+
+.space60 {
+  margin-bottom: 60px;
+}
+
+.menu-tags {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.menu-tags2,
+.menu-tags3,
+.menu-tags4 {
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+
+.menu-tags span,
+.menu-tags2 span,
+.menu-tags3 span,
+.menu-tags4 span {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  color: #828281;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0px 20px;
+  padding-bottom: 2px;
+  padding-top: 5px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.menu-tags .tagsort-active,
+.menu-tags2 .tagsort2-active,
+.menu-tags3 .tagsort3-active,
+.menu-tags4 .tagsort4-active {
+  border-bottom: 3px solid #f9c56a;
+  color: #4b4741;
+}
+
+.menu .food-menu .menu-item,
+.menu .food-menu .menu-item3 {
+  overflow: hidden;
+  margin: 15px 0px;
+  padding-left: 10px;
+  border-left: 3px solid white;
+}
+
+.menu .food-menu .menu-item.featured {
+  border-left: 3px solid #f9c56a;
+}
+
+.menu .food-menu .menu-item .dotted-bg,
+.menu .food-menu .menu-item3 .dotted-bg {
+  border-top: dotted 2px #ccc;
+  position: absolute;
+  left: 0px;
+  top: 15px;
+  width: 100%;
+  z-index: -1;
+}
+
+.menu .food-menu .menu-item .menu-wrapper,
+.menu .food-menu .menu-item3 .menu-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.menu .food-menu .menu-item h4,
+.menu .food-menu .menu-item3 h4 {
+  text-align: left;
+  margin: 5px 0px;
+  float: left;
+  padding-right: 10px;
+  display: inline;
+  background: #fff;
+}
+
+.menu .food-menu .menu-item p,
+.menu .food-menu .menu-item3 p {
+  font-size: 18px;
+}
+
+.menu .food-menu .menu-item .price,
+.menu .food-menu .menu-item3 .price {
+  float: right;
+  padding-left: 10px;
+  line-height: 19.8px;
+  margin: 5px 0px;
+  background: #FFF none repeat scroll 0% 0%;
+  font-family: Josefin Sans;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.menu .food-menu .menu-item-active {
+  border-left: 3px solid #f9c56a;
+}
+
+.menu .food-menu .menu-btn {
+  text-align: center;
+  padding: 20px 0px;
 }

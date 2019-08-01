@@ -12,16 +12,6 @@
               <form *ngIf="form" class="logregform" [formGroup]="form" (ngSubmit)="profileSubmit()">
                 <div class="row">
                   <div class="form-group">
-                    <!-- response error msg -->
-                    <!--                    <div *ngIf="response">-->
-                    <!--                      <div class="alert alert-danger" *ngIf="!response.success">-->
-                    <!--                        Please check your username and password again.-->
-                    <!--                      </div>-->
-                    <!--                      <div class="alert alert-success" *ngIf="response.success">-->
-                    <!--                        Register succeed, please go confirm your email address.-->
-                    <!--                      </div>-->
-                    <!--                    </div>-->
-
                     <!-- first name-->
                     <div class="col-md-12">
                       <label>First Name</label>
@@ -89,40 +79,24 @@
                         </div>
                       </div>
                     </div>
+
 <!--                    TODO: add number validator -->
 
-                    <!-- old password-->
-                    <div class="form-group">
-                      <div class="col-md-12">
-                        <label>Current Password</label>
-                        <input type="text" class="form-control"
-                               formControlName="password">
-                        <!-- err msg for password-->
-                        <div
-                          *ngIf="form.getError('oldPasswordRequired')"
-                          class="alert alert-danger">
-                            Old password is required if you want to update password.
+                    <!-- description -->
+                    <div class="col-md-12">
+                      <label>Description</label>
+                      <textarea type="text" class="form-control"
+                                formControlName="description"></textarea>
+                      <div
+                        *ngIf="(form.get('phone').dirty || form.get('phone').touched) && form.get('phone').invalid"
+                        class="alert alert-danger">
+                        <div *ngIf="form.get('phone').getError('maxlength') ||
+                      form.get('phone').getError('minlength')">
+                          Phone number must between 7 - 12.
                         </div>
                       </div>
                     </div>
 
-                    <!-- new password -->
-                    <div class="form-group">
-                      <div class="col-md-12">
-                        <label>New Password</label>
-                        <input type="text" class="form-control"
-                               formControlName="newpass">
-                        <!-- err msg for new password-->
-                        <div
-                          *ngIf="(form.get('newpass').dirty || form.get('newpass').touched) && form.get('newpass').invalid"
-                          class="alert alert-danger">
-                          <div *ngIf="form.get('newpass').getError('minlength') ||
-                            form.get('newpass').getError('maxlength')">
-                            Password length must between 5 - 20.
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
 

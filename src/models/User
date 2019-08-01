@@ -1,9 +1,0 @@
-interface User {
-  username: string;
-  password: string;
-  firstname: string;
-  lastname: string;
-  address: string;
-  phone: number;
-  description: string;
-}

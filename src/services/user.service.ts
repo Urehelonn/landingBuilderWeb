@@ -25,6 +25,7 @@ export class UserService {
   }
 
   public listenIfLoggedIn(): Observable<boolean> {
+    this.setIfLogin();
     return this.isLoggedIn.asObservable();
   }
 
@@ -47,6 +48,18 @@ export class UserService {
     console.log('angular service called to update user profile');
     if (localStorage.getItem('token')) {
       return this.http.post(`http://localhost:8080/api/me`, user, {headers: this.jwt()});
+    } else {
+      console.log('no valid token found!');
+    }
+  }
+
+  public changePassword(oldPass: string, newPass: string): Observable<any> {
+    const passwords = {
+      currentPassword: oldPass,
+      newPassword: newPass
+    };
+    if (localStorage.getItem('token')) {
+      return this.http.post(`http://localhost:8080/api/passchange`, passwords, {headers: this.jwt()});
     } else {
       console.log('no valid token found!');
     }

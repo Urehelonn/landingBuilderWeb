@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../../services/user.service';
+import {UserService} from '../../../../../services/user.service';
 import {Router, RouterLink} from '@angular/router';
 
 @Component({
@@ -13,11 +13,11 @@ export class ProfileDetailComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) {
     this.user = {
-      firstName: 'joe',
-      lastName: 'doe',
-      address: '923 Mareef Street, ON',
-      description: 'aeifuh aeiuaer adkvuher acae as casoerijfb addf earg chtjh cxpovkr.',
-      phone: '632-555-XXXX'
+      firstName: '',
+      lastName: '',
+      address: '',
+      description: '',
+      phone: ''
     };
   }
 
@@ -29,7 +29,8 @@ export class ProfileDetailComponent implements OnInit {
           firstName: res.result.firstname,
           lastName: res.result.lastname,
           address: res.result.address,
-          phone: res.result.phone
+          phone: res.result.phone,
+          description: res.result.description
         };
       }
       if (res.err) {
