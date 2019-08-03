@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpHeaders} from "@angular/common/http";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../auth.service";
-import {Router} from "@angular/router";
+import {HttpHeaders} from '@angular/common/http';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../auth/auth.service';
+import {Router} from '@angular/router';
+import {ProfileService} from '../profile.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -21,11 +22,11 @@ export class EditProfileComponent implements OnInit {
   description: String;
 
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private profileService: ProfileService, private router: Router) {
   }
 
   ngOnInit(): void {
-    this.authService.getProfile().subscribe(
+    this.profileService.getProfile().subscribe(
       data => {
         if (data.result) {
           this.firstName = data.result.firstName;
@@ -42,11 +43,11 @@ export class EditProfileComponent implements OnInit {
   save() {
     //console.log(this.editProfileForm);
     const formData = this.editProfileForm.value;
-    this.authService.editProfile(formData).subscribe(
+    this.profileService.editProfile(formData).subscribe(
       response => {
         if (response.result) {
           console.log(response.result);
-          alert("You have successfully updated.");
+          alert('You have successfully updated.');
           this.router.navigateByUrl('/profile');
           // this.response = {
           //   message: "You have successfully updated.",
@@ -57,9 +58,9 @@ export class EditProfileComponent implements OnInit {
       error => {
         console.log(error);
         this.response = {
-          message: "Sorry, something went wrong! Please try again later.",
+          message: 'Sorry, something went wrong! Please try again later.',
           success: false
-        }
+        };
       }
     );
   }

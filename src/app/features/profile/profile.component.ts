@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../auth.service";
+import {AuthService} from "../auth/auth.service";
 import {Router} from "@angular/router";
+import {ProfileService} from './profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -24,7 +25,7 @@ export class ProfileComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder,
-              private authService: AuthService,
+              private profileService: ProfileService,
               private router: Router
               //private socialAuthService: SocialService
   ) {
@@ -32,7 +33,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.getProfile().subscribe(
+    this.profileService.getProfile().subscribe(
       data => {
         if (data.result) {
           this.firstName = data.result.firstName;

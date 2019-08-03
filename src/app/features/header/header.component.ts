@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {AuthGuard} from "../../auth.guard";
+import {AuthGuard} from "../../core/guard/auth.guard";
 
 
 
