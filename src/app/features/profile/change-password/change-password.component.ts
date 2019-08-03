@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
-import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
+import {ProfileService} from '../profile.service';
+import {AuthService} from '../../auth/auth.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class ChangePasswordComponent implements OnInit {
   response: any = null;
 
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private profileService: ProfileService, private authService: AuthService, private router: Router) {
     this.buildForm();
   }
 
@@ -41,7 +42,7 @@ export class ChangePasswordComponent implements OnInit {
             let newPassword = {
               password: this.changePassword.value['confirmNew']
             }
-            this.authService.editProfile(newPassword).subscribe(
+            this.profileService.editProfile(newPassword).subscribe(
               response => {
                 if (response.result) {
                   console.log(response.result);

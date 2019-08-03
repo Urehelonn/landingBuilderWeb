@@ -18,7 +18,7 @@ import {EditProfileComponent} from './features/profile/edit-profile/edit-profile
 import {AuthGuard} from "./core/guard/auth.guard";
 import {RouterModule, Routes} from "@angular/router";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {ChangePasswordComponent} from './features/auth/change-password/change-password.component';
+import {ChangePasswordComponent} from './features/profile/change-password/change-password.component';
 import {BuilderComponent} from './features/builder/builder.component';
 import {HeadComponent} from './features/builder/head/head.component';
 import {GalleryComponent} from './features/builder/gallery/gallery.component';

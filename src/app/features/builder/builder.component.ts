@@ -43,99 +43,88 @@ export class BuilderComponent implements OnInit {
         },
       ]
     },
-    menu_sec: {
-      title: 'Our Menu',
-      subtitle: 'These fine folks trusted the award winning restaurant.',
-      background: '',
-      items: {
-        starters: [
-          {
-            name: 'English asparagus',
-            price: 14.95,
-          },
-          {
-            name: 'English asparagus',
-            price: 14.95,
-          },
-          {
-            name: 'English asparagus',
-            price: 14.95
-          },
-          {
-            name: 'English asparagus',
-            price: 14.95
-          }
-        ],
-        breakfast: [
-          {
-            name: 'English asparagus',
-            price: 14.95
-          },
-          {
-            name: 'English asparagus',
-            price: 14.95
-          },
-          {
-            name: 'English asparagus',
-            price: 14.95
-          },
-          {
-            name: 'English asparagus',
-            price: 14.95
-          }
-        ],
-        lunch: [
-          {
-            name: 'English asparagus',
-            price: 14.95
-          },
-          {
-            name: 'English asparagus',
-            price: 14.95
-          },
-          {
-            name: 'English asparagus',
-            price: 14.95
-          },
-          {
-            name: 'English asparagus',
-            price: 14.95
-          }
-        ],
-        dinner: [{
-          name: 'English asparagus',
-          price: 14.95
+    menuData: {
+      dynamicMenuTittle: 'Dynamic menu',
+      dynamicMenuShortDescription: 'These fine folks trusted the award winning restaurant.',
+      dynamicMenu: [
+        {
+          categoryName: 'Desert',
+          menuItem: [
+            {
+              name: 'English Asparagus',
+              price: 14.99,
+              description: 'aoifejaoi, awopietj, Aifjae.'
+            },
+            {
+              name: 'Beoifj Asparagus',
+              price: 24.99,
+              description: 'aoifejaoi, awopietj, Aifjae.'
+            },
+            {
+              name: 'Asparagus English',
+              price: 4.99,
+              description: 'aoifejaoi, awopietj, Aifjae.'
+            },
+          ]
         },
-          {
-            name: 'English asparagus',
-            price: 14.95
-          },
-          {
-            name: 'English asparagus',
-            price: 14.95
-          },
-          {
-            name: 'English asparagus',
-            price: 14.95
-          }],
-        desserts: [{
-          name: 'English asparagus',
-          price: 14.95
+
+        {
+          categoryName: 'Main Course',
+          menuItem: [
+            {
+              name: 'British Asparagus',
+              price: 14.99,
+              description: 'aoifejaoi, awopietj, Aifjae.'
+            },
+            {
+              name: 'Asparagus Beoifj',
+              price: 24.99,
+              description: 'aoifejaoi, awopietj, Aifjae.'
+            },
+            {
+              name: 'Cmeoafi English',
+              price: 4.99,
+              description: 'aoifejaoi, awopietj, Aifjae.'
+            },
+            {
+              name: 'Cmeoafi English',
+              price: 4.99,
+              description: 'aoifejaoi, awopietj, Aifjae.'
+            },
+            {
+              name: 'Cmeoafi English',
+              price: 4.99,
+              description: 'aoifejaoi, awopietj, Aifjae.'
+            },
+            {
+              name: 'Cmeoafi English',
+              price: 4.99,
+              description: 'aoifejaoi, awopietj, Aifjae.'
+            },
+          ]
         },
-          {
-            name: 'English asparagus',
-            price: 14.95
-          },
-          {
-            name: 'English asparagus',
-            price: 14.95
-          },
-          {
-            name: 'English asparagus',
-            price: 14.95
-          }],
-        // drinks: []
-      }
+
+        {
+          categoryName: 'Starter',
+          menuItem: [
+            {
+              name: 'Pcideif Beef',
+              price: 1.99,
+              description: 'aoifejaoi, awopietj, Aifjae.'
+            },
+            {
+              name: 'Pcideif Bread',
+              price: 6.99,
+              description: 'aoifejaoi, awopietj, Aifjae.'
+            },
+            {
+              name: 'Cpeofk English',
+              price: 45.99,
+              description: 'aoifejaoi, awopietj, Aifjae.'
+            },
+          ]
+        }
+      ]
     }
   };
 
