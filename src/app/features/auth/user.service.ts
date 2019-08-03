@@ -35,24 +35,6 @@ export class UserService {
     this.isLoggedIn.next(res);
   }
 
-  public checkUserProfile(): Observable<any> {
-    console.log('angular service called to update user profile');
-    if (localStorage.getItem('token')) {
-      return this.http.get(`http://localhost:8080/api/me`, {headers: this.jwt()});
-    } else {
-      console.log('no valid token found!');
-    }
-  }
-
-  public updateUserProfile(user: any): Observable<any> {
-    console.log('angular service called to update user profile');
-    if (localStorage.getItem('token')) {
-      return this.http.post(`http://localhost:8080/api/me`, user, {headers: this.jwt()});
-    } else {
-      console.log('no valid token found!');
-    }
-  }
-
   public changePassword(oldPass: string, newPass: string): Observable<any> {
     const passwords = {
       currentPassword: oldPass,

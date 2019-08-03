@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../../../services/user.service';
+import {UserService} from '../../auth/user.service';
 import {Router, RouterLink} from '@angular/router';
+import {ProfileService} from '../profile.service';
 
 @Component({
   selector: 'app-profile-detail',
@@ -11,7 +12,7 @@ export class ProfileDetailComponent implements OnInit {
 
   user;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private profileService: ProfileService, private router: Router) {
     this.user = {
       firstName: '',
       lastName: '',
@@ -23,7 +24,7 @@ export class ProfileDetailComponent implements OnInit {
 
   ngOnInit() {
     // get initial form value from user data
-    this.userService.checkUserProfile().subscribe(res => {
+    this.profileService.checkUserProfile().subscribe(res => {
       if (res.result) {
         this.user = {
           firstName: res.result.firstname,
