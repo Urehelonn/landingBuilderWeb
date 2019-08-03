@@ -2,7 +2,7 @@ import {Injectable, Inject} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CanActivate, Router} from "@angular/router";
-import {LoginComponent} from "./login/login.component";
+import {LoginComponent} from "./features/auth/login/login.component";
 
 
 @Injectable()

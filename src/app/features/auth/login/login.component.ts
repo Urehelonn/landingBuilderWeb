@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../auth.service';
+import {AuthService} from '../../../auth.service';
 import {Router} from "@angular/router";
-import {ProfileComponent} from "../profile/profile.component";
+import {ProfileComponent} from "../../profile/profile.component";
 // import {
 //     SocialService
 // } from "ngx-social-button";
