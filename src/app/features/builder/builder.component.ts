@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {BuilderService} from './builder.service';
 
 @Component({
   selector: 'app-builder',
@@ -128,10 +129,15 @@ export class BuilderComponent implements OnInit {
     }
   };
 
-  constructor() {
+  constructor(private builderService: BuilderService) {
   }
 
   ngOnInit() {
+    // this.builderService.getMine().subscribe(response => {
+    //
+    // }, error => {
+    //
+    // });
   }
 
 }
