@@ -11,12 +11,12 @@ import {SignupComponent} from './features/auth/signup/signup.component';
 import {UserService} from '../services/user.service';
 import {LoginComponent} from './features/auth/login/login.component';
 import {HttpClientModule} from '@angular/common/http';
-import {ProfileEditComponent} from './features/auth/profile/profile-edit/profile-edit.component';
+import {ProfileEditComponent} from './features/profile/profile-edit/profile-edit.component';
 import {NavComponent} from './features/nav/nav.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {ProcessBarComponent} from './process-bar/process-bar.component';
 import {HomeComponent} from './features/home/home.component';
-import {ProfileDetailComponent} from './features/auth/profile/profile-detail/profile-detail.component';
+import {ProfileDetailComponent} from './features/profile/profile-detail/profile-detail.component';
 import {AuthGuard} from './core/auth.guard';
 import {BuilderComponent} from './features/builder/builder.component';
 import {HeadComponent} from './features/builder/head/head.component';
@@ -24,6 +24,7 @@ import {GalleryComponent} from './features/builder/gallery/gallery.component';
 import {MenuComponent} from './features/builder/menu/menu.component';
 import {FooterComponent} from './features/footer/footer.component';
 import { ChangePasswordComponent } from './features/auth/change-password/change-password.component';
+import { ResetPasswordRequestComponent } from './features/auth/reset-password-request/reset-password-request.component';
 
 
 // routes value
@@ -65,6 +66,7 @@ const appRoutes: Routes = [
     GalleryComponent,
     MenuComponent,
     ChangePasswordComponent,
+    ResetPasswordRequestComponent,
   ],
   imports: [
     BrowserModule,

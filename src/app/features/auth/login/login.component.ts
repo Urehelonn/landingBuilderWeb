@@ -45,9 +45,10 @@ export class LoginComponent implements OnInit {
       }
       if (u.error) {
         this.response = {
-          message: 'login failed, wrong password-username combination',
+          message: 'Login failed, wrong password-username combination',
           success: false
         };
+
         console.log(u.error);
       }
     }, error => {
@@ -55,7 +56,7 @@ export class LoginComponent implements OnInit {
       // tslint:disable-next-line:triple-equals
       if (error.status == 404 || error.status == 401) {
         this.response = {
-          message: 'That email and password combination does not exist.',
+          message: 'Pleas confirm your email address. If cannot find the confirmation email, please check junk mail box.',
           success: false
         };
       } else {

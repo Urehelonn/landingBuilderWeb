@@ -13,13 +13,10 @@
                 <div class="row">
                   <div class="form-group">
 
-                    <!-- register error msg -->
+                    <!-- login error msg -->
                     <div *ngIf="response">
                       <div class="alert alert-danger" *ngIf="!response.success">
-                        Please check your username and password again.
-                      </div>
-                      <div class="alert alert-success" *ngIf="response.success">
-                        Register succeed, please go confirm your email address.
+                        {{response.message}}
                       </div>
                     </div>
 
