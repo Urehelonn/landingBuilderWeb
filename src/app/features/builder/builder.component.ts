@@ -8,12 +8,14 @@ import {BuilderService} from './builder.service';
 })
 export class BuilderComponent implements OnInit {
 
+
+  editModel: boolean = false;
   builderData: any = {
     title: 'Tomato',
     head: {
       title: 'DELICIOUS Food',
       subtitle: 'Tomato is a delicious restaurant website template',
-      logo: 'https://res.cloudinary.com/dx55oi3py/image/upload/v1564456206/images/logo.png',
+      img_url: 'https://res.cloudinary.com/dx55oi3py/image/upload/v1564456206/images/logo.png',
       background: 'https://res.cloudinary.com/dx55oi3py/image/upload/v1564455938/images/bg2.png'
     },
     gallery_sec: {
@@ -129,15 +131,40 @@ export class BuilderComponent implements OnInit {
     }
   };
 
-  constructor(private builderService: BuilderService) {
+  toggleViewModel() {
+    this.editModel = !this.editModel;
+  }
+
+  saveBuilder() {
+
+  }
+
+  galleryOnSave(galleryData: Section) {
+    console.log(galleryData);
+    this.builderData.gallery_sec = galleryData;
+    this.editModel = !this.editModel;
+    // todo: call service update
   }
 
   ngOnInit() {
-    // this.builderService.getMine().subscribe(response => {
-    //
-    // }, error => {
-    //
-    // });
+    this.builderService.getMine().subscribe(
+      data => {
+        if (data.result) {
+          console.log("Head from server : " + data.result.head);
+        }
+      }
+    );
   }
+
+  constructor(private builderService: BuilderService) {
+  }
+
+  // ngOnInit() {
+  //   // this.builderService.getMine().subscribe(response => {
+  //   //
+  //   // }, error => {
+  //   //
+  //   // });
+  // }
 
 }

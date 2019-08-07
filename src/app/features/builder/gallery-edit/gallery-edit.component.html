@@ -1,0 +1,52 @@
+<section class="shop-content gallery_edit_section">
+  <div class="container">
+    <div class="box-content">
+      <h3 class="text-center">Edit Content</h3>
+      <br>
+      <form (ngSubmit)="submit()" [formGroup]="galleryForm" class="general_form">
+        <div class="form-group-content">
+          <input formControlName="title" placeholder="Title" type="text">
+        </div>
+
+        <div class="form-group-content">
+          <input formControlName="subtitle" placeholder="Subtitle" type="text">
+        </div>
+        <div class="form-group-content">
+          <input formControlName="background" placeholder="Background" type="text">
+        </div>
+        <div class="form-group-container row" formArrayName="items">
+          <div *ngFor="let item of itemArray.controls; let i = index" class="col-12 col-md-4">
+            <div [formGroupName]="i" class="form-group-custom-outer">
+              <div class="form-group-custom">
+                <input formControlName="title" placeholder="Item Title" type="text">
+              </div>
+              <div class="form-group-custom">
+                <input formControlName="background" placeholder="Item Background" type="text">
+              </div>
+              <div class="form-group-custom">
+                <input formControlName="description" placeholder="Item Description" type="text">
+              </div>
+              <div class="btn-wrap text-center">
+                <button (click)="removeItem($event, i)" class="btn btn-primary">
+                  Remove Item
+                </button>
+              </div>
+              <div class="btn-wrap text-center col-12">
+                <button (click)="addItem($event)" class="btn btn-primary">
+                  Add Item
+                </button>
+              </div>
+              <div class="btn-wrap text-center row">
+                <button (click)="submit($event)" class="btn btn-primary">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+</section>

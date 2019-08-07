@@ -23,6 +23,7 @@ import {BuilderComponent} from './features/builder/builder.component';
 import {HeadComponent} from './features/builder/head/head.component';
 import {GalleryComponent} from './features/builder/gallery/gallery.component';
 import {MenuComponent} from './features/builder/menu/menu.component';
+import {GalleryEditComponent} from './features/builder/gallery-edit/gallery-edit.component';
 
 const routeConfig: Routes = [
   {path: '', component: HomePageComponent},
@@ -55,7 +56,8 @@ const routeConfig: Routes = [
     BuilderComponent,
     HeadComponent,
     GalleryComponent,
-    MenuComponent
+    MenuComponent,
+    GalleryEditComponent
   ],
   imports: [
     BrowserModule,

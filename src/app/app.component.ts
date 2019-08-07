@@ -8,3 +8,17 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'restaurant-landing-web';
 }
+
+interface LabelledValue {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  //[arg: string]:any;
+}
+
+function printLabel(labelledObj: { label: string }) {
+  console.log(labelledObj.label);
+}
+
+let myObj = {size: 10, label: 'Size 10 Object'};
+printLabel(myObj);
