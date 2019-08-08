@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BuilderService} from './builder.service';
+import {Categories} from '../../model/Categories';
 
 @Component({
   selector: 'app-builder',
@@ -7,9 +8,7 @@ import {BuilderService} from './builder.service';
   styleUrls: ['./builder.component.scss']
 })
 export class BuilderComponent implements OnInit {
-
-
-  editModel: boolean = false;
+  editModel = false;
   builderData: any = {
     title: 'Tomato',
     head: {
@@ -47,87 +46,35 @@ export class BuilderComponent implements OnInit {
       ]
     },
     menuData: {
-      dynamicMenuTittle: 'Dynamic menu',
-      dynamicMenuShortDescription: 'These fine folks trusted the award winning restaurant.',
-      dynamicMenu: [
-        {
-          categoryName: 'Desert',
-          menuItem: [
-            {
-              name: 'English Asparagus',
-              price: 14.99,
-              description: 'aoifejaoi, awopietj, Aifjae.'
-            },
-            {
-              name: 'Beoifj Asparagus',
-              price: 24.99,
-              description: 'aoifejaoi, awopietj, Aifjae.'
-            },
-            {
-              name: 'Asparagus English',
-              price: 4.99,
-              description: 'aoifejaoi, awopietj, Aifjae.'
-            },
-          ]
-        },
-
-        {
-          categoryName: 'Main Course',
-          menuItem: [
-            {
-              name: 'British Asparagus',
-              price: 14.99,
-              description: 'aoifejaoi, awopietj, Aifjae.'
-            },
-            {
-              name: 'Asparagus Beoifj',
-              price: 24.99,
-              description: 'aoifejaoi, awopietj, Aifjae.'
-            },
-            {
-              name: 'Cmeoafi English',
-              price: 4.99,
-              description: 'aoifejaoi, awopietj, Aifjae.'
-            },
-            {
-              name: 'Cmeoafi English',
-              price: 4.99,
-              description: 'aoifejaoi, awopietj, Aifjae.'
-            },
-            {
-              name: 'Cmeoafi English',
-              price: 4.99,
-              description: 'aoifejaoi, awopietj, Aifjae.'
-            },
-            {
-              name: 'Cmeoafi English',
-              price: 4.99,
-              description: 'aoifejaoi, awopietj, Aifjae.'
-            },
-          ]
-        },
-
-        {
-          categoryName: 'Starter',
-          menuItem: [
-            {
-              name: 'Pcideif Beef',
-              price: 1.99,
-              description: 'aoifejaoi, awopietj, Aifjae.'
-            },
-            {
-              name: 'Pcideif Bread',
-              price: 6.99,
-              description: 'aoifejaoi, awopietj, Aifjae.'
-            },
-            {
-              name: 'Cpeofk English',
-              price: 45.99,
-              description: 'aoifejaoi, awopietj, Aifjae.'
-            },
-          ]
-        }
-      ]
+      title: 'Asfoei Brepfoke',
+      categories: [Categories.starter, Categories.main_course, Categories.dessert, Categories.breakfast],
+      description: 'These fine folks trusted the award winning restaurant. vorigh',
+      items: [{
+        category: Categories.breakfast,
+        name: 'TOijea Broccolli',
+        description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
+        price: 27.99
+      }, {
+        category: Categories.dessert,
+        name: 'TOijea Broccolli',
+        description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
+        price: 27.99
+      }, {
+        category: Categories.dessert,
+        name: 'TOijea Broccolli',
+        description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
+        price: 27.99
+      }, {
+        category: Categories.main_course,
+        name: 'TOijea Broccolli',
+        description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
+        price: 2.99
+      }, {
+        category: Categories.starter,
+        name: 'TOijea Broccolli',
+        description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
+        price: 2.99
+      }]
     }
   };
 
@@ -150,7 +97,7 @@ export class BuilderComponent implements OnInit {
     this.builderService.getMine().subscribe(
       data => {
         if (data.result) {
-          console.log("Head from server : " + data.result.head);
+          console.log('Head from server : ' + data.result.head);
         }
       }
     );
@@ -158,13 +105,4 @@ export class BuilderComponent implements OnInit {
 
   constructor(private builderService: BuilderService) {
   }
-
-  // ngOnInit() {
-  //   // this.builderService.getMine().subscribe(response => {
-  //   //
-  //   // }, error => {
-  //   //
-  //   // });
-  // }
-
 }

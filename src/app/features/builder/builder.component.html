@@ -1,11 +1,14 @@
-<app-head [sectionData]="builderData?.head"></app-head>
+<!--<app-head [sectionData]="builderData?.head"></app-head>-->
 <app-gallery-edit (onSubmitEvent)="galleryOnSave($event)" *ngIf="editModel"
                   [sectionData]="builderData.gallery_sec"></app-gallery-edit>
 <app-gallery *ngIf=!editModel [galleryData]="builderData?.gallery_sec"></app-gallery>
+
+<app-menu-edit *ngIf="editModel"></app-menu-edit>
+<app-menu *ngIf="!editModel" [menuData]="builderData?.menuData"></app-menu>
+
 <button (click)="toggleViewModel()" class="btn btn-primary toggle-btn">
   <span *ngIf="!editModel; else previewText" class="text">Edit</span>
 </button>
 <ng-template #previewText>
   <span class="text">Preview</span>
 </ng-template>
-<app-menu [menuData]="builderData?.menuData"></app-menu>

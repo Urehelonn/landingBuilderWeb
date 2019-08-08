@@ -24,6 +24,8 @@ import {HeadComponent} from './features/builder/head/head.component';
 import {GalleryComponent} from './features/builder/gallery/gallery.component';
 import {MenuComponent} from './features/builder/menu/menu.component';
 import {GalleryEditComponent} from './features/builder/gallery-edit/gallery-edit.component';
+import { HeadEditComponent } from './features/builder/head-edit/head-edit.component';
+import { MenuEditComponent } from './features/builder/menu-edit/menu-edit.component';
 
 const routeConfig: Routes = [
   {path: '', component: HomePageComponent},
@@ -57,7 +59,9 @@ const routeConfig: Routes = [
     HeadComponent,
     GalleryComponent,
     MenuComponent,
-    GalleryEditComponent
+    GalleryEditComponent,
+    HeadEditComponent,
+    MenuEditComponent
   ],
   imports: [
     BrowserModule,

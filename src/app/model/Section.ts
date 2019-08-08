@@ -5,4 +5,6 @@ interface Section {
   background?: string;
   items?: any;
   description?: string;
+  price?: number;
+  categories?: any;
 }
