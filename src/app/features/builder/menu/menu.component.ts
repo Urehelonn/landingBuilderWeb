@@ -18,7 +18,6 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.menuData);
     // group items by categories
     this.getMenuOfCate();
 

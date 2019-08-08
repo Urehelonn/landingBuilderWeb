@@ -10,14 +10,11 @@ export class GalleryEditComponent implements OnInit {
 
   @Input()
   sectionData: Section;
-
   @Output()
-  onSubmitEvent: EventEmitter<Section> = new EventEmitter<Section>();
+  onSubmitEvent = new EventEmitter<Section>();
 
   model: any;
-
   galleryForm: FormGroup;
-
   itemArray: FormArray;
 
   constructor(private fb: FormBuilder) {
@@ -39,16 +36,24 @@ export class GalleryEditComponent implements OnInit {
       background: this.sectionData.background,
     });
     this.sectionData.items.forEach((item) => {
-      this.itemArray.push(this.createItem());
+      this.itemArray.push(this.createItem(item));
     });
   }
 
   createItem(item?: Section): FormGroup {
+    if (item) {
+      return this.fb.group({
+        title: item.title ? item.title : '',
+        background: item.background ? item.background : '',
+        description: item.description ? item.description : '',
+      });
+    }
     return this.fb.group({
-      title: item.title || '',
-      background: item.background || '',
-      description: item.description || '',
+      title: '',
+      background: '',
+      description: '',
     });
+
   }
 
   submit() {
@@ -56,7 +61,6 @@ export class GalleryEditComponent implements OnInit {
     event.stopPropagation();
     console.log(this.galleryForm.value);
     this.onSubmitEvent.emit(this.galleryForm.value);
-
   }
 
   removeItem(ebent, index: number) {

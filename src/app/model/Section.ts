@@ -7,4 +7,5 @@ interface Section {
   description?: string;
   price?: number;
   categories?: any;
+  category?: any;
 }

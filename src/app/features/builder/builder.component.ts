@@ -52,31 +52,31 @@ export class BuilderComponent implements OnInit {
       items: [
         {
           category: Categories.breakfast,
-          name: 'Breakfast Broccolli',
+          title: 'Breakfast Broccolli',
           description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
           price: 27.99
         },
         {
           category: Categories.dessert,
-          name: 'Dessert Broccolli',
+          title: 'Dessert Broccolli',
           description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
           price: 27.99
         },
         {
           category: Categories.dessert,
-          name: 'Dessert Broccolli2',
+          title: 'Dessert Broccolli2',
           description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
           price: 27.99
         },
         {
           category: Categories.main_course,
-          name: 'Main Broccolli',
+          title: 'Main Broccolli',
           description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
           price: 2.99
         },
         {
           category: Categories.starter,
-          name: 'Starter Broccolli',
+          title: 'Starter Broccolli',
           description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
           price: 2.99
         }
@@ -95,6 +95,13 @@ export class BuilderComponent implements OnInit {
   galleryOnSave(galleryData: Section) {
     console.log(galleryData);
     this.builderData.gallery_sec = galleryData;
+    this.editModel = !this.editModel;
+    // todo: call service update
+  }
+
+  menuOnSave(menuDate: Section) {
+    console.log(menuDate);
+    this.builderData.menuData = menuDate;
     this.editModel = !this.editModel;
     // todo: call service update
   }

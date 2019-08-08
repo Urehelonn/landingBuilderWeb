@@ -35,7 +35,7 @@
           <div class="menu-item col-sm-6 col-xs-12"
                *ngFor="let item of menuData.items">
             <div class="clearfix menu-wrapper">
-              <h4>{{item.name}}</h4>
+              <h4>{{item.title}}</h4>
               <span class="price">${{item.price}}</span>
               <div class="dotted-bg"></div>
             </div>
@@ -48,7 +48,7 @@
           <div class="menu-item col-sm-6 col-xs-12"
                *ngFor="let item of menuWithCate[currentCate].items">
             <div class="clearfix menu-wrapper">
-              <h4>{{item.name}}</h4>
+              <h4>{{item.title}}</h4>
               <span class="price">${{item.price}}</span>
               <div class="dotted-bg"></div>
             </div>

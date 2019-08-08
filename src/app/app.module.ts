@@ -26,6 +26,7 @@ import {MenuComponent} from './features/builder/menu/menu.component';
 import {GalleryEditComponent} from './features/builder/gallery-edit/gallery-edit.component';
 import { HeadEditComponent } from './features/builder/head-edit/head-edit.component';
 import { MenuEditComponent } from './features/builder/menu-edit/menu-edit.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routeConfig: Routes = [
   {path: '', component: HomePageComponent},
@@ -70,7 +71,8 @@ const routeConfig: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routeConfig),
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
