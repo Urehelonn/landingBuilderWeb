@@ -1,72 +1,9 @@
-<!--&lt;!&ndash; menu&ndash;&gt;-->
-<!--<section class="menu" id="menu-section">-->
-<!--  <div class="container">-->
-<!--    <div class="row">-->
-<!--      <div class="col-md-12">-->
-<!--        <div class="page-header wow fadeInDown">-->
-<!--          <h1>-->
-<!--            <br>-->
-<!--            <small>{{menuData.description}}</small>-->
-<!--          </h1>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="food-menu wow fadeInUp">-->
-<!--      <div class="row">-->
-<!--        <div class="col-md-12">-->
-<!--          <div class="menu-tags">-->
-<!--            <span data-filter="*" class="tagsort-active"-->
-<!--                  [ngClass]="{'tagsort-active':showAllMenuItem}"-->
-<!--                  (click)="showAllMenuItemTrigger()">All</span>-->
-<!--            <span *ngFor="let cate of menuData.categories; let ind = index"-->
-<!--                  class="tagsort-active"-->
-<!--                  [ngClass]="{'tagsort-active':categoryActive[ind]}"-->
-<!--                  (click)="changeActiveMenuWithTag(cate)">{{cate}}</span>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      &lt;!&ndash;    For all cuisine   &ndash;&gt;-->
-<!--      <div *ngIf="showAllMenuItem" class="row menu-items">-->
-<!--        <div *ngFor="let item of menuData.items">-->
-<!--          <div class="menu-item col-sm-6 col-xs-12">-->
-<!--            &lt;!&ndash;   for each item &ndash;&gt;-->
-<!--            <div class="clearfix menu-wrapper">-->
-<!--              <h4>{{item.name}}</h4>-->
-<!--              <span class="price">${{item.price}}</span>-->
-<!--              <div class="dotted-bg"></div>-->
-<!--            </div>-->
-<!--            <p>{{item.description}}</p>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      &lt;!&ndash;      For each category     &ndash;&gt;-->
-<!--      <div *ngIf="!showAllMenuItem" class="row menu-items">-->
-<!--        <div *ngFor="let cate of menuData.categories; let ind = index">-->
-<!--          <div *ngFor="let menu of menuWithCate">-->
-<!--            <div class="menu-item col-sm-6 col-xs-12">-->
-
-<!--              &lt;!&ndash;  for each item &ndash;&gt;-->
-<!--              <div class="clearfix menu-wrapper">-->
-<!--                <h4>{{menu.name}}</h4>-->
-<!--                <span class="price">${{menu.price}}</span>-->
-<!--                <div class="dotted-bg"></div>-->
-<!--              </div>-->
-<!--              <p>{{menu.description}}</p>-->
-
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</section>-->
-
 <!-- menu-->
 <div id="menu-section">
   <section class="menu">
     <div class="container">
+
+      <!-- head part -->
       <div class="row">
         <div class="col-md-12">
           <div class="page-header wow fadeInDown">
@@ -76,99 +13,46 @@
           </div>
         </div>
       </div>
+
       <div class="food-menu wow fadeInUp">
+
+        <!--  category selector  -->
         <div class="row">
           <div class="col-md-12">
             <div class="menu-tags">
-              <span data-filter="*" class="tagsort-active">All</span>
-              <span data-filter=".starter">starters</span>
-              <span data-filter=".breakfast">breakfast</span>
-              <span data-filter=".lunch">lunch</span>
-              <span data-filter=".dinner">dinner</span>
-              <span data-filter=".desserts">desserts</span>
+              <span [ngClass]="{'tagsort-active':showAllMenuItem}"
+                    (click)="showAllMenuItemTrigger()">All</span>
+              <span *ngFor="let cate of menuData.categories; let ind=index"
+                    [ngClass]="{'tagsort-active':categoryActive[ind]}"
+                    (click)="changeActiveMenuWithTag(cate)">{{cate}}</span>
             </div>
           </div>
         </div>
-        <div class="row menu-items">
-          <div class="menu-item col-sm-6 col-xs-12 starter dinner desserts">
+
+        <!--  menu item part  -->
+        <!--     all item    -->
+        <div class="row menu-items" *ngIf="showAllMenuItem">
+          <div class="menu-item col-sm-6 col-xs-12"
+               *ngFor="let item of menuData.items">
             <div class="clearfix menu-wrapper">
-              <h4>English asparagus</h4>
-              <span class="price">$14.95</span>
+              <h4>{{item.name}}</h4>
+              <span class="price">${{item.price}}</span>
               <div class="dotted-bg"></div>
             </div>
-            <p>pellentesque enim. Aliquam tempor</p>
+            <p>{{item.description}}</p>
           </div>
-          <div class="menu-item col-sm-6 col-xs-12 starter">
+        </div>
+
+        <div class="row menu-items" *ngIf="!showAllMenuItem">
+          <!--    item in categories   -->
+          <div class="menu-item col-sm-6 col-xs-12"
+               *ngFor="let item of menuWithCate[currentCate].items">
             <div class="clearfix menu-wrapper">
-              <h4>English asparagus</h4>
-              <span class="price">$14.95</span>
+              <h4>{{item.name}}</h4>
+              <span class="price">${{item.price}}</span>
               <div class="dotted-bg"></div>
             </div>
-            <p>pellentesque enim. Aliquam tempor</p>
-          </div>
-          <div class="menu-item col-sm-6 col-xs-12 breakfast desserts starter">
-            <div class="clearfix menu-wrapper">
-              <h4>English asparagus</h4>
-              <span class="price">$14.95</span>
-              <div class="dotted-bg"></div>
-            </div>
-            <p>pellentesque enim. Aliquam tempor</p>
-          </div>
-          <div class="menu-item col-sm-6 col-xs-12 breakfast">
-            <div class="clearfix menu-wrapper">
-              <h4>English asparagus</h4>
-              <span class="price">$14.95</span>
-              <div class="dotted-bg"></div>
-            </div>
-            <p>pellentesque enim. Aliquam tempor</p>
-          </div>
-          <div class="menu-item col-sm-6 col-xs-12 lunch starter breakfast">
-            <div class="clearfix menu-wrapper">
-              <h4>English asparagus</h4>
-              <span class="price">$14.95</span>
-              <div class="dotted-bg"></div>
-            </div>
-            <p>pellentesque enim. Aliquam tempor</p>
-          </div>
-          <div class="menu-item col-sm-6 col-xs-12 lunch">
-            <div class="clearfix menu-wrapper">
-              <h4>English asparagus</h4>
-              <span class="price">$14.95</span>
-              <div class="dotted-bg"></div>
-            </div>
-            <p>pellentesque enim. Aliquam tempor</p>
-          </div>
-          <div class="menu-item col-sm-6 col-xs-12 dinner breakfast lunch">
-            <div class="clearfix menu-wrapper">
-              <h4>English asparagus</h4>
-              <span class="price">$14.95</span>
-              <div class="dotted-bg"></div>
-            </div>
-            <p>pellentesque enim. Aliquam tempor</p>
-          </div>
-          <div class="menu-item col-sm-6 col-xs-12 dinner">
-            <div class="clearfix menu-wrapper">
-              <h4>English asparagus</h4>
-              <span class="price">$14.95</span>
-              <div class="dotted-bg"></div>
-            </div>
-            <p>pellentesque enim. Aliquam tempor</p>
-          </div>
-          <div class="menu-item col-sm-6 col-xs-12 desserts lunch dinner">
-            <div class="clearfix menu-wrapper">
-              <h4>English asparagus</h4>
-              <span class="price">$14.95</span>
-              <div class="dotted-bg"></div>
-            </div>
-            <p>pellentesque enim. Aliquam tempor</p>
-          </div>
-          <div class="menu-item col-sm-6 col-xs-12 desserts">
-            <div class="clearfix menu-wrapper">
-              <h4>English asparagus</h4>
-              <span class="price">$14.95</span>
-              <div class="dotted-bg"></div>
-            </div>
-            <p>pellentesque enim. Aliquam tempor</p>
+            <p>{{item.description}}</p>
           </div>
         </div>
 

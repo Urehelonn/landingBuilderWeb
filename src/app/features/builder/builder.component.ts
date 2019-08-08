@@ -49,32 +49,38 @@ export class BuilderComponent implements OnInit {
       title: 'Asfoei Brepfoke',
       categories: [Categories.starter, Categories.main_course, Categories.dessert, Categories.breakfast],
       description: 'These fine folks trusted the award winning restaurant. vorigh',
-      items: [{
-        category: Categories.breakfast,
-        name: 'TOijea Broccolli',
-        description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
-        price: 27.99
-      }, {
-        category: Categories.dessert,
-        name: 'TOijea Broccolli',
-        description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
-        price: 27.99
-      }, {
-        category: Categories.dessert,
-        name: 'TOijea Broccolli',
-        description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
-        price: 27.99
-      }, {
-        category: Categories.main_course,
-        name: 'TOijea Broccolli',
-        description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
-        price: 2.99
-      }, {
-        category: Categories.starter,
-        name: 'TOijea Broccolli',
-        description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
-        price: 2.99
-      }]
+      items: [
+        {
+          category: Categories.breakfast,
+          name: 'Breakfast Broccolli',
+          description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
+          price: 27.99
+        },
+        {
+          category: Categories.dessert,
+          name: 'Dessert Broccolli',
+          description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
+          price: 27.99
+        },
+        {
+          category: Categories.dessert,
+          name: 'Dessert Broccolli2',
+          description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
+          price: 27.99
+        },
+        {
+          category: Categories.main_course,
+          name: 'Main Broccolli',
+          description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
+          price: 2.99
+        },
+        {
+          category: Categories.starter,
+          name: 'Starter Broccolli',
+          description: 'PAOwdpiorfj  aoiefjasoeidf aoief joaidf oaiwefj',
+          price: 2.99
+        }
+      ]
     }
   };
 
