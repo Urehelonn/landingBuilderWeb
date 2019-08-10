@@ -15,14 +15,13 @@ export class BuilderService {
     return this.http.get('http://localhost:8080/api/me/build', {headers: this.jwt()});
   }
 
-  public editBuilder(builder: any): Observable<any> {
+  public saveBuilder(builder: any): Observable<any> {
     return this.http.post('http://localhost:8080/api/build', builder, {headers: this.jwt()});
   }
 
   public getById(id: any): Observable<any> {
     return this.http.get('http://localhost:8080/api/build/' + id);
   }
-
 
   // register token header
   private jwt() {

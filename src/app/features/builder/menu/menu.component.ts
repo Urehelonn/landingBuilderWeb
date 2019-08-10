@@ -54,7 +54,7 @@ export class MenuComponent implements OnInit {
       // console.log(this.categoryData[i]);
       this.menuWithCate.push({
         cate: this.categoryData[i],
-        items: []
+        menuItems: []
       });
     }
 
@@ -62,7 +62,7 @@ export class MenuComponent implements OnInit {
       for (let i = 0; i < this.menu.menuItems.length; i++) {
         for (let j = 0; j < this.menuWithCate.length; j++) {
           if (this.menu.menuItems[i].category === this.menuWithCate[j].cate) {
-            this.menuWithCate[j].items.push(this.menu.menuItems[i]);
+            this.menuWithCate[j].menuItems.push(this.menu.menuItems[i]);
           }
         }
       }

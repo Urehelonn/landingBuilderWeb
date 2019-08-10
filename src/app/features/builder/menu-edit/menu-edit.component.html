@@ -22,7 +22,7 @@
         <hr>
 
         <!--  item  -->
-        <div class="form-group-container row" formArrayName="items">
+        <div class="form-group-container row" formArrayName="menuItems">
           <div *ngFor="let item of itemArray.controls; let i = index" class="col-12 col-md-4">
             <div [formGroupName]="i" class="form-group-custom-outer">
               <div class="form-group-custom">
@@ -37,7 +37,7 @@
               <div class="form-group-custom">
                 Item Category:
                 <select formControlName="category">
-                  <option *ngFor="let cate of sectionData.categories" [value]="cate"
+                  <option *ngFor="let cate of categoryData"
                           [selected]="cate.selected == true">{{cate}}</option>
                 </select>
               </div>

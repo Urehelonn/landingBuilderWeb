@@ -24,10 +24,9 @@ export class MenuEditComponent implements OnInit {
     this.menuForm = this.fb.group({
       title: '',
       description: '',
-      categories: this.fb.array([]),
-      items: this.fb.array([])
+      menuItems: this.fb.array([])
     });
-    this.itemArray = this.menuForm.get('items') as FormArray;
+    this.itemArray = this.menuForm.get('menuItems') as FormArray;
   }
 
   ngOnInit() {
@@ -65,6 +64,7 @@ export class MenuEditComponent implements OnInit {
   submit(event) {
     event.preventDefault();
     event.stopPropagation();
+    console.log(this.menuForm.value);
     this.onSubmitEvent.emit(this.menuForm.value);
   }
 

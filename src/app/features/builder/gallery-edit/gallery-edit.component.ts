@@ -22,7 +22,7 @@ export class GalleryEditComponent implements OnInit {
       title: '',
       subtitle: '',
       background: '',
-      items: this.fb.array([])
+      menuItems: this.fb.array([])
     });
 
     this.itemArray = this.galleryForm.get('items') as FormArray;
@@ -35,7 +35,7 @@ export class GalleryEditComponent implements OnInit {
       subtitle: this.sectionData.subtitle,
       background: this.sectionData.background,
     });
-    this.sectionData.items.forEach((item) => {
+    this.sectionData.menuItems.forEach((item) => {
       this.itemArray.push(this.createItem(item));
     });
   }
