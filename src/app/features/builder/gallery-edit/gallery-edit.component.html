@@ -3,7 +3,6 @@
     <h3 class="text-center">Edit Content</h3>
     <br>
     <form (ngSubmit)="submit($event)" [formGroup]="galleryForm" class="general_form">
-      <!--      <div class="row center">-->
       <mat-form-field appearance="outline">
         <mat-label>Title</mat-label>
         <input formControlName="title" matInput required>
@@ -17,15 +16,15 @@
       <mat-form-field appearance="outline">
         <mat-label>Background</mat-label>
         <input formControlName="background" matInput required>
-        <mat-error>This field is required</mat-error>
+        <mat-error *ngIf="galleryForm.get('background').hasError('required')">
+          This field is required
+        </mat-error>
+        <mat-error
+          *ngIf="!galleryForm.get('background').hasError('required') && galleryForm.get('background').dirty&&galleryForm.get('background').hasError('pattern')">
+          Not a valid URL
+        </mat-error>
+        <mat-hint>www.example.com</mat-hint>
       </mat-form-field>
-      <!--        <div *ngIf="galleryForm.get('background').hasError('pattern')">-->
-      <!--          <mat-error>Not a valid URL</mat-error>-->
-      <!--        </div>-->
-      <!--        <div *ngIf="galleryForm.get('background').hasError('required')">-->
-      <!--          <mat-error>This field is required</mat-error>-->
-      <!--        </div>-->
-      <!--      <div class="thick-hr"></div>-->
       <hr>
       <div formArrayName="galleryItems">
         <div *ngFor="let galleryItems of itemArray.controls; let i = index">
@@ -66,62 +65,6 @@
           Save
         </button>
       </div>
-      <!--      </div>-->
     </form>
   </div>
 </section>
-
-
-<!--<section class="shop-content gallery_edit_section">-->
-<!--  <div class="container">-->
-<!--    <div class="box-content">-->
-<!--      <h3 class="toggleText-center">Edit Content</h3>-->
-<!--      <br>-->
-<!--      <form class="general_form"  [formGroup]="galleryForm" (ngSubmit)="submit($event)">-->
-<!--        <div class="row justify-content-center align-items-center">-->
-<!--        <div class="form-group-custom col-8">-->
-<!--          <input type="toggleText" placeholder="Title" formControlName="title">-->
-<!--        </div>-->
-<!--        <div class="form-group-custom col-8">-->
-<!--          <input type="toggleText" placeholder="Description" formControlName="description">-->
-<!--        </div>-->
-<!--        <div class="form-group-custom col-8">-->
-<!--          <input type="toggleText" placeholder="Background" formControlName="background">-->
-<!--        </div>-->
-<!--        </div>-->
-<!--        <div class="form-group-container row" formArrayName="items">-->
-<!--          <div class="col-12 col-md-4" *ngFor="let item of itemArray.controls; let i = index" >-->
-<!--            <div class="form-group-custom-outer" [formGroupName]="i">-->
-<!--              <div class="form-group-custom">-->
-<!--                <input type="toggleText" placeholder="Item Title" formControlName="title">-->
-<!--              </div>-->
-<!--              <div class="form-group-custom">-->
-<!--                <input type="toggleText" placeholder="Item image" formControlName="imgUrl">-->
-<!--              </div>-->
-<!--              <div class="form-group-custom">-->
-<!--                <input type="toggleText" placeholder="Item Description" formControlName="description">-->
-<!--              </div>-->
-<!--              <div class="btn-wrap toggleText-center">-->
-<!--                <button class="btn btn-primary" (click)="removeItem($event, i)" >-->
-<!--                  Remove Item-->
-<!--                </button>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--              <div class="btn-wrap toggleText-center col-12">-->
-<!--                <button class="btn btn-primary" (click)="addItem($event)">-->
-<!--                  Add Item-->
-<!--                </button>-->
-<!--              </div>-->
-<!--          </div>-->
-<!--              <div class="btn-wrap toggleText-center row">-->
-<!--                <button class="btn btn-primary" type="submit">-->
-<!--                  Save-->
-<!--                </button>-->
-<!--              </div>-->
-
-
-<!--      </form>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</section>-->

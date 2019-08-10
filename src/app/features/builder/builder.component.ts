@@ -157,11 +157,7 @@ export class BuilderComponent implements OnInit {
 
   toggleViewModel() {
     this.editModel = !this.editModel;
-    if (this.editModel == false) {
-      this.toggleText = 'Edit';
-    } else {
-      this.toggleText = 'Preview';
-    }
+    this.toggleText = this.editModel ? 'Preview' : 'Edit';
   }
 
   saveBuilder() {
@@ -175,13 +171,14 @@ export class BuilderComponent implements OnInit {
     // todo: call service update
     this.builderService.editBuilder(this.builderData).subscribe(
       result => {
-        console.log("result : " + result)
+        if (result.result) {
+          console.log("result : " + JSON.stringify(result));
+          alert('You have successfully updated.');
+          window.location.reload();
+        }
       });
-    alert('You have successfully updated.');
-    window.location.reload();
+
   }
-
-
 
 
 }

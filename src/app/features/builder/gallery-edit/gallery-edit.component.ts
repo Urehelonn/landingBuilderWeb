@@ -22,14 +22,13 @@ export class GalleryEditComponent implements OnInit {
 
   itemArray: FormArray;
 
-  //urlRegex = '/^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/';
+  urlRegex = "^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?";
 
   constructor(private fb: FormBuilder) {
     this.galleryForm = this.fb.group({
       title: '',
       description: '',
-      background: '',
-      //background: ['',[Validators.required, Validators.pattern(this.urlRegex)]],
+      background: ['', [Validators.required, Validators.pattern(this.urlRegex)]],
       galleryItems: this.fb.array([])
     });
 

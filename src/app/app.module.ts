@@ -73,7 +73,6 @@ const routeConfig: Routes = [
     NgbModule,
     MatFormFieldModule,
     MatInputModule,
-    MatInputModule,
     BrowserAnimationsModule,
     MatSlideToggleModule
   ],
