@@ -27,6 +27,10 @@ import {GalleryEditComponent} from './features/builder/gallery-edit/gallery-edit
 import { HeadEditComponent } from './features/builder/head-edit/head-edit.component';
 import { MenuEditComponent } from './features/builder/menu-edit/menu-edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule, MatInputModule, MatSlideToggleModule} from "@angular/material";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+
+
 
 const routeConfig: Routes = [
   {path: '', component: HomePageComponent},
@@ -73,6 +77,11 @@ const routeConfig: Routes = [
     RouterModule.forRoot(routeConfig),
     NgbModule,
     BrowserAnimationsModule
+    NgbModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

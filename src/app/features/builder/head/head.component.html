@@ -1,26 +1,25 @@
 <section [ngStyle]="{'background-image': 'url('+sectionData.background+')'}" class="head">
-    <!--  <img class="elementToFadeInAndOut" src="/assets/images/home/loader.svg" alt>- -->
-    <!--  <div class="loading"></div>-->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 center">
-                <div style="text-align: center">
-                    <!--              <img class="elementToFadeInAndOut" src="/assets/images/home/loader.svg" alt>-->
-                    <!--          <div class="spinner-border elementToFadeInAndOut"role="status">-->
-                    <img alt class="visible" src="{{sectionData.img_url}}"
-                         style="margin-top: 100px; margin-bottom: 50px">
-                    <h1 class="visible" style="color: white; font-size: 60px">{{sectionData.title}}</h1>
-                    <h2 class="visible"
-                        style="font-weight:normal;color:#dddddd;text-transform: inherit;margin-bottom: 70px">{{sectionData.subtitle}}</h2>
-                    <div class="visible scroll-down" style="margin-bottom: 40px">
-                        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--  <img class="elementToFadeInAndOut" src="/assets/images/home/loader.svg" alt>- -->
+  <!--  <div class="loading"></div>-->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 center">
+        <div style="text-align: center">
+          <!--              <img class="elementToFadeInAndOut" src="/assets/images/home/loader.svg" alt>-->
+          <!--          <div class="spinner-border elementToFadeInAndOut"role="status">-->
+          <img alt class="visible" src="{{sectionData.imgUrl}}" style="margin-top: 100px; margin-bottom: 50px">
+          <h1 class="visible" style="color: white; font-size: 60px">{{sectionData.title}}</h1>
+          <h2 class="visible"
+              style="font-weight:normal;color:#dddddd;text-transform: inherit;margin-bottom: 70px">{{sectionData.description}}</h2>
+          <div class="visible scroll-down" style="margin-bottom: 40px">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-                        <i (click)="scrollDown()" class="material-icons" style="background: none; border: none">
-                            keyboard_arrow_down
-                        </i>
-                    </div>
-                </div>
-            </div>
+            <i (click)="scrollDown()" class="material-icons" style="background: none; border: none">
+              keyboard_arrow_down
+            </i>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
