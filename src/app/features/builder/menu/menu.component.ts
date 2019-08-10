@@ -9,7 +9,7 @@ import {Categories} from '../../../model/Categories';
 export class MenuComponent implements OnInit {
 
   @Input() menu;
-  @Input() categoryData;
+  categoryData: string[] = [];
   categoryActive: boolean[] = [];
   showAllMenuItem = true;
   menuWithCate: any[] = [];
@@ -19,12 +19,31 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
+    // group items by categories
+    this.getCategories();
     //  initialize all menu category to false
     this.categoryData.forEach(() => {
       this.categoryActive.push(false);
     });
-    // group items by categories
-    this.getMenuOfCate();
+  }
+
+  getCategories() {
+    for (let i = 0; i < this.menu.menuItems.length; i++) {
+      // if category doesn't exist, push new category with empty item list
+      if (!this.categoryData.includes(this.menu.menuItems[i].category)) {
+        this.categoryData.push(this.menu.menuItems[i].category);
+        this.menuWithCate.push({
+          cate: this.categoryData[i],
+          menuItems: []
+        });
+        // if category exist, push item to menuWithCate of that category
+        for (let j = 0; j < this.menuWithCate.length; j++) {
+          if (this.menu.menuItems[i].category === this.menuWithCate[j].cate) {
+            this.menuWithCate[j].menuItems.push(this.menu.menuItems[i]);
+          }
+        }
+      }
+    }
   }
 
   changeActiveMenuWithTag(tag: string) {
@@ -47,26 +66,5 @@ export class MenuComponent implements OnInit {
     for (let i = 0; i < this.categoryActive.length; i++) {
       this.categoryActive[i] = false;
     }
-  }
-
-  getMenuOfCate() {
-    for (let i = 0; i < this.categoryData.length; i++) {
-      // console.log(this.categoryData[i]);
-      this.menuWithCate.push({
-        cate: this.categoryData[i],
-        menuItems: []
-      });
-    }
-
-    if (this.menu !== null) {
-      for (let i = 0; i < this.menu.menuItems.length; i++) {
-        for (let j = 0; j < this.menuWithCate.length; j++) {
-          if (this.menu.menuItems[i].category === this.menuWithCate[j].cate) {
-            this.menuWithCate[j].menuItems.push(this.menu.menuItems[i]);
-          }
-        }
-      }
-    }
-    // console.log(this.menuWithCate);
   }
 }

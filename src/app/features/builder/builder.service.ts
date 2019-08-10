@@ -16,7 +16,7 @@ export class BuilderService {
   }
 
   public saveBuilder(builder: any): Observable<any> {
-    return this.http.post('http://localhost:8080/api/build', builder, {headers: this.jwt()});
+    return this.http.post('http://localhost:8080/api/me/build', builder, {headers: this.jwt()});
   }
 
   public getById(id: any): Observable<any> {

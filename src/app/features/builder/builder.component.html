@@ -4,8 +4,7 @@
   <!--                  [sectionData]="builderData.gallery_sec"></app-gallery-edit>-->
   <!--<app-gallery *ngIf=!editModel [galleryData]="builderData?.gallery_sec"></app-gallery>-->
   <div *ngIf="builderData.menu">
-    <app-menu *ngIf="!editModel" [menu]="builderData.menu"
-              [categoryData]="categoryData"></app-menu>
+    <app-menu *ngIf="!editModel" [menu]="builderData.menu"></app-menu>
   </div>
   <!--   empty template  -->
   <div *ngIf="!builderData.menu">

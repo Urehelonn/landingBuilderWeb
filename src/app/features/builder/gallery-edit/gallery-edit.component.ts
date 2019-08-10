@@ -35,9 +35,9 @@ export class GalleryEditComponent implements OnInit {
       subtitle: this.sectionData.subtitle,
       background: this.sectionData.background,
     });
-    this.sectionData.menuItems.forEach((item) => {
-      this.itemArray.push(this.createItem(item));
-    });
+    // this.sectionData.galleryItem.forEach((item) => {
+    //   this.itemArray.push(this.createItem(item));
+    // });
   }
 
   createItem(item?: Section): FormGroup {
