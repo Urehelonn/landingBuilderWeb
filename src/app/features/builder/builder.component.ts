@@ -42,6 +42,15 @@ export class BuilderComponent implements OnInit {
 
   }
 
+
+  menuOnSave(menu: Section) {
+    this.builderData.menu = menu;
+    this.editModel = !this.editModel;
+    this.builderService.editBuilder(this.builderData).subscribe(res => {
+      console.log(res);
+    });
+  }
+
   galleryOnSave(galleryData: Section) {
     this.builderData.gallery = galleryData;
     console.log("builderData : " + JSON.stringify(this.builderData));

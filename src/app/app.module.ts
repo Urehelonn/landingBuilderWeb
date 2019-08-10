@@ -11,12 +11,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {AuthService} from './features/auth/auth.service';
 import {HeaderComponent} from './features/header/header.component';
 import {FooterComponent} from './features/footer/footer.component';
-import {NotFoundComponent} from "./features/others/notfound/not-found.component";
+import {NotFoundComponent} from './features/others/notfound/not-found.component';
 import {HomePageComponent} from './features/home-page/home-page.component';
 import {ProfileComponent} from './features/profile/profile.component';
 import {EditProfileComponent} from './features/profile/edit-profile/edit-profile.component';
-import {AuthGuard} from "./core/guard/auth.guard";
-import {RouterModule, Routes} from "@angular/router";
+import {AuthGuard} from './core/guard/auth.guard';
+import {RouterModule, Routes} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ChangePasswordComponent} from './features/profile/change-password/change-password.component';
 import {BuilderComponent} from './features/builder/builder.component';
@@ -27,7 +27,7 @@ import {GalleryEditComponent} from './features/builder/gallery-edit/gallery-edit
 import { HeadEditComponent } from './features/builder/head-edit/head-edit.component';
 import { MenuEditComponent } from './features/builder/menu-edit/menu-edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatFormFieldModule, MatInputModule, MatSlideToggleModule} from "@angular/material";
+import {MatFormFieldModule, MatInputModule, MatSlideToggleModule} from '@angular/material';
 
 
 const routeConfig: Routes = [
