@@ -1,11 +1,29 @@
-<!--<app-head [sectionData]="builderData?.head"></app-head>-->
-<!--<app-gallery-edit (onSubmitEvent)="galleryOnSave($event)" *ngIf="editModel"-->
-<!--                  [sectionData]="builderData.gallery_sec"></app-gallery-edit>-->
-<!--<app-gallery *ngIf=!editModel [galleryData]="builderData?.gallery_sec"></app-gallery>-->
+<div *ngIf="builderData">
+  <!--<app-head [sectionData]="builderData?.head"></app-head>-->
+  <!--<app-gallery-edit (onSubmitEvent)="galleryOnSave($event)" *ngIf="editModel"-->
+  <!--                  [sectionData]="builderData.gallery_sec"></app-gallery-edit>-->
+  <!--<app-gallery *ngIf=!editModel [galleryData]="builderData?.gallery_sec"></app-gallery>-->
+  <div *ngIf="builderData.menu">
+    <app-menu *ngIf="!editModel" [menu]="builderData.menu"
+              [categoryData]="categoryData"></app-menu>
+  </div>
+  <!--   empty template  -->
+  <div *ngIf="!builderData.menu">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header wow fadeInDown">
+          <h1>Menu Template
+            <small>The menu is empty, click EDIT button to edit content within.</small>
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<app-menu-edit (onSubmitEvent)="menuOnSave($event)" *ngIf="editModel"
-               [sectionData]="builderData.menuData"></app-menu-edit>
-<app-menu *ngIf="!editModel" [menuData]="builderData?.menuData"></app-menu>
+  <app-menu-edit (onSubmitEvent)="menuOnSave($event)" *ngIf="editModel"
+                 [sectionData]="builderData?.menu"
+                 [categoryData]="categoryData"></app-menu-edit>
+</div>
 
 <button (click)="toggleViewModel()" class="btn btn-primary toggle-btn">
   <span *ngIf="!editModel; else previewText" class="text">Edit</span>

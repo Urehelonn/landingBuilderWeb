@@ -8,7 +8,8 @@ import {Categories} from '../../../model/Categories';
 })
 export class MenuComponent implements OnInit {
 
-  @Input() menuData: Section;
+  @Input() menu;
+  @Input() categoryData;
   categoryActive: boolean[] = [];
   showAllMenuItem = true;
   menuWithCate: any[] = [];
@@ -18,13 +19,12 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    // group items by categories
-    this.getMenuOfCate();
-
     //  initialize all menu category to false
-    this.menuData.categories.forEach(() => {
+    this.categoryData.forEach(() => {
       this.categoryActive.push(false);
     });
+    // group items by categories
+    this.getMenuOfCate();
   }
 
   changeActiveMenuWithTag(tag: string) {
@@ -43,23 +43,30 @@ export class MenuComponent implements OnInit {
 
   showAllMenuItemTrigger() {
     this.showAllMenuItem = true;
+    // clear categoryActive
+    for (let i = 0; i < this.categoryActive.length; i++) {
+      this.categoryActive[i] = false;
+    }
   }
 
   getMenuOfCate() {
-    for (let i = 0; i < this.menuData.categories.length; i++) {
+    for (let i = 0; i < this.categoryData.length; i++) {
+      // console.log(this.categoryData[i]);
       this.menuWithCate.push({
-        cate: this.menuData.categories[i],
+        cate: this.categoryData[i],
         items: []
       });
     }
 
-    for (let i = 0; i < this.menuData.items.length; i++) {
-      for (let j = 0; j < this.menuWithCate.length; j++) {
-        if (this.menuData.items[i].category === this.menuWithCate[j].cate) {
-          this.menuWithCate[j].items.push(this.menuData.items[i]);
+    if (this.menu !== null) {
+      for (let i = 0; i < this.menu.menuItems.length; i++) {
+        for (let j = 0; j < this.menuWithCate.length; j++) {
+          if (this.menu.menuItems[i].category === this.menuWithCate[j].cate) {
+            this.menuWithCate[j].items.push(this.menu.menuItems[i]);
+          }
         }
       }
     }
-    console.log(this.menuWithCate);
+    // console.log(this.menuWithCate);
   }
 }

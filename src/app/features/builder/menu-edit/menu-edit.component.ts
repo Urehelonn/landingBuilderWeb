@@ -10,14 +10,15 @@ import {Categories} from '../../../model/Categories';
 export class MenuEditComponent implements OnInit {
 
   @Input()
-  sectionData: Section;
+  sectionData: any;
+  @Input()
+  categoryData: any[];
   @Output()
   onSubmitEvent = new EventEmitter<Section>();
 
   model: any;
   menuForm: FormGroup;
   itemArray: FormArray;
-  categoryArray: FormArray;
 
   constructor(private fb: FormBuilder) {
     this.menuForm = this.fb.group({
@@ -26,45 +27,44 @@ export class MenuEditComponent implements OnInit {
       categories: this.fb.array([]),
       items: this.fb.array([])
     });
-    this.categoryArray = this.menuForm.get('categories') as FormArray;
     this.itemArray = this.menuForm.get('items') as FormArray;
   }
 
   ngOnInit() {
-    this.model = {...this.sectionData};
-    this.menuForm.patchValue({
-      title: this.sectionData.title,
-      description: this.sectionData.description,
-    });
-    this.sectionData.items.forEach((item) => {
-      this.itemArray.push(this.createItem(item));
-    });
-    this.sectionData.categories.forEach((item) => {
-      this.categoryArray.push(this.fb.control(item));
-    });
+    if (this.sectionData !== null) {
+      this.model = {...this.sectionData};
+      this.menuForm.patchValue({
+        title: this.sectionData.title,
+        description: this.sectionData.description,
+      });
+      if (this.sectionData.menuItems !== null) {
+        this.sectionData.menuItems.forEach((item) => {
+          this.itemArray.push(this.createItem(item));
+        });
+      }
+    }
   }
 
-  createItem(item?: Section): FormGroup {
+  createItem(item?): FormGroup {
     if (item) {
       return this.fb.group({
-        title: item.title ? item.title : '',
+        name: item.name ? item.name : '',
         description: item.description ? item.description : '',
         price: item.price ? item.price : '',
-        category: item.category ? item.category : Categories.main_course,
+        category: item.category ? item.category : Categories.dinner,
       });
     }
     return this.fb.group({
-      title: '',
+      name: '',
       description: '',
       price: '',
-      category: Categories.main_course,
+      category: Categories.dinner,
     });
   }
 
   submit(event) {
     event.preventDefault();
     event.stopPropagation();
-    console.log(this.menuForm.value);
     this.onSubmitEvent.emit(this.menuForm.value);
   }
 
