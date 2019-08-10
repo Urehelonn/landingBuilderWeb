@@ -1,8 +1,11 @@
 <div *ngIf="builderData">
-  <!--<app-head [sectionData]="builderData?.head"></app-head>-->
-  <!--<app-gallery-edit (onSubmitEvent)="galleryOnSave($event)" *ngIf="editModel"-->
-  <!--                  [sectionData]="builderData.gallery_sec"></app-gallery-edit>-->
-  <!--<app-gallery *ngIf=!editModel [galleryData]="builderData?.gallery_sec"></app-gallery>-->
+  <app-head [sectionData]="builderData.head"></app-head>
+  <app-gallery-edit (onSubmitEvent)="galleryOnSave($event)" *ngIf="editModel" [sectionData]="gallery"></app-gallery-edit>
+  <app-gallery *ngIf=!editModel [galleryData]="builderData.gallery"></app-gallery>
+  <mat-slide-toggle (change)="toggleViewModel()" class="toggle-btn">
+    {{toggleText}}
+  </mat-slide-toggle>
+
   <div *ngIf="builderData.menu">
     <app-menu *ngIf="!editModel" [menu]="builderData.menu"></app-menu>
   </div>

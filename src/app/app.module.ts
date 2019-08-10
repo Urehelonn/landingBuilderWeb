@@ -28,8 +28,6 @@ import { HeadEditComponent } from './features/builder/head-edit/head-edit.compon
 import { MenuEditComponent } from './features/builder/menu-edit/menu-edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule, MatInputModule, MatSlideToggleModule} from "@angular/material";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-
 
 
 const routeConfig: Routes = [
@@ -76,7 +74,7 @@ const routeConfig: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routeConfig),
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
     NgbModule,
     MatFormFieldModule,
     MatInputModule,
