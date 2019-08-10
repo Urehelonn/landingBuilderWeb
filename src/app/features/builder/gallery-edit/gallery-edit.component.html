@@ -1,0 +1,70 @@
+<section class="shop-content gallery_edit_section">
+  <div class="container">
+    <h3 class="text-center">Edit Content</h3>
+    <br>
+    <form (ngSubmit)="submit($event)" [formGroup]="galleryForm" class="general_form">
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input formControlName="title" matInput required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input formControlName="description" matInput required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Background</mat-label>
+        <input formControlName="background" matInput required>
+        <mat-error *ngIf="galleryForm.get('background').hasError('required')">
+          This field is required
+        </mat-error>
+        <mat-error
+          *ngIf="!galleryForm.get('background').hasError('required') && galleryForm.get('background').dirty&&galleryForm.get('background').hasError('pattern')">
+          Not a valid URL
+        </mat-error>
+        <mat-hint>www.example.com</mat-hint>
+      </mat-form-field>
+      <hr>
+      <div formArrayName="galleryItems">
+        <div *ngFor="let galleryItems of itemArray.controls; let i = index">
+          <div [formGroupName]="i">
+            <mat-form-field appearance="outline">
+              <mat-label>Item Title</mat-label>
+              <input formControlName="title" matInput required>
+              <mat-error>This field is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Item Image</mat-label>
+              <input formControlName="imgUrl" matInput required>
+              <mat-error>This field is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Item Description</mat-label>
+              <textarea formControlName="description" matInput required></textarea>
+              <mat-error>This field is required</mat-error>
+            </mat-form-field>
+
+            <div class="btn-wrap text-center">
+              <button (click)="removeItem($event, i)" class="btn btn-primary">
+                Remove Item
+              </button>
+            </div>
+            <hr>
+          </div>
+        </div>
+        <br>
+        <div class="btn-wrap text-center col-12">
+          <button (click)="addItem($event)" class="btn btn-primary">
+            Add Item
+          </button>
+        </div>
+      </div>
+      <div class="btn-wrap text-center row">
+        <button [disabled]="!galleryForm.valid" class="btn btn-primary" type="submit">
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

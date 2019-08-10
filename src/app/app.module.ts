@@ -23,6 +23,11 @@ import {BuilderComponent} from './features/builder/builder.component';
 import {HeadComponent} from './features/builder/head/head.component';
 import {GalleryComponent} from './features/builder/gallery/gallery.component';
 import {MenuComponent} from './features/builder/menu/menu.component';
+import {GalleryEditComponent} from './features/builder/gallery-edit/gallery-edit.component';
+import {MatFormFieldModule, MatInputModule, MatSlideToggleModule} from "@angular/material";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+
+
 
 const routeConfig: Routes = [
   {path: '', component: HomePageComponent},
@@ -55,7 +60,8 @@ const routeConfig: Routes = [
     BuilderComponent,
     HeadComponent,
     GalleryComponent,
-    MenuComponent
+    MenuComponent,
+    GalleryEditComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +70,11 @@ const routeConfig: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routeConfig),
-    NgbModule
+    NgbModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

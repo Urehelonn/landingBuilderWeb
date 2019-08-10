@@ -1,3 +1,14 @@
-<app-head [sectionData]="builderData?.head"></app-head>
-<app-gallery [galleryData]="builderData?.gallery_sec"></app-gallery>
+<!--<app-head [sectionData]="builderData?.head"></app-head>-->
+<app-head [sectionData]="head"></app-head>
+<app-gallery-edit (onSubmitEvent)="galleryOnSave($event)" *ngIf="editModel" [sectionData]="gallery"></app-gallery-edit>
+<app-gallery *ngIf=!editModel [galleryData]="gallery"></app-gallery>
+<mat-slide-toggle (change)="toggleViewModel()" class="toggle-btn">
+  {{toggleText}}
+</mat-slide-toggle>
+<!--<button class="btn btn-primary toggle-btn" (click)="toggleViewModel()">-->
+<!--  <span class="toggleText" *ngIf="!editModel; else previewText">Edit</span>-->
+<!--</button>-->
+<!--<ng-template #previewText>-->
+<!--  <span class="toggleText">Preview</span>-->
+<!--</ng-template>-->
 <app-menu [menuData]="builderData?.menuData"></app-menu>
