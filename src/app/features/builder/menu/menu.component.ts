@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Categories} from '../../../model/Categories';
 
 @Component({
   selector: 'app-menu',
@@ -7,33 +8,51 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  @Input() menuData;
+  @Input() menu;
+  categoryData: string[] = [];
   categoryActive: boolean[] = [];
-
   showAllMenuItem = true;
-
-  allItem: any[] = [];
+  menuWithCate: any[] = [];
+  currentCate = 0;
 
   constructor() {
   }
 
   ngOnInit() {
-    console.log(this.menuData);
-
+    // group items by categories
+    this.getCategories();
     //  initialize all menu category to false
-    this.menuData.dynamicMenu.forEach(menu => {
+    this.categoryData.forEach(() => {
       this.categoryActive.push(false);
     });
+  }
 
-    this.getAllItem();
+  getCategories() {
+    for (let i = 0; i < this.menu.menuItems.length; i++) {
+      // if category doesn't exist, push new category with empty item list
+      if (!this.categoryData.includes(this.menu.menuItems[i].category)) {
+        this.categoryData.push(this.menu.menuItems[i].category);
+        this.menuWithCate.push({
+          cate: this.categoryData[i],
+          menuItems: []
+        });
+        // if category exist, push item to menuWithCate of that category
+        for (let j = 0; j < this.menuWithCate.length; j++) {
+          if (this.menu.menuItems[i].category === this.menuWithCate[j].cate) {
+            this.menuWithCate[j].menuItems.push(this.menu.menuItems[i]);
+          }
+        }
+      }
+    }
   }
 
   changeActiveMenuWithTag(tag: string) {
     this.showAllMenuItem = false;
     let count = 0;
-    this.menuData.dynamicMenu.forEach(cate => {
-      if (tag === cate.categoryName) {
+    this.menuWithCate.forEach(cate => {
+      if (tag === cate.cate) {
         this.categoryActive[count] = true;
+        this.currentCate = count;
       } else {
         this.categoryActive[count] = false;
       }
@@ -43,13 +62,9 @@ export class MenuComponent implements OnInit {
 
   showAllMenuItemTrigger() {
     this.showAllMenuItem = true;
-  }
-
-  private getAllItem() {
-    this.menuData.dynamicMenu.forEach(cate => {
-      cate.menuItem.forEach(item => {
-        this.allItem.push(item);
-      });
-    });
+    // clear categoryActive
+    for (let i = 0; i < this.categoryActive.length; i++) {
+      this.categoryActive[i] = false;
+    }
   }
 }

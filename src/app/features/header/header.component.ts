@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {AuthGuard} from "../../core/guard/auth.guard";
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthGuard} from '../../core/guard/auth.guard';
 
 
 
@@ -14,28 +14,25 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private authGuard: AuthGuard) {
     this.router.events.subscribe((event) => {
-      console.log(event);
+      // console.log(event);
     });
   }
 
-  ngOnInit() {
-
-
-  }
+  ngOnInit() {}
 
 
   logout() {
-    if (confirm("Are you sure you want to log out?")) {
+    if (confirm('Are you sure you want to log out?')) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      this.router.navigateByUrl("/");
+      this.router.navigateByUrl('/');
     }
 
   }
 
   loggedIn(): boolean {
     if (localStorage.getItem('token')) {
-      return true
+      return true;
     } else {
       return false;
     }
