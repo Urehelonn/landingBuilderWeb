@@ -16,7 +16,8 @@ export class BuilderService {
   }
 
   public editBuilder(builder: any): Observable<any> {
-    return this.http.post('http://localhost:8080/api/build', builder, {headers: this.jwt()});
+    console.log(builder);
+    return this.http.post('http://localhost:8080/api/me/build', builder, {headers: this.jwt()});
   }
 
   public getById(id: any): Observable<any> {

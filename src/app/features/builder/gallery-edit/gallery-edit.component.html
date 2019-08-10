@@ -1,52 +1,127 @@
 <section class="shop-content gallery_edit_section">
   <div class="container">
-    <div class="box-content">
-      <h3 class="text-center">Edit Content</h3>
-      <br>
-      <form (ngSubmit)="submit()" [formGroup]="galleryForm" class="general_form">
-        <div class="form-group-content">
-          <input formControlName="title" placeholder="Title" type="text">
-        </div>
+    <h3 class="text-center">Edit Content</h3>
+    <br>
+    <form (ngSubmit)="submit($event)" [formGroup]="galleryForm" class="general_form">
+      <!--      <div class="row center">-->
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input formControlName="title" matInput required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input formControlName="description" matInput required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Background</mat-label>
+        <input formControlName="background" matInput required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+      <!--        <div *ngIf="galleryForm.get('background').hasError('pattern')">-->
+      <!--          <mat-error>Not a valid URL</mat-error>-->
+      <!--        </div>-->
+      <!--        <div *ngIf="galleryForm.get('background').hasError('required')">-->
+      <!--          <mat-error>This field is required</mat-error>-->
+      <!--        </div>-->
+      <!--      <div class="thick-hr"></div>-->
+      <hr>
+      <div formArrayName="galleryItems">
+        <div *ngFor="let galleryItems of itemArray.controls; let i = index">
+          <div [formGroupName]="i">
+            <mat-form-field appearance="outline">
+              <mat-label>Item Title</mat-label>
+              <input formControlName="title" matInput required>
+              <mat-error>This field is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Item Image</mat-label>
+              <input formControlName="imgUrl" matInput required>
+              <mat-error>This field is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Item Description</mat-label>
+              <textarea formControlName="description" matInput required></textarea>
+              <mat-error>This field is required</mat-error>
+            </mat-form-field>
 
-        <div class="form-group-content">
-          <input formControlName="subtitle" placeholder="Subtitle" type="text">
-        </div>
-        <div class="form-group-content">
-          <input formControlName="background" placeholder="Background" type="text">
-        </div>
-        <div class="form-group-container row" formArrayName="items">
-          <div *ngFor="let item of itemArray.controls; let i = index" class="col-12 col-md-4">
-            <div [formGroupName]="i" class="form-group-custom-outer">
-              <div class="form-group-custom">
-                <input formControlName="title" placeholder="Item Title" type="text">
-              </div>
-              <div class="form-group-custom">
-                <input formControlName="background" placeholder="Item Background" type="text">
-              </div>
-              <div class="form-group-custom">
-                <input formControlName="description" placeholder="Item Description" type="text">
-              </div>
-              <div class="btn-wrap text-center">
-                <button (click)="removeItem($event, i)" class="btn btn-primary">
-                  Remove Item
-                </button>
-              </div>
-              <div class="btn-wrap text-center col-12">
-                <button (click)="addItem($event)" class="btn btn-primary">
-                  Add Item
-                </button>
-              </div>
-              <div class="btn-wrap text-center row">
-                <button (click)="submit($event)" class="btn btn-primary">
-                  Submit
-                </button>
-              </div>
+            <div class="btn-wrap text-center">
+              <button (click)="removeItem($event, i)" class="btn btn-primary">
+                Remove Item
+              </button>
             </div>
+            <hr>
           </div>
         </div>
-
-
-      </form>
-    </div>
+        <br>
+        <div class="btn-wrap text-center col-12">
+          <button (click)="addItem($event)" class="btn btn-primary">
+            Add Item
+          </button>
+        </div>
+      </div>
+      <div class="btn-wrap text-center row">
+        <button [disabled]="!galleryForm.valid" class="btn btn-primary" type="submit">
+          Save
+        </button>
+      </div>
+      <!--      </div>-->
+    </form>
   </div>
 </section>
+
+
+<!--<section class="shop-content gallery_edit_section">-->
+<!--  <div class="container">-->
+<!--    <div class="box-content">-->
+<!--      <h3 class="toggleText-center">Edit Content</h3>-->
+<!--      <br>-->
+<!--      <form class="general_form"  [formGroup]="galleryForm" (ngSubmit)="submit($event)">-->
+<!--        <div class="row justify-content-center align-items-center">-->
+<!--        <div class="form-group-custom col-8">-->
+<!--          <input type="toggleText" placeholder="Title" formControlName="title">-->
+<!--        </div>-->
+<!--        <div class="form-group-custom col-8">-->
+<!--          <input type="toggleText" placeholder="Description" formControlName="description">-->
+<!--        </div>-->
+<!--        <div class="form-group-custom col-8">-->
+<!--          <input type="toggleText" placeholder="Background" formControlName="background">-->
+<!--        </div>-->
+<!--        </div>-->
+<!--        <div class="form-group-container row" formArrayName="items">-->
+<!--          <div class="col-12 col-md-4" *ngFor="let item of itemArray.controls; let i = index" >-->
+<!--            <div class="form-group-custom-outer" [formGroupName]="i">-->
+<!--              <div class="form-group-custom">-->
+<!--                <input type="toggleText" placeholder="Item Title" formControlName="title">-->
+<!--              </div>-->
+<!--              <div class="form-group-custom">-->
+<!--                <input type="toggleText" placeholder="Item image" formControlName="imgUrl">-->
+<!--              </div>-->
+<!--              <div class="form-group-custom">-->
+<!--                <input type="toggleText" placeholder="Item Description" formControlName="description">-->
+<!--              </div>-->
+<!--              <div class="btn-wrap toggleText-center">-->
+<!--                <button class="btn btn-primary" (click)="removeItem($event, i)" >-->
+<!--                  Remove Item-->
+<!--                </button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--              <div class="btn-wrap toggleText-center col-12">-->
+<!--                <button class="btn btn-primary" (click)="addItem($event)">-->
+<!--                  Add Item-->
+<!--                </button>-->
+<!--              </div>-->
+<!--          </div>-->
+<!--              <div class="btn-wrap toggleText-center row">-->
+<!--                <button class="btn btn-primary" type="submit">-->
+<!--                  Save-->
+<!--                </button>-->
+<!--              </div>-->
+
+
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->

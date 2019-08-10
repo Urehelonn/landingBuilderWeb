@@ -1,8 +1,8 @@
 interface Section {
   title: string;
-  subtitle: string;
-  img_url?: string;
+  //subtitle: string;
+  imgUrl?: string;
   background?: string;
-  items?: any;
+  galleryItems?: any;
   description?: string;
 }
