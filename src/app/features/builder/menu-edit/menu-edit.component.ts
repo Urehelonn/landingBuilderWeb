@@ -12,7 +12,7 @@ export class MenuEditComponent implements OnInit {
   @Input()
   sectionData: any;
   @Input()
-  categoryData: any[] = ['dinner'];
+  categoryData: any[] = ['dinner', 'lunch', 'breakfast'];
   @Output()
   onSubmitEvent = new EventEmitter<Section>();
 

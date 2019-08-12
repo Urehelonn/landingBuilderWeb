@@ -28,6 +28,7 @@ import { HeadEditComponent } from './features/builder/head-edit/head-edit.compon
 import { MenuEditComponent } from './features/builder/menu-edit/menu-edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule, MatInputModule, MatSlideToggleModule} from '@angular/material';
+import { LandingComponent } from './features/landing/landing.component';
 
 
 const routeConfig: Routes = [
@@ -39,7 +40,8 @@ const routeConfig: Routes = [
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'profile/edit', component: EditProfileComponent, canActivate: [AuthGuard]},
   {path: 'changepassword', component: ChangePasswordComponent, canActivate: [AuthGuard]},
-  {path: 'builder', component: BuilderComponent},
+  {path: 'builder', component: BuilderComponent, canActivate: [AuthGuard]},
+  {path: 'landing/:id', component: LandingComponent},
   {path: '**', component: NotFoundComponent}
 ];
 
@@ -64,7 +66,8 @@ const routeConfig: Routes = [
     MenuComponent,
     GalleryEditComponent,
     HeadEditComponent,
-    MenuEditComponent
+    MenuEditComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
