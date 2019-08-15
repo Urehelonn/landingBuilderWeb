@@ -1,0 +1,34 @@
+<div *ngIf="builderData">
+  <app-head [sectionData]="builderData.head"></app-head>
+  <app-gallery-edit (onSubmitEvent)="galleryOnSave($event)" *ngIf="editModel" [sectionData]="builderData.gallery"></app-gallery-edit>
+  <app-gallery *ngIf=!editModel [galleryData]="builderData.gallery"></app-gallery>
+  <mat-slide-toggle (change)="toggleViewModel()" class="toggle-btn">
+    {{toggleText}}
+  </mat-slide-toggle>
+
+  <div *ngIf="builderData.menu">
+    <app-menu *ngIf="!editModel" [menu]="builderData.menu"></app-menu>
+  </div>
+  <!--   empty template  -->
+  <div *ngIf="!builderData.menu">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header wow fadeInDown">
+          <h1>Menu Template
+            <small>The menu is empty, click EDIT button to edit content within.</small>
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-menu-edit (onSubmitEvent)="menuOnSave($event)" *ngIf="editModel"
+                 [sectionData]="builderData?.menu"></app-menu-edit>
+</div>
+
+<button (click)="toggleViewModel()" class="btn btn-primary toggle-btn">
+  <span *ngIf="!editModel; else previewText" class="text">Edit</span>
+</button>
+<ng-template #previewText>
+  <span class="text">Preview</span>
+</ng-template>

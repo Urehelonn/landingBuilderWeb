@@ -1,0 +1,63 @@
+<!-- menu-->
+<div id="menu-section">
+  <section class="menu">
+    <div class="container">
+      <div *ngIf="menu">
+        <!-- head part -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="page-header wow fadeInDown">
+              <h1>{{menu.title}}
+                <small>{{menu.description}}</small>
+              </h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="food-menu wow fadeInUp">
+
+          <!--  category selector  -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="menu-tags">
+              <span [ngClass]="{'tagsort-active':showAllMenuItem}"
+                    (click)="showAllMenuItemTrigger()">All</span>
+                <span *ngFor="let cate of categoryData; let ind=index"
+                      [ngClass]="{'tagsort-active':categoryActive[ind]}"
+                      (click)="changeActiveMenuWithTag(cate)">{{cate}}</span>
+              </div>
+            </div>
+          </div>
+
+          <!--  menu item part  -->
+          <!--     all item    -->
+          <div class="row menu-items" *ngIf="showAllMenuItem">
+            <div class="menu-item col-sm-6 col-xs-12"
+                 *ngFor="let item of menu.menuItems">
+              <div class="clearfix menu-wrapper">
+                <h4>{{item.name}}</h4>
+                <span class="price">${{item.price}}</span>
+                <div class="dotted-bg"></div>
+              </div>
+              <p>{{item.description}}</p>
+            </div>
+          </div>
+
+          <div class="row menu-items" *ngIf="!showAllMenuItem">
+            <!--    item in categories   -->
+            <div class="menu-item col-sm-6 col-xs-12"
+                 *ngFor="let item of menuWithCate[currentCate].menuItems">
+              <div class="clearfix menu-wrapper">
+                <h4>{{item.name}}</h4>
+                <span class="price">${{item.price}}</span>
+                <div class="dotted-bg"></div>
+              </div>
+              <p>{{item.description}}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

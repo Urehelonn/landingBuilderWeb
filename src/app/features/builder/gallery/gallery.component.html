@@ -1,0 +1,25 @@
+<section [ngStyle]="{'background-image': 'url('+galleryData.background+')'}" class="gallery" id="gallery">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 center">
+        <h1 style="color: white">{{galleryData.title}}</h1>
+        <h4
+          style="font-family: Josefin Sans;font-weight:100; color:#dddddd;text-transform: inherit">{{galleryData.description}}</h4>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <ul>
+        <!--        <div *ngFor="let item of galleryData.items" class="gallery-content">-->
+        <div *ngFor="let item of galleryData.galleryItems" class="gallery-content">
+          <!--          <img alt src="{{item.background}}">-->
+          <img alt src="{{item.imgUrl}}">
+          <br>
+          <h4 style="float: left; margin: 20px">{{item.title}}</h4>
+          <hr style="margin-left: 20px; margin-top: 60px">
+          <p style="font-family: Josefin Sans; margin: 20px; color: #8c8881; font-size: 20px">{{item.description}}</p>
+        </div>
+      </ul>
+    </div>
+  </div>
+</section>
