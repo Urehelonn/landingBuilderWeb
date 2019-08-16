@@ -27,6 +27,8 @@ import { MenuEditComponent } from './features/builder/menu-edit/menu-edit.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule, MatInputModule, MatSlideToggleModule} from '@angular/material';
 import { LandingComponent } from './features/landing/landing.component';
+import { NavComponent } from './features/nav/nav.component';
+import {UserService} from './features/auth/user.service';
 
 
 const routeConfig: Routes = [
@@ -51,7 +53,6 @@ const routeConfig: Routes = [
     ResetComponent,
     LoginComponent,
     RegisterComponent,
-    HeaderComponent,
     FooterComponent,
     NotFoundComponent,
     HomePageComponent,
@@ -65,7 +66,8 @@ const routeConfig: Routes = [
     GalleryEditComponent,
     HeadEditComponent,
     MenuEditComponent,
-    LandingComponent
+    LandingComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

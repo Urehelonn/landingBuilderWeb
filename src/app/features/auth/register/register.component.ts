@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
-import {AuthService} from '../auth.service';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   MAX_PSWD_LENGTH = 32;
 
   constructor(private fb: FormBuilder,
-              private authService: AuthService) {
+              private authService: UserService) {
     this.buildForm();
   }
 
@@ -30,31 +30,31 @@ export class RegisterComponent implements OnInit {
     }
     console.log(this.registerForm.value);
     const formData = this.registerForm.value;
-    let requestBodyuserObject = {
-      username: formData["username"],
-      password: formData["password"]
-    }
+    const requestBodyuserObject = {
+      username: formData.username,
+      password: formData.password
+    };
     this.authService.register(requestBodyuserObject).subscribe(
       responseBody => {
         if (responseBody.result) {
           this.response = {
-            message: "You have successfully registered.",
+            message: 'You have successfully registered.',
             success: true
-          }
+          };
         }
         if (responseBody.error) {
           this.response = {
-            message: "A user with this email address already exists.",
+            message: 'A user with this email address already exists.',
             success: false
-          }
+          };
         }
       },
       error => {
         console.log(error);
         this.response = {
-          message: "Sorry, something went wrong! Please try again later.",
+          message: 'Sorry, something went wrong! Please try again later.',
           success: false
-        }
+        };
       },
       () => {
       }
