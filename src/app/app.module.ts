@@ -8,8 +8,6 @@ import { ResetComponent} from './features/auth/reset/reset.component';
 import {LoginComponent} from './features/auth/login/login.component';
 import {RegisterComponent} from './features/auth/register/register.component';
 import {HttpClientModule} from '@angular/common/http';
-import {AuthService} from './features/auth/auth.service';
-import {HeaderComponent} from './features/header/header.component';
 import {FooterComponent} from './features/footer/footer.component';
 import {NotFoundComponent} from './features/others/notfound/not-found.component';
 import {HomePageComponent} from './features/home-page/home-page.component';
@@ -84,7 +82,7 @@ const routeConfig: Routes = [
     BrowserAnimationsModule,
     MatSlideToggleModule
   ],
-  providers: [AuthService],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
