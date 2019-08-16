@@ -18,6 +18,9 @@ export class ProfileService {
     return this.http.post('http://localhost:8080/api/me', user, {headers: this.jwt()});
   }
 
+  public getBuilderIdByToken(): Observable<any> {
+    return this.http.get('http://localhost:8080/api/builderid', {headers: this.jwt()});
+  }
   // register token header
   private jwt() {
     // register authorization header with jwt token
