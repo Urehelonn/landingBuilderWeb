@@ -1,18 +1,23 @@
 <br>
-<div class="profileContainer">
+<div class="profileContainer" *ngIf="user">
   <img src="https://res.cloudinary.com/dx55oi3py/image/upload/v1564097947/images/photo_dsxha7.png" alt="">
   <h3><strong class="firstName">{{user.firstName}}</strong> <strong>{{user.lastName}}</strong></h3>
   <p class="lead"></p>
   <hr class="my-4">
 
-  <h6>Address: {{user.address}}</h6>
+  <h6>Address: <span *ngIf="user.address">{{user.address}}</span></h6>
   <br>
-  <h6>Phone: {{user.phone}}</h6>
+  <h6>Phone: <span *ngIf="user.phone"> {{user.phone}}</span></h6>
   <br>
   <div class="description">
-    <p>{{user.description}}</p>
+    <p *ngIf="user.description">{{user.description}}</p>
   </div>
+  <br>
+  <h6>Landing Page:</h6> <a *ngIf="landingUrl" [href]="landingUrl">{{landingUrl}}</a>
+  <h6 *ngIf="!landingUrl">Current user have no landding page. </h6>
+  <br>
+  <br>
   <a class="btn btn-default form-control text-center"
-  href="/profile/edit">Edit</a>
+     href="/profile/edit" style="
+    padding-top: 8px;">Edit</a>
 </div>
-<br>

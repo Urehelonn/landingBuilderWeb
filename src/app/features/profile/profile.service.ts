@@ -32,6 +32,10 @@ export class ProfileService {
     }
   }
 
+  public getBuilderIdByToken(): Observable<any> {
+    return this.http.get('http://localhost:8080/api/builderid', {headers: this.jwt()});
+  }
+
   private jwt() {
     const token = localStorage.getItem('token');
     if (token) {

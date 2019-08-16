@@ -1,44 +1,52 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ForgotComponent } from './features/auth/forgot/forgot.component';
+// ==================================== ANGULAR LIBRARIES =======================================
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { ResetComponent} from './features/auth/reset/reset.component';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterModule, Routes} from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatFormFieldModule, MatInputModule, MatSlideToggleModule} from '@angular/material';
+
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+// =================================== COMPONENTS =============================================
+import {ForgotComponent} from './features/auth/forgot/forgot.component';
+import {ResetComponent} from './features/auth/reset/reset.component';
 import {LoginComponent} from './features/auth/login/login.component';
 import {RegisterComponent} from './features/auth/register/register.component';
-import {HttpClientModule} from '@angular/common/http';
 import {FooterComponent} from './features/footer/footer.component';
 import {NotFoundComponent} from './features/others/notfound/not-found.component';
-import {HomePageComponent} from './features/home-page/home-page.component';
-import {ProfileComponent} from './features/profile/profile.component';
-import {EditProfileComponent} from './features/profile/edit-profile/edit-profile.component';
-import {AuthGuard} from './core/guard/auth.guard';
-import {RouterModule, Routes} from '@angular/router';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {ChangePasswordComponent} from './features/profile/change-password/change-password.component';
 import {BuilderComponent} from './features/builder/builder.component';
 import {HeadComponent} from './features/builder/head/head.component';
 import {GalleryComponent} from './features/builder/gallery/gallery.component';
 import {MenuComponent} from './features/builder/menu/menu.component';
 import {GalleryEditComponent} from './features/builder/gallery-edit/gallery-edit.component';
-import { HeadEditComponent } from './features/builder/head-edit/head-edit.component';
-import { MenuEditComponent } from './features/builder/menu-edit/menu-edit.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatFormFieldModule, MatInputModule, MatSlideToggleModule} from '@angular/material';
-import { LandingComponent } from './features/landing/landing.component';
-import { NavComponent } from './features/nav/nav.component';
+import {HeadEditComponent} from './features/builder/head-edit/head-edit.component';
+import {MenuEditComponent} from './features/builder/menu-edit/menu-edit.component';
+import {LandingComponent} from './features/landing/landing.component';
+import {NavComponent} from './features/nav/nav.component';
+import {ChangePasswordComponent} from './features/auth/change-password/change-password.component';
+import {ProfileEditComponent} from './features/profile/profile-edit/profile-edit.component';
+import {ProfileDetailComponent} from './features/profile/profile-detail/profile-detail.component';
+import {HomeComponent} from './features/home/home.component';
+
+// ======================================== GUARDS ==========================================
+import {AuthGuard} from './core/guard/auth.guard';
+
+// =================================== CUSTOM MODULES =========================================
 import {UserService} from './features/auth/user.service';
 
 
 const routeConfig: Routes = [
-  {path: '', component: HomePageComponent},
+  {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'reset', component: ResetComponent},
   {path: 'forgot', component: ForgotComponent},
-  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-  {path: 'profile/edit', component: EditProfileComponent, canActivate: [AuthGuard]},
+  {path: 'profile', component: ProfileDetailComponent, canActivate: [AuthGuard]},
+  {path: 'profile/edit', component: ProfileEditComponent, canActivate: [AuthGuard]},
   {path: 'changepassword', component: ChangePasswordComponent, canActivate: [AuthGuard]},
   {path: 'builder', component: BuilderComponent, canActivate: [AuthGuard]},
   {path: 'landing/:id', component: LandingComponent},
@@ -55,9 +63,8 @@ const routeConfig: Routes = [
     RegisterComponent,
     FooterComponent,
     NotFoundComponent,
-    HomePageComponent,
-    ProfileComponent,
-    EditProfileComponent,
+    ProfileDetailComponent,
+    ProfileEditComponent,
     ChangePasswordComponent,
     BuilderComponent,
     HeadComponent,
@@ -67,7 +74,8 @@ const routeConfig: Routes = [
     HeadEditComponent,
     MenuEditComponent,
     LandingComponent,
-    NavComponent
+    NavComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,5 +95,6 @@ const routeConfig: Routes = [
   providers: [UserService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 

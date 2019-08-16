@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../auth/user.service';
-import {Router, RouterLink} from '@angular/router';
+import {Router} from '@angular/router';
 import {ProfileService} from '../profile.service';
 
 @Component({
@@ -11,15 +10,9 @@ import {ProfileService} from '../profile.service';
 export class ProfileDetailComponent implements OnInit {
 
   user;
+  landingUrl: string;
 
   constructor(private profileService: ProfileService, private router: Router) {
-    this.user = {
-      firstName: '',
-      lastName: '',
-      address: '',
-      description: '',
-      phone: ''
-    };
   }
 
   ngOnInit() {
@@ -39,13 +32,19 @@ export class ProfileDetailComponent implements OnInit {
       }
 
     }, err => {
-
       if (err.status === 400) {
         alert('Please login!');
         return this.router.navigateByUrl('/login');
       }
       console.log(err);
     });
+
+    this.profileService.getBuilderIdByToken().subscribe(data => {
+      if (data.result) {
+        this.landingUrl = 'http://localhost:4200/landing/' + data.result;
+      }
+    });
   }
+
 
 }
