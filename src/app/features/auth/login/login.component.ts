@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   }
 
   loginSubmit() {
-    console.log(this.f.value);
     const user = {username: this.f.value.email, password: this.f.value.password};
 
     // access user service to login
@@ -45,10 +44,9 @@ export class LoginComponent implements OnInit {
       }
       if (u.error) {
         this.response = {
-          message: 'Login failed, wrong password-username combination',
+          message: 'Login failed, please check your password again.',
           success: false
         };
-
         console.log(u.error);
       }
     }, error => {
