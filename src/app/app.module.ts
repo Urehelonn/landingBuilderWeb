@@ -15,7 +15,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ForgotComponent} from './features/auth/forgot/forgot.component';
 import {ResetComponent} from './features/auth/reset/reset.component';
 import {LoginComponent} from './features/auth/login/login.component';
-import {RegisterComponent} from './features/auth/register/register.component';
 import {FooterComponent} from './features/footer/footer.component';
 import {BuilderComponent} from './features/builder/builder.component';
 import {HeadComponent} from './features/builder/head/head.component';
@@ -30,19 +29,20 @@ import {ChangePasswordComponent} from './features/auth/change-password/change-pa
 import {ProfileEditComponent} from './features/profile/profile-edit/profile-edit.component';
 import {ProfileDetailComponent} from './features/profile/profile-detail/profile-detail.component';
 import {HomeComponent} from './features/home/home.component';
+import {NotFoundComponent} from './features/others/notfound/not-found.component';
+import {SignupComponent} from './features/auth/signup/signup.component';
+
 
 // ======================================== GUARDS ==========================================
 import {AuthGuard} from './core/guard/auth.guard';
 
 // =================================== CUSTOM MODULES =========================================
 import {UserService} from './features/auth/user.service';
-import {NotFoundComponent} from './features/others/notfound/not-found.component';
-
 
 const routeConfig: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
+  {path: 'register', component: SignupComponent},
   {path: 'reset', component: ResetComponent},
   {path: 'forgot', component: ForgotComponent},
   {path: 'profile', component: ProfileDetailComponent, canActivate: [AuthGuard]},
@@ -60,7 +60,6 @@ const routeConfig: Routes = [
     ForgotComponent,
     ResetComponent,
     LoginComponent,
-    RegisterComponent,
     FooterComponent,
     NotFoundComponent,
     ProfileDetailComponent,
@@ -75,6 +74,7 @@ const routeConfig: Routes = [
     MenuEditComponent,
     LandingComponent,
     NavComponent,
+    SignupComponent,
     HomeComponent,
   ],
   imports: [

@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
     // access user service to login
     this.authService.login(user).subscribe(u => {
       // login success, stores returned string to local as token
+      console.log(u);
       if (u.result) {
         this.response = {
           message: 'login successfully!',
@@ -43,11 +44,17 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/profile');
       }
       if (u.error) {
-        this.response = {
-          message: 'Login failed, please check your password again.',
-          success: false
-        };
-        console.log(u.error);
+        if (u.message === 'user is not active') {
+          this.response = {
+            message: 'Login failed, please confirm your email associate with the account.',
+            success: false
+          };
+        } else {
+          this.response = {
+            message: 'Login failed, please check your password again.',
+            success: false
+          };
+        }
       }
     }, error => {
       // no-200 code error handle, such as 401. 403, 404, 500

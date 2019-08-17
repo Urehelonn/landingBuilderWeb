@@ -15,8 +15,8 @@
 
                     <!-- login error msg -->
                     <div *ngIf="response">
-                      <div class="alert alert-danger" *ngIf="!response.success">
-                        {{response.message}}
+                      <div class="alert alert-warning" *ngIf="!response.success">
+                        --  {{response.message}}  --
                       </div>
                     </div>
 
