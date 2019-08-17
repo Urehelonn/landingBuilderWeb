@@ -17,7 +17,6 @@ import {ResetComponent} from './features/auth/reset/reset.component';
 import {LoginComponent} from './features/auth/login/login.component';
 import {RegisterComponent} from './features/auth/register/register.component';
 import {FooterComponent} from './features/footer/footer.component';
-import {NotFoundComponent} from './features/others/notfound/not-found.component';
 import {BuilderComponent} from './features/builder/builder.component';
 import {HeadComponent} from './features/builder/head/head.component';
 import {GalleryComponent} from './features/builder/gallery/gallery.component';
@@ -37,6 +36,7 @@ import {AuthGuard} from './core/guard/auth.guard';
 
 // =================================== CUSTOM MODULES =========================================
 import {UserService} from './features/auth/user.service';
+import {NotFoundComponent} from './features/others/notfound/not-found.component';
 
 
 const routeConfig: Routes = [

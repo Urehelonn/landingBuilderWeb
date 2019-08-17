@@ -15,7 +15,7 @@ export class ProfileService {
   }
 
   public checkUserProfile(): Observable<any> {
-    console.log('angular service called to update user profile');
+    // console.log('angular service called to update user profile');
     if (localStorage.getItem('token')) {
       return this.http.get(`http://localhost:8080/api/me`, {headers: this.jwt()});
     } else {

@@ -8,7 +8,7 @@ import {last} from "rxjs/operators";
 })
 export class HeadComponent implements OnInit {
 
-  //let preloader = document.getElementById("loading");
+  // let preloader = document.getElementById("loading");
 
   @Input() sectionData: any;
 
@@ -16,7 +16,7 @@ export class HeadComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.sectionData);
+    // console.log(this.sectionData);
   }
 
 
