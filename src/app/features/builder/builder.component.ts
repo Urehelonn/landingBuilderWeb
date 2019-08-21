@@ -8,8 +8,8 @@ import {BuilderService} from './builder.service';
 })
 export class BuilderComponent implements OnInit {
   editModel = false;
-  head: any;
-  gallery: any;
+  // head: any;
+  // gallery: any;
   toggleText = 'Edit';
   builderData: any;
 
@@ -21,12 +21,12 @@ export class BuilderComponent implements OnInit {
       data => {
         if (data.result) {
           this.builderData = data.result;
-          this.head = data.result.head;
-          this.gallery = data.result.gallery;
+          // this.head = data.result.head;
+          // this.gallery = data.result.gallery;
 
-          console.log("builderData : " + JSON.stringify(this.builderData));
-          console.log("Head from server : " + JSON.stringify(this.head));
-          console.log("Gallery from server : " + JSON.stringify(this.gallery));
+          // console.log('builderData : ' + JSON.stringify(this.builderData));
+          // console.log('Head from server : ' + JSON.stringify(this.head));
+          // console.log('Gallery from server : ' + JSON.stringify(this.gallery));
         }
       }
     );
@@ -42,6 +42,16 @@ export class BuilderComponent implements OnInit {
 
   }
 
+  headOnSave(head) {
+    this.builderData.head = head;
+    this.editModel = !this.editModel;
+    // console.log(head);
+    // console.log(this.builderData.head);
+    this.builderService.editBuilder(this.builderData).subscribe(res => {
+      // console.log(this.builderData.head);
+      // console.log(res);
+    });
+  }
 
   menuOnSave(menu: Section) {
     this.builderData.menu = menu;
@@ -53,15 +63,12 @@ export class BuilderComponent implements OnInit {
 
   galleryOnSave(galleryData: Section) {
     this.builderData.gallery = galleryData;
-    console.log("builderData : " + JSON.stringify(this.builderData));
+    console.log(this.builderData);
     this.editModel = !this.editModel;
-    // todo: call service update
     this.builderService.editBuilder(this.builderData).subscribe(
       result => {
         if (result.result) {
-          console.log("result : " + JSON.stringify(result));
-          alert('You have successfully updated.');
-          window.location.reload();
+          console.log(result);
         }
       });
 

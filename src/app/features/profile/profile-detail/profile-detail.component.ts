@@ -10,7 +10,6 @@ import {ProfileService} from '../profile.service';
 export class ProfileDetailComponent implements OnInit {
 
   user;
-  landingUrl: string;
 
   constructor(private profileService: ProfileService, private router: Router) {
   }
@@ -37,12 +36,6 @@ export class ProfileDetailComponent implements OnInit {
         return this.router.navigateByUrl('/login');
       }
       console.log(err);
-    });
-
-    this.profileService.getBuilderIdByToken().subscribe(data => {
-      if (data.result) {
-        this.landingUrl = 'http://localhost:4200/landing/' + data.result;
-      }
     });
   }
 

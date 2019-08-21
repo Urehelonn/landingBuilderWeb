@@ -19,7 +19,8 @@ export class ProfileService {
     if (localStorage.getItem('token')) {
       return this.http.get(`http://localhost:8080/api/me`, {headers: this.jwt()});
     } else {
-      console.log('no valid token found!');
+      alert('Please login to access this page.');
+      this.router.navigateByUrl('/login');
     }
   }
 
@@ -28,12 +29,9 @@ export class ProfileService {
     if (localStorage.getItem('token')) {
       return this.http.post(`http://localhost:8080/api/me`, user, {headers: this.jwt()});
     } else {
-      console.log('no valid token found!');
+      alert('Please login to access this page.');
+      this.router.navigateByUrl('/login');
     }
-  }
-
-  public getBuilderIdByToken(): Observable<any> {
-    return this.http.get('http://localhost:8080/api/builderid', {headers: this.jwt()});
   }
 
   private jwt() {

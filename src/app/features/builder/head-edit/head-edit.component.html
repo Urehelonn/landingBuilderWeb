@@ -1,1 +1,41 @@
-<p>head-edit works!</p>
+<section class="shop-content gallery_edit_section">
+  <div class="container">
+    <h3 class="text-center">Edit Header Content</h3>
+    <br>
+    <form (ngSubmit)="submit($event)" [formGroup]="headForm" class="general_form">
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input formControlName="title" matInput required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input formControlName="description" matInput required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Background</mat-label>
+        <input formControlName="imgUrl" matInput required>
+        <mat-error *ngIf="headForm.get('imgUrl').hasError('required')">
+          This field is required
+        </mat-error>
+        <mat-error
+          *ngIf="!headForm.get('imgUrl').hasError('required')
+           && headForm.get('imgUrl').dirty
+            && headForm.get('imgUrl').hasError('pattern')">
+          Not a valid URL
+        </mat-error>
+        <mat-hint>www.example.com</mat-hint>
+      </mat-form-field>
+
+      <div class="btn-wrap text-center row">
+        <button [disabled]="!headForm.valid" class="btn btn-primary" type="submit">
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+<br>

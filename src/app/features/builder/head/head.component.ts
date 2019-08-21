@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {last} from "rxjs/operators";
 
 @Component({
   selector: 'app-head',

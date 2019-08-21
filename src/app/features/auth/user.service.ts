@@ -15,12 +15,12 @@ export class UserService {
   }
 
   public login(user: any): Observable<any> {
-    console.log('from service');
+    // console.log('from service');
     return this.http.post(`http://localhost:8080/api/login`, user);
   }
 
   public register(user: any): Observable<any> {
-    console.log('from service');
+    // console.log('from service');
     return this.http.post(`http://localhost:8080/api/register`, user);
   }
 
@@ -33,6 +33,23 @@ export class UserService {
     const res = localStorage.getItem('token') !== null;
     console.log(res);
     this.isLoggedIn.next(res);
+  }
+
+  public ifTokenValid(token: string): boolean {
+    let res = false;
+    this.http.get('http://localhost:8080/api/me').subscribe(
+      result => {
+        console.log(result);
+        if (result) {
+          result = true;
+        }
+      }, err => {
+        if (err.status === 401 || err.status === 404) {
+          res = false;
+        }
+      }
+    );
+    return res;
   }
 
   public changePassword(oldPass: string, newPass: string): Observable<any> {

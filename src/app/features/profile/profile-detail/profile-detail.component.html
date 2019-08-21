@@ -7,20 +7,11 @@
 
   <h6>Address: <span *ngIf="user.address">{{user.address}}</span></h6>
   <h6>Phone: <span *ngIf="user.phone"> {{user.phone}}</span></h6>
+  <h6><a routerLink="/builder">Builder Page</a></h6>
   <div class="description">
     <p *ngIf="user.description">{{user.description}}</p>
   </div>
 
-  <div class="half">
-    <div class="left">
-      <h6>Landing Page:
-          <a *ngIf="landingUrl" [href]="landingUrl">{{landingUrl}}</a></h6>
-      <h6 *ngIf="!landingUrl">Current user have no landding page. </h6>
-    </div>
-    <div class="right">
-      <h6><a routerLink="/builder">Builder Page</a></h6>
-    </div>
-  </div>
 
   <a class="btn btn-default form-control text-center"
      href="/profile/edit" style="

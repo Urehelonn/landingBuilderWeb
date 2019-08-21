@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../user.service';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {error} from 'util';
 
 @Component({
   selector: 'app-login',
@@ -44,22 +45,12 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/profile');
       }
       if (u.error) {
-        if (u.message === 'user is not active') {
-          this.response = {
-            message: 'Login failed, please confirm your email associate with the account.',
-            success: false
-          };
-        } else {
-          this.response = {
-            message: 'Login failed, please check your password again.',
-            success: false
-          };
-        }
+        console.log(error);
       }
-    }, error => {
+    }, err => {
       // no-200 code error handle, such as 401. 403, 404, 500
       // tslint:disable-next-line:triple-equals
-      if (error.status == 404 || error.status == 401) {
+      if (err.status == 404 || err.status == 401) {
         this.response = {
           message: 'Pleas confirm your email address. If cannot find the confirmation email, please check junk mail box.',
           success: false

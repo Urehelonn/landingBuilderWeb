@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {MatFormFieldControl} from "@angular/material";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatFormFieldControl} from '@angular/material';
 
 @Component({
   selector: 'app-gallery-edit',
@@ -13,6 +13,7 @@ export class GalleryEditComponent implements OnInit {
   @Input()
   sectionData: Section;
 
+  // tslint:disable-next-line:no-output-on-prefix
   @Output()
   onSubmitEvent: EventEmitter<Section> = new EventEmitter<Section>();
 
@@ -22,7 +23,7 @@ export class GalleryEditComponent implements OnInit {
 
   itemArray: FormArray;
 
-  urlRegex = "^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?";
+  urlRegex = '^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?';
 
   constructor(private fb: FormBuilder) {
     this.galleryForm = this.fb.group({
@@ -65,9 +66,8 @@ export class GalleryEditComponent implements OnInit {
   submit(event) {
     event.preventDefault();
     event.stopPropagation();
-    console.log(this.galleryForm.value);
+    // console.log(this.galleryForm.value);
     this.onSubmitEvent.emit(this.galleryForm.value);
-
   }
 
   removeItem(event, index: number) {
