@@ -22,7 +22,7 @@ export class BuilderComponent implements OnInit {
         if (data.result) {
           this.builderData = data.result;
           this.builderId = data.result.id * 1;
-          console.log(data.result.id);
+          // console.log(data.result.id);
           // this.head = data.result.head;
           // this.gallery = data.result.gallery;
 

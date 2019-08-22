@@ -46,7 +46,7 @@
             </mat-form-field>
 
             <div class="btn-wrap text-center">
-              <button (click)="removeItem($event, i)" class="btn btn-primary">
+              <button (click)="removeItem($event, i)" class="btn btn-warning">
                 Remove Item
               </button>
             </div>
@@ -61,8 +61,8 @@
         </div>
       </div>
       <div class="btn-wrap text-center row">
-        <button [disabled]="!galleryForm.valid" class="btn btn-primary" type="submit">
-          Save
+        <button [disabled]="!galleryForm.valid" class="btn btn-success pull-right" type="submit">
+          Save Gallery
         </button>
       </div>
     </form>

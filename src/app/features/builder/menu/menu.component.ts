@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Categories} from '../../../model/Categories';
 
 @Component({
   selector: 'app-menu',
@@ -28,6 +27,20 @@ export class MenuComponent implements OnInit {
   }
 
   getCategories() {
+    // const groupBy = (items, key) => items.reduce(
+    //   (result, item) => ({
+    //     ...result,
+    //     [item[key]]: [
+    //       ...(result[item[key]] || []),
+    //       item,
+    //     ],
+    //   }),
+    //   {},
+    // );
+    // this.categoryData = groupBy(this.menu.menuItems, this.menu.menuItems.category);
+    //
+    // console.log(this.categoryData);
+
     for (let i = 0; i < this.menu.menuItems.length; i++) {
       // if category doesn't exist, push new category with empty item list
       if (!this.categoryData.includes(this.menu.menuItems[i].category)) {

@@ -38,7 +38,7 @@
                 Item Category:
                 <select formControlName="category">
                   <option *ngFor="let cate of categoryData"
-                          [selected]="cate.selected == true">{{cate}}</option>
+                  [ngValue]="cate">{{cate}}</option>
                 </select>
               </div>
 
@@ -54,11 +54,12 @@
           <!--  submit bt   -->
           <div class="btn-wrap text-center pull-right row">
             <button (click)="submit($event)" class="btn btn-success">
-              Submit
+              Save Menu
             </button>
           </div>
         </div>
       </form>
     </div>
   </div>
+  <br>
 </section>
