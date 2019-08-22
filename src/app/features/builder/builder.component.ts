@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BuilderService} from './builder.service';
+import {UserService} from '../auth/user.service';
 
 @Component({
   selector: 'app-builder',
@@ -8,12 +9,11 @@ import {BuilderService} from './builder.service';
 })
 export class BuilderComponent implements OnInit {
   editModel = false;
-  // head: any;
-  // gallery: any;
   toggleText = 'Edit';
   builderData: any;
+  builderId: number;
 
-  constructor(private builderService: BuilderService) {
+  constructor(private builderService: BuilderService, private userService: UserService) {
   }
 
   ngOnInit() {
@@ -21,6 +21,8 @@ export class BuilderComponent implements OnInit {
       data => {
         if (data.result) {
           this.builderData = data.result;
+          this.builderId = data.result.id * 1;
+          console.log(data.result.id);
           // this.head = data.result.head;
           // this.gallery = data.result.gallery;
 
@@ -28,6 +30,12 @@ export class BuilderComponent implements OnInit {
           // console.log('Head from server : ' + JSON.stringify(this.head));
           // console.log('Gallery from server : ' + JSON.stringify(this.gallery));
         }
+      }, err => {
+        console.log(err);
+        if (err.status === 401) {
+          alert('User invalid, please login to view the page.');
+        }
+        this.userService.logOut();
       }
     );
   }
@@ -38,6 +46,7 @@ export class BuilderComponent implements OnInit {
     this.toggleText = this.editModel ? 'Preview' : 'Edit';
   }
 
+  // doesn't have function to save head, menu, gallery all at once yet
   saveBuilder() {
 
   }

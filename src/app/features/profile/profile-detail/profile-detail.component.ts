@@ -35,7 +35,8 @@ export class ProfileDetailComponent implements OnInit {
         alert('Please login!');
         return this.router.navigateByUrl('/login');
       }
-      console.log(err);
+      alert('Oops! Something went wrong.');
+      return this.router.navigateByUrl('/notfound');
     });
   }
 

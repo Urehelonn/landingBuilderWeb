@@ -1,13 +1,11 @@
 <div *ngIf="builderData">
+  <a id="landingLink" routerLink="/landing/{{builderId}}"> This link can direct to your resturant landing page</a>
   <app-head *ngIf=!editModel [sectionData]="builderData.head"></app-head>
   <app-head-edit (onSubmitEvent)="headOnSave($event)" *ngIf="editModel"
                  [sectionData]="builderData.head"></app-head-edit>
   <app-gallery-edit (onSubmitEvent)="galleryOnSave($event)" *ngIf="editModel"
                     [sectionData]="builderData.gallery"></app-gallery-edit>
   <app-gallery *ngIf=!editModel [galleryData]="builderData.gallery"></app-gallery>
-  <mat-slide-toggle (change)="toggleViewModel()" class="toggle-btn">
-    {{toggleText}}
-  </mat-slide-toggle>
 
   <div *ngIf="builderData.menu">
     <app-menu *ngIf="!editModel" [menu]="builderData.menu"></app-menu>
@@ -27,11 +25,12 @@
 
   <app-menu-edit (onSubmitEvent)="menuOnSave($event)" *ngIf="editModel"
                  [sectionData]="builderData?.menu"></app-menu-edit>
+
+  <mat-slide-toggle (change)="toggleViewModel()" class="toggle-btn">
+    {{toggleText}}
+  </mat-slide-toggle>
+  <ng-template #previewText>
+    <span class="text">Preview</span>
+  </ng-template>
 </div>
 
-<!--<button (click)="toggleViewModel()" class="btn btn-primary toggle-btn">-->
-<!--  <span *ngIf="!editModel; else previewText" class="text">Edit</span>-->
-<!--</button>-->
-<ng-template #previewText>
-  <span class="text">Preview</span>
-</ng-template>

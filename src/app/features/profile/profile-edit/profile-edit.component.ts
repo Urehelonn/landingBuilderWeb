@@ -37,7 +37,7 @@ export class ProfileEditComponent implements OnInit {
       }
 
     }, err => {
-      if (err.status === 400) {
+      if (err.status === 400 || err.status === 404) {
         alert('Please login!');
         return this.router.navigateByUrl('/login');
       }
@@ -66,10 +66,12 @@ export class ProfileEditComponent implements OnInit {
         alert('update profile failed');
       }
     }, err => {
-      if (err) {
-        console.log(err);
-        alert('update profile failed');
+      if (err.status === 400 || err.status === 404) {
+        alert('Please login!');
+        return this.router.navigateByUrl('/login');
       }
+      alert('Oops! Something went wrong.');
+      return this.router.navigateByUrl('/notfound');
     });
   }
 }

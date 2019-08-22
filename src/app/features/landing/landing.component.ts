@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BuilderService} from '../builder/builder.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -12,14 +12,14 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   head: any;
   gallery: any;
-  toggleText = 'Edit';
   builderData: any;
 
   private routeSub: Subscription;
   private builderId;
 
   constructor(private builderService: BuilderService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -39,6 +39,9 @@ export class LandingComponent implements OnInit, OnDestroy {
           // console.log('Head from server : ' + JSON.stringify(this.head));
           // console.log('Gallery from server : ' + JSON.stringify(this.gallery));
         }
+      }, err => {
+        console.log(err);
+        this.router.navigateByUrl('/notfound');
       }
     );
   }
