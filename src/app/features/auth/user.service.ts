@@ -39,7 +39,6 @@ export class UserService {
   }
 
   private ifTokenValid() {
-
     const promise = new Promise((resolve, reject) => {
       this.http.get('http://localhost:8080/api/me', {headers: this.jwt()}).subscribe(
         result => {

@@ -26,16 +26,65 @@ export class BuilderComponent implements OnInit {
           // this.head = data.result.head;
           // this.gallery = data.result.gallery;
 
+
           // console.log('builderData : ' + JSON.stringify(this.builderData));
           // console.log('Head from server : ' + JSON.stringify(this.head));
           // console.log('Gallery from server : ' + JSON.stringify(this.gallery));
+        } else if (data.message === 'corresponding builder not found') {
+          this.builderData = {
+            "name": "test updated",
+            "head": {
+              "imgUrl": "https://via.placeholder.com/150",
+              "description": "head desc updated",
+              "title": "head title updted"
+            },
+            "gallery": {
+              "title": "g title updated",
+              "description": "g desc",
+              "galleryItems": [{"id":2,"title":"sdf","description":"sdf","imgUrl":"https://restaurantindia.s3.ap-south-1.amazonaws.com/s3fs-public/content9442.jpg","modifiedAt":"2019-08-23T00:40:59.000+0000"}]
+            },
+            "menu": {
+
+              "title": "menu title",
+              "description": "menu desc",
+
+              "menuItems": [
+                {
+                  "category": "breakfast",
+                  "name": "mi1 update",
+                  "description": "menu item 1 desc",
+                  "price": "101"
+                },
+                {
+
+                  "category": "breakfast",
+                  "name": "mi2 update",
+                  "description": "menu item 2 desc",
+                  "price": "51"
+                },
+                {
+
+                  "category": "dinner",
+                  "name": "mi3",
+                  "description": "menu item 3 desc",
+                  "price": "31"
+                },
+                {
+                  "category": "lunch",
+                  "name": "mi4",
+                  "description": "menu item 4 desc",
+                  "price": '41'
+                }
+              ]
+            }
+          };
         }
       }, err => {
         console.log(err);
         if (err.status === 401) {
-          alert('User invalid, please login to view the page.');
+          //alert('User invalid, please login to view the page.');
         }
-        this.userService.logOut();
+        //this.userService.logOut();
       }
     );
   }
