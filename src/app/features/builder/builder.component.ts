@@ -108,7 +108,7 @@ export class BuilderComponent implements OnInit {
       && this.builderData.menu.description) {
       return true;
     }
-    console.log(this.builderData.menu);
+    // console.log(this.builderData.menu);
     return false;
   }
 }

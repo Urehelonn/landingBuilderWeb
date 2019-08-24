@@ -24,7 +24,7 @@ export class HeadEditComponent implements OnInit {
       title: '',
       description: '',
       imgUrl: ['', [Validators.required, Validators.pattern(this.urlRegex)]],
-      background: ''
+      background: ['']
     });
   }
 
@@ -34,7 +34,8 @@ export class HeadEditComponent implements OnInit {
       title: this.sectionData.title,
       description: this.sectionData.description,
       imgUrl: this.sectionData.imgUrl,
-      background: !!this.sectionData.background ? '../../../../assets/images/builder/header-bg.png' : this.sectionData.background
+      // background: !!this.sectionData.background ? this.sectionData.background : '../../../../assets/images/builder/header-bg.png'
+      background: !!this.sectionData.background ? this.sectionData.background : ''
     });
   }
 

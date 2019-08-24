@@ -8,12 +8,15 @@ import {Component, Input, OnInit} from '@angular/core';
 export class HeadComponent implements OnInit {
 
   @Input() sectionData: any;
+  backgroundSet: string;
 
   constructor() {
   }
 
   ngOnInit() {
-    // if(!!this.sectionData.head.background)
+    this.backgroundSet = !!this.sectionData.background ?
+      this.sectionData.background : '../../../../assets/images/builder/header-bg.png';
+    // console.log(this.backgroundSet);
   }
 
 

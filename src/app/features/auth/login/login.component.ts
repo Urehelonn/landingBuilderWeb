@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
     // access user service to login
     this.authService.login(user).subscribe(u => {
       // login success, stores returned string to local as token
-      console.log(u);
       if (u.result) {
         this.response = {
           message: u.result.message,

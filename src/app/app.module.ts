@@ -38,6 +38,7 @@ import {AuthGuard} from './core/guard/auth.guard';
 
 // =================================== CUSTOM MODULES =========================================
 import {UserService} from './features/auth/user.service';
+import { ResendConfirmationEmailComponent } from './features/auth/resend-confirmation-email/resend-confirmation-email.component';
 
 const routeConfig: Routes = [
   {path: '', component: HomeComponent},
@@ -50,6 +51,7 @@ const routeConfig: Routes = [
   {path: 'changepassword', component: ChangePasswordComponent, canActivate: [AuthGuard]},
   {path: 'builder', component: BuilderComponent, canActivate: [AuthGuard]},
   {path: 'landing/:id', component: LandingComponent},
+  {path: 'confirmation-send', component: ResendConfirmationEmailComponent},
   {path: '**', component: NotFoundComponent}
 ];
 
@@ -76,6 +78,7 @@ const routeConfig: Routes = [
     NavComponent,
     SignupComponent,
     HomeComponent,
+    ResendConfirmationEmailComponent,
   ],
   imports: [
     BrowserModule,

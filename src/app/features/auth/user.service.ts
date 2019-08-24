@@ -27,6 +27,10 @@ export class UserService {
     return this.http.post(`http://localhost:8080/api/register`, user);
   }
 
+  public resendConfirmationEmail(email: string): Observable<any> {
+    return this.http.post(`http://localhost:8080/api/confirmation`, email);
+  }
+
   public listenIfLoggedIn(): Observable<boolean> {
     this.setIfLogin();
     return this.isLoggedIn.asObservable();

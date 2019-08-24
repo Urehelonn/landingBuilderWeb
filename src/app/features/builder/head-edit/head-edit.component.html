@@ -16,7 +16,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Background</mat-label>
+        <mat-label>Head Logo Image</mat-label>
         <input formControlName="imgUrl" matInput required>
         <mat-error *ngIf="headForm.get('imgUrl').hasError('required')">
           This field is required
@@ -30,6 +30,11 @@
         <mat-hint>www.example.com</mat-hint>
       </mat-form-field>
 
+      <mat-form-field appearance="outline">
+        <mat-label>Background Image</mat-label>
+        <input formControlName="background" matInput>
+        <mat-hint>Leave this field empty will keep default background image.</mat-hint>
+      </mat-form-field>
 
       <!--  submit bt   -->
       <div class="btn-wrap text-center row">
