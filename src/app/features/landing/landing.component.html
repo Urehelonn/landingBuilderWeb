@@ -1,5 +1,5 @@
 <div *ngIf="builderData">
-  <app-head *ngIf="builderData.head" [sectionData]="builderData.head"></app-head>
-  <app-gallery *ngIf="builderData.gallery" [galleryData]="builderData.gallery"></app-gallery>
-  <app-menu *ngIf="builderData.menu" [menu]="builderData.menu"></app-menu>
+  <app-head *ngIf=ifHeadShow() [sectionData]="builderData.head"></app-head>
+  <app-gallery *ngIf="ifGalleryShow()" [galleryData]="builderData.gallery"></app-gallery>
+  <app-menu *ngIf="ifMenuShow()" [menu]="builderData.menu"></app-menu>
 </div>

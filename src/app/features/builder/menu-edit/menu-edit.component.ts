@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-menu-edit',
@@ -47,9 +47,9 @@ export class MenuEditComponent implements OnInit {
 
   createItem(item?): FormGroup {
     return this.fb.group({
-      name: item && item.name ? item.name : '',
-      description: item && item.description ? item.description : '',
-      price: item && item.price ? item.price : '',
+      name: [item && item.name ? item.name : '', Validators.required],
+      description: [item && item.description ? item.description : '', Validators.required],
+      price: [item && item.price ? item.price : '', Validators.required],
       category: item && item.category ? item.category : 'dinner',
     });
   }

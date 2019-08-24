@@ -3,11 +3,15 @@
   display: inline;
 }
 
-
 hr {
   padding: 20px;
   border-top: 3px solid rgba(0, 0, 0, .12);
   width: 70%;
 }
 
+.example-class {
+  width: 100%;
+  margin: 0 auto;
+  justify-content: center;
+}
 

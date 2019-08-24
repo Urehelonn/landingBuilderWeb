@@ -2,35 +2,33 @@
   <div class="container">
     <div class="box-content">
       <h3 class="text-center">Edit Menu Content</h3>
-      <br>
-
       <form [formGroup]="menuForm" class="general_form">
-
         <!--  title, description  -->
-        <mat-form-field appearance="outline">
-          <mat-label>Title</mat-label>
-          <input formControlName="title" matInput required>
-          <mat-error>This field is required</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Description</mat-label>
-          <input formControlName="description" matInput required>
-          <mat-error>This field is required</mat-error>
-        </mat-form-field>
-        <hr>
-
-        <!--  add item button -->
-        <div class="btn-wrap text-center col-12">
-          <button (click)="addItem($event)" class="btn btn-primary">
-            Add Item
-          </button>
+        <div class="example-class">
+          <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input formControlName="title" matInput required>
+            <mat-error>This field is required</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input formControlName="description" matInput required>
+            <mat-error>This field is required</mat-error>
+          </mat-form-field>
+          <hr>
+          <!--  add item button -->
+          <div class="btn-wrap text-center col-12">
+            <button (click)="addItem($event)" class="btn btn-primary">
+              Add Item
+            </button>
+          </div>
         </div>
 
         <!--  item  -->
-        <div class="form-group-container row" formArrayName="menuItems">
-          <div *ngFor="let item of itemArray.controls; let i = index" class="col-12 col-md-4">
+        <div class="row example-class" formArrayName="menuItems">
+          <div *ngFor="let item of itemArray.controls; let i = index"
+               class="col-12 col-sm-6 col-md-6 col-lg-4">
             <div [formGroupName]="i" class="form-group-custom-outer">
-
               <mat-form-field appearance="outline">
                 <mat-label>Item Name</mat-label>
                 <input formControlName="name" matInput required>
@@ -53,26 +51,24 @@
                           [ngValue]="cate">{{cate}}</option>
                 </select>
               </mat-form-field>
-
               <!--  remove item button  -->
               <div class="btn-wrap text-center">
                 <button (click)="removeItem($event, i)" class="btn btn-warning">
                   Remove Item
                 </button>
               </div>
+              <hr>
             </div>
           </div>
-
           <!--  submit bt   -->
           <div class="btn-wrap text-center row">
             <button [disabled]="!menuForm.valid" class="btn btn-success pull-right" (click)="submit($event)">
               Save Menu
             </button>
           </div>
-
+          <br>
         </div>
       </form>
     </div>
   </div>
-  <br>
 </section>

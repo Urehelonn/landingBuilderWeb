@@ -67,7 +67,7 @@ export class BuilderComponent implements OnInit {
     this.builderData.menu = menu;
     this.editModel = !this.editModel;
     this.builderService.editBuilder(this.builderData).subscribe(res => {
-      console.log(res);
+      // console.log(res);
     });
   }
 

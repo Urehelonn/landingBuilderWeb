@@ -50,4 +50,33 @@ export class LandingComponent implements OnInit, OnDestroy {
     this.routeSub.unsubscribe();
   }
 
+  ifHeadShow(): boolean {
+    if (this.builderData.head && this.builderData.head.title
+      && this.builderData.head.description
+      && this.builderData.head.imgUrl) {
+      return true;
+    }
+    // console.log(this.builderData.head);
+    return false;
+  }
+
+  ifGalleryShow(): boolean {
+    if (this.builderData.gallery && this.builderData.gallery.title
+      && this.builderData.gallery.description
+      && this.builderData.gallery.background) {
+      return true;
+    }
+    // console.log(this.builderData.gallery);
+    return false;
+  }
+
+  ifMenuShow(): boolean {
+    if (this.builderData.menu && this.builderData.menu.title
+      && this.builderData.menu.description) {
+      return true;
+    }
+    // console.log(this.builderData.menu);
+    return false;
+  }
+
 }

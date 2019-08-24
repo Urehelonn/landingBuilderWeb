@@ -23,7 +23,7 @@ export class GalleryEditComponent implements OnInit {
 
   itemArray: FormArray;
 
-  urlRegex = '^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?';
+  urlRegex = new RegExp('https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)');
 
   constructor(private fb: FormBuilder) {
     this.galleryForm = this.fb.group({
@@ -52,9 +52,9 @@ export class GalleryEditComponent implements OnInit {
 
   createItem(item?: Section): FormGroup {
     return this.fb.group({
-      title: item && item.title ? item.title : '',
-      imgUrl: item && item.imgUrl ? item.imgUrl : '',
-      description: item && item.description ? item.description : '',
+      title: [item && item.title ? item.title : '', Validators.required],
+      imgUrl: [item && item.imgUrl ? item.imgUrl : '', [Validators.required, Validators.pattern(this.urlRegex)]],
+      description: [item && item.description ? item.description : '', Validators.required],
     });
   }
 
