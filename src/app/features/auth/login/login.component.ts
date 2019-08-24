@@ -33,10 +33,9 @@ export class LoginComponent implements OnInit {
       console.log(u);
       if (u.result) {
         this.response = {
-          message: 'login successfully!',
+          message: u.result.message,
           success: true
         };
-        console.log('login succeed');
         // store token to local
         localStorage.setItem('token', u.result);
         this.authService.setIfLogin();
@@ -48,19 +47,10 @@ export class LoginComponent implements OnInit {
         console.log(error);
       }
     }, err => {
-      // no-200 code error handle, such as 401. 403, 404, 500
-      // tslint:disable-next-line:triple-equals
-      if (err.status == 404 || err.status == 401) {
-        this.response = {
-          message: 'Pleas confirm your email address. If cannot find the confirmation email, please check junk mail box.',
-          success: false
-        };
-      } else {
-        this.response = {
-          message: 'Oops, something wrong',
-          success: false
-        };
-      }
+      this.response = {
+        message: err.error.message,
+        success: false
+      };
     });
 
     // clear form

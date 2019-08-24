@@ -33,25 +33,23 @@ export class SignupComponent implements OnInit {
       // login success, stores returned string to local as token
       if (u.result) {
         this.response = {
-          message: 'register successfully, login your account in login page',
+          message: u.result.message,
           success: true
         };
+        alert('User register complete, please check your email box and confirm your email address to active user account.');
         // redirect after register succeed
         this.router.navigate(['login']);
-        console.log('reg succeed');
       }
       if (u.error) {
         this.response = {
-          message: 'register failed, username already exists',
+          message: u.error.message,
           success: false
         };
-        console.log(u.error);
       }
     }, error => {
       console.log(error);
-      // 200 as ok, other code as error
       this.response = {
-        msg: 'Oops, something went wrong!',
+        msg: error.error.message,
         success: false
       };
     });

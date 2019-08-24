@@ -26,6 +26,12 @@
         <mat-hint>www.example.com</mat-hint>
       </mat-form-field>
       <hr>
+
+      <div class="btn-wrap text-center col-12">
+        <button (click)="addItem($event)" class="btn btn-primary">
+          Add Item
+        </button>
+      </div>
       <div formArrayName="galleryItems">
         <div *ngFor="let galleryItems of itemArray.controls; let i = index">
           <div [formGroupName]="i">
@@ -54,11 +60,6 @@
           </div>
         </div>
         <br>
-        <div class="btn-wrap text-center col-12">
-          <button (click)="addItem($event)" class="btn btn-primary">
-            Add Item
-          </button>
-        </div>
       </div>
       <div class="btn-wrap text-center row">
         <button [disabled]="!galleryForm.valid" class="btn btn-success pull-right" type="submit">

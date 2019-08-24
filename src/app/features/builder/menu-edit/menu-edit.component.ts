@@ -36,7 +36,7 @@ export class MenuEditComponent implements OnInit {
         description: this.sectionData.description,
       });
       let counter = 0;
-      if (this.sectionData.menuItems !== null) {
+      if (!!this.sectionData.menuItems) {
         this.sectionData.menuItems.forEach((item) => {
           this.itemArray.push(this.createItem(item));
           counter++;

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BuilderService} from './builder.service';
 import {UserService} from '../auth/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-builder',
@@ -13,7 +14,8 @@ export class BuilderComponent implements OnInit {
   builderData: any;
   builderId: number;
 
-  constructor(private builderService: BuilderService, private userService: UserService) {
+  constructor(private builderService: BuilderService, private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -22,82 +24,32 @@ export class BuilderComponent implements OnInit {
         if (data.result) {
           this.builderData = data.result;
           this.builderId = data.result.id * 1;
-          // console.log(data.result.id);
-          // this.head = data.result.head;
-          // this.gallery = data.result.gallery;
 
-
-          // console.log('builderData : ' + JSON.stringify(this.builderData));
-          // console.log('Head from server : ' + JSON.stringify(this.head));
-          // console.log('Gallery from server : ' + JSON.stringify(this.gallery));
         } else if (data.message === 'corresponding builder not found') {
+          this.editModel = true;
           this.builderData = {
-            "name": "test updated",
-            "head": {
-              "imgUrl": "https://via.placeholder.com/150",
-              "description": "head desc updated",
-              "title": "head title updted"
-            },
-            "gallery": {
-              "title": "g title updated",
-              "description": "g desc",
-              "galleryItems": [{"id":2,"title":"sdf","description":"sdf","imgUrl":"https://restaurantindia.s3.ap-south-1.amazonaws.com/s3fs-public/content9442.jpg","modifiedAt":"2019-08-23T00:40:59.000+0000"}]
-            },
-            "menu": {
-
-              "title": "menu title",
-              "description": "menu desc",
-
-              "menuItems": [
-                {
-                  "category": "breakfast",
-                  "name": "mi1 update",
-                  "description": "menu item 1 desc",
-                  "price": "101"
-                },
-                {
-
-                  "category": "breakfast",
-                  "name": "mi2 update",
-                  "description": "menu item 2 desc",
-                  "price": "51"
-                },
-                {
-
-                  "category": "dinner",
-                  "name": "mi3",
-                  "description": "menu item 3 desc",
-                  "price": "31"
-                },
-                {
-                  "category": "lunch",
-                  "name": "mi4",
-                  "description": "menu item 4 desc",
-                  "price": '41'
-                }
-              ]
-            }
+            name: '',
+            head: {},
+            gallery: {},
+            menu: {}
           };
+          console.log(this.builderData);
         }
       }, err => {
         console.log(err);
         if (err.status === 401) {
-          //alert('User invalid, please login to view the page.');
+          alert('User invalid, please login to view the page.');
+          this.userService.logOut();
         }
-        //this.userService.logOut();
+        alert('Oops, something went wrong!');
+        this.router.navigateByUrl('/notfound');
       }
     );
   }
 
-
   toggleViewModel() {
     this.editModel = !this.editModel;
     this.toggleText = this.editModel ? 'Preview' : 'Edit';
-  }
-
-  // doesn't have function to save head, menu, gallery all at once yet
-  saveBuilder() {
-
   }
 
   headOnSave(head) {
@@ -129,8 +81,34 @@ export class BuilderComponent implements OnInit {
           console.log(result);
         }
       });
-
   }
 
+  ifHeadShow(): boolean {
+    if (this.builderData.head && this.builderData.head.title
+      && this.builderData.head.description
+      && this.builderData.head.imgUrl) {
+      return true;
+    }
+    // console.log(this.builderData.head);
+    return false;
+  }
 
+  ifGalleryShow(): boolean {
+    if (this.builderData.gallery && this.builderData.gallery.title
+      && this.builderData.gallery.description
+      && this.builderData.gallery.background) {
+      return true;
+    }
+    // console.log(this.builderData.gallery);
+    return false;
+  }
+
+  ifMenuShow(): boolean {
+    if (this.builderData.menu && this.builderData.menu.title
+      && this.builderData.menu.description) {
+      return true;
+    }
+    console.log(this.builderData.menu);
+    return false;
+  }
 }

@@ -11,7 +11,7 @@ import {MatFormFieldControl} from '@angular/material';
 export class GalleryEditComponent implements OnInit {
 
   @Input()
-  sectionData: Section;
+  sectionData;
 
   // tslint:disable-next-line:no-output-on-prefix
   @Output()
@@ -43,30 +43,24 @@ export class GalleryEditComponent implements OnInit {
       description: this.sectionData.description,
       background: this.sectionData.background,
     });
-    this.sectionData.galleryItems.forEach((item) => {
-      this.itemArray.push(this.createItem(item));
-    });
+    if (!!this.sectionData.galleryItems) {
+      this.sectionData.galleryItems.forEach((item) => {
+        this.itemArray.push(this.createItem(item));
+      });
+    }
   }
 
   createItem(item?: Section): FormGroup {
-    if (item != null) {
-      return this.fb.group({
-        title: item.title ? item.title : '',
-        imgUrl: item.imgUrl ? item.imgUrl : '',
-        description: item.description ? item.description : '',
-      });
-    }
     return this.fb.group({
-      title: '',
-      imgUrl: '',
-      description: '',
+      title: item && item.title ? item.title : '',
+      imgUrl: item && item.imgUrl ? item.imgUrl : '',
+      description: item && item.description ? item.description : '',
     });
   }
 
   submit(event) {
     event.preventDefault();
     event.stopPropagation();
-    // console.log(this.galleryForm.value);
     this.onSubmitEvent.emit(this.galleryForm.value);
   }
 

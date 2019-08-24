@@ -16,16 +16,15 @@ export class HeadEditComponent implements OnInit {
   onSubmitEvent: EventEmitter<Section> = new EventEmitter<Section>();
 
   model: any;
-
   headForm: FormGroup;
-
   urlRegex = '^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?';
 
   constructor(private fb: FormBuilder) {
     this.headForm = this.fb.group({
       title: '',
       description: '',
-      imgUrl: ['', [Validators.required, Validators.pattern(this.urlRegex)]]
+      imgUrl: ['', [Validators.required, Validators.pattern(this.urlRegex)]],
+      background: ''
     });
   }
 
@@ -34,7 +33,8 @@ export class HeadEditComponent implements OnInit {
     this.headForm.patchValue({
       title: this.sectionData.title,
       description: this.sectionData.description,
-      imgUrl: this.sectionData.imgUrl
+      imgUrl: this.sectionData.imgUrl,
+      background: !!this.sectionData.background ? '../../../../assets/images/builder/header-bg.png' : this.sectionData.background
     });
   }
 
