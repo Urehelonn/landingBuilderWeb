@@ -16,7 +16,6 @@ export class HeadComponent implements OnInit {
   ngOnInit() {
     this.backgroundSet = !!this.sectionData.background ?
       this.sectionData.background : '../../../../assets/images/builder/header-bg.png';
-    // console.log(this.backgroundSet);
   }
 
 

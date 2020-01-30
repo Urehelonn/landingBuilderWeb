@@ -3,7 +3,13 @@
     <div class="row">
       <div class="col-md-12 center">
         <div style="text-align: center">
-          <img alt class="visible" src="{{sectionData.imgUrl}}" style="margin-top: 100px; margin-bottom: 50px">
+          <br>
+          <br>
+          <br>
+          <div class="logo" style="opacity: 1;">
+            <img *ngIf="sectionData.imgUrl" src="{{sectionData.imgUrl}}"
+                 alt="logo"><a href="{{sectionData.imgUrl}}"></a>
+          </div>
           <h1 class="visible" style="color: white; font-size: 60px">{{sectionData.title}}</h1>
           <h2 class="visible"
               style="font-weight:normal;color:#dddddd;text-transform: inherit;margin-bottom: 70px">{{sectionData.description}}</h2>

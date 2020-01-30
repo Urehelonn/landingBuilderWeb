@@ -23,8 +23,8 @@ export class HeadEditComponent implements OnInit {
     this.headForm = this.fb.group({
       title: '',
       description: '',
-      imgUrl: ['', [Validators.required, Validators.pattern(this.urlRegex)]],
-      background: ['']
+      imgUrl: ['', Validators.pattern(this.urlRegex)],
+      background: ['', Validators.pattern(this.urlRegex)]
     });
   }
 
@@ -34,15 +34,15 @@ export class HeadEditComponent implements OnInit {
       title: this.sectionData.title,
       description: this.sectionData.description,
       imgUrl: this.sectionData.imgUrl,
-      // background: !!this.sectionData.background ? this.sectionData.background : '../../../../assets/images/builder/header-bg.png'
       background: !!this.sectionData.background ? this.sectionData.background : ''
     });
+    console.log('at ngOnInit ', this.sectionData.imgUrl);
   }
 
   submit(event) {
     event.preventDefault();
     event.stopPropagation();
-    // console.log(this.headForm.value);
+    console.log('head value: ', this.headForm.value);
     this.onSubmitEvent.emit(this.headForm.value);
   }
 

@@ -58,7 +58,7 @@ export class BuilderComponent implements OnInit {
     // console.log(head);
     // console.log(this.builderData.head);
     this.builderService.editBuilder(this.builderData).subscribe(res => {
-      // console.log(this.builderData.head);
+      console.log(this.builderData.head);
       // console.log(res);
     });
   }
@@ -85,8 +85,8 @@ export class BuilderComponent implements OnInit {
 
   ifHeadShow(): boolean {
     if (this.builderData.head && this.builderData.head.title
-      && this.builderData.head.description
-      && this.builderData.head.imgUrl) {
+      && this.builderData.head.description) {
+      // console.log('imgurl from builderdata head', this.builderData.head.imgUrl);
       return true;
     }
     // console.log(this.builderData.head);

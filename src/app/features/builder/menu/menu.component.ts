@@ -27,33 +27,20 @@ export class MenuComponent implements OnInit {
   }
 
   getCategories() {
-    // const groupBy = (items, key) => items.reduce(
-    //   (result, item) => ({
-    //     ...result,
-    //     [item[key]]: [
-    //       ...(result[item[key]] || []),
-    //       item,
-    //     ],
-    //   }),
-    //   {},
-    // );
-    // this.categoryData = groupBy(this.menu.menuItems, this.menu.menuItems.category);
-    //
-    // console.log(this.categoryData);
-
-    for (let i = 0; i < this.menu.menuItems.length; i++) {
+    console.log(this.menu.menuItems);
+    for (const mn of this.menu.menuItems) {
       // if category doesn't exist, push new category with empty item list
-      if (!this.categoryData.includes(this.menu.menuItems[i].category)) {
-        this.categoryData.push(this.menu.menuItems[i].category);
+      if (!this.categoryData.includes(mn.category)) {
+        this.categoryData.push(mn.category);
         this.menuWithCate.push({
-          cate: this.categoryData[i],
+          cate: mn.category,
           menuItems: []
         });
-        // if category exist, push item to menuWithCate of that category
-        for (let j = 0; j < this.menuWithCate.length; j++) {
-          if (this.menu.menuItems[i].category === this.menuWithCate[j].cate) {
-            this.menuWithCate[j].menuItems.push(this.menu.menuItems[i]);
-          }
+      }
+      // if category exist, push item to menuWithCate of that category
+      for (const mnWithCate of this.menuWithCate) {
+        if (mn.category === mnWithCate.cate) {
+          mnWithCate.menuItems.push(mn);
         }
       }
     }

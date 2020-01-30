@@ -17,13 +17,9 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Head Logo Image</mat-label>
-        <input formControlName="imgUrl" matInput required>
-        <mat-error *ngIf="headForm.get('imgUrl').hasError('required')">
-          This field is required
-        </mat-error>
+        <input formControlName="imgUrl" matInput>
         <mat-error
-          *ngIf="!headForm.get('imgUrl').hasError('required')
-           && headForm.get('imgUrl').dirty
+          *ngIf="headForm.get('imgUrl').dirty
             && headForm.get('imgUrl').hasError('pattern')">
           Not a valid URL
         </mat-error>
@@ -33,7 +29,15 @@
       <mat-form-field appearance="outline">
         <mat-label>Background Image</mat-label>
         <input formControlName="background" matInput>
-        <mat-hint>Leave this field empty will keep default background image.</mat-hint>
+        <mat-error
+          *ngIf="headForm.get('background').dirty
+            && headForm.get('background').hasError('pattern')
+            && headForm.get('background').value!==''">
+          Not a valid URL
+        </mat-error>
+        <mat-hint>
+          <p>www.example.com</p>
+          <p>Leave this field empty will keep default background image.</p></mat-hint>
       </mat-form-field>
 
       <!--  submit bt   -->
@@ -42,6 +46,9 @@
           Save Head
         </button>
       </div>
+
+      <p *ngIf="sectionData.imgUrl">{{ headForm.get('imgURL')}}</p>
+      <p *ngIf="sectionData.background">{{ headForm.get('background').value!==''}}</p>
 
     </form>
   </div>
