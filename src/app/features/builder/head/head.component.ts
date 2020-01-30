@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {last} from "rxjs/operators";
 
 @Component({
   selector: 'app-head',
@@ -8,20 +7,20 @@ import {last} from "rxjs/operators";
 })
 export class HeadComponent implements OnInit {
 
-  //let preloader = document.getElementById("loading");
-
   @Input() sectionData: any;
+  backgroundSet: string;
 
   constructor() {
   }
 
   ngOnInit() {
-    console.log(this.sectionData);
+    this.backgroundSet = !!this.sectionData.background ?
+      this.sectionData.background : '../../../../assets/images/builder/header-bg.png';
   }
 
 
   scrollDown() {
-    window.scroll({top: innerHeight, behavior: "smooth"});
+    window.scroll({top: innerHeight, behavior: 'smooth'});
   }
 
 }

@@ -1,29 +1,44 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
-import {Router} from '@angular/router';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
 
-  constructor(private http: HttpClient, public router: Router) { }
+  private isLoggedIn: BehaviorSubject<boolean>;
 
-  public getProfile(): Observable<any> {
-    return this.http.get('http://localhost:8080/api/me', {headers: this.jwt()});
+  constructor(private http: HttpClient, private router: Router) {
+    this.isLoggedIn = new BehaviorSubject<boolean>(false);
   }
 
-  public editProfile(user: any): Observable<any> {
-    return this.http.post('http://localhost:8080/api/me', user, {headers: this.jwt()});
+  public checkUserProfile(): Observable<any> {
+    // console.log('angular service called to update user profile');
+    if (localStorage.getItem('token')) {
+      return this.http.get(`http://localhost:8080/api/me`, {headers: this.jwt()});
+    } else {
+      alert('Please login to access this page.');
+      this.router.navigateByUrl('/login');
+    }
   }
 
-  // register token header
+  public updateUserProfile(user: any): Observable<any> {
+    console.log('angular service called to update user profile');
+    if (localStorage.getItem('token')) {
+      return this.http.post(`http://localhost:8080/api/me`, user, {headers: this.jwt()});
+    } else {
+      alert('Please login to access this page.');
+      this.router.navigateByUrl('/login');
+    }
+  }
+
   private jwt() {
-    // register authorization header with jwt token
     const token = localStorage.getItem('token');
     if (token) {
-      return new HttpHeaders().set('Authorization', 'Bearer ' + token);
+      return new HttpHeaders().set('Authorization', token);
     }
+    return null;
   }
 }

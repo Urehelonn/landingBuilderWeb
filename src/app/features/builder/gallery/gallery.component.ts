@@ -9,18 +9,18 @@ import {DomSanitizer} from "@angular/platform-browser";
 })
 export class GalleryComponent implements OnInit {
 
-  //backgroundImg;
-  //private sanitizer: DomSanitizer
+  // backgroundImg;
+  // private sanitizer: DomSanitizer
 
   @Input() galleryData: any;
 
   constructor() {
-    //this.backgroundImg = this.sanitizer.bypassSecurityTrustStyle(this.galleryData.background);
+    // this.backgroundImg = this.sanitizer.bypassSecurityTrustStyle(this.galleryData.background);
 
   }
 
   ngOnInit() {
-    console.log(this.galleryData);
+    // console.log(this.galleryData);
   }
 
 }

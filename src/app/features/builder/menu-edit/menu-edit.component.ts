@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
-import {Categories} from '../../../model/Categories';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-menu-edit',
@@ -12,7 +11,7 @@ export class MenuEditComponent implements OnInit {
   @Input()
   sectionData: any;
   @Input()
-  categoryData: any[] = ['dinner', 'lunch', 'breakfast'];
+  categoryData = ['dinner', 'lunch', 'breakfast'];
   @Output()
   onSubmitEvent = new EventEmitter<Section>();
 
@@ -36,28 +35,22 @@ export class MenuEditComponent implements OnInit {
         title: this.sectionData.title,
         description: this.sectionData.description,
       });
-      if (this.sectionData.menuItems !== null) {
+      let counter = 0;
+      if (!!this.sectionData.menuItems) {
         this.sectionData.menuItems.forEach((item) => {
           this.itemArray.push(this.createItem(item));
+          counter++;
         });
       }
     }
   }
 
   createItem(item?): FormGroup {
-    if (item) {
-      return this.fb.group({
-        name: item.name ? item.name : '',
-        description: item.description ? item.description : '',
-        price: item.price ? item.price : '',
-        category: item.category ? item.category : Categories.dinner,
-      });
-    }
     return this.fb.group({
-      name: '',
-      description: '',
-      price: '',
-      category: Categories.dinner,
+      name: [item && item.name ? item.name : '', Validators.required],
+      description: [item && item.description ? item.description : '', Validators.required],
+      price: [item && item.price ? item.price : '', Validators.required],
+      category: item && item.category ? item.category : 'dinner',
     });
   }
 

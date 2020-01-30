@@ -1,0 +1,9 @@
+<div *ngIf="processing" class="progress">
+  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+       [attr.aria-valuenow]="progress"
+       aria-valuemin="0"
+       aria-valuemax="100"
+       [ngStyle]="{width: progress + '%'}"  >
+    {{progress}}% {{info}}
+  </div>
+</div>

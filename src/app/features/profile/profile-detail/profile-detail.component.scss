@@ -1,0 +1,48 @@
+#fullProfile {
+
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+
+  .profileContainer {
+    margin: 30px 40px;
+    border-radius: 30px;
+    font-family: "Roboto", Helvetica, sans-serif;
+    color: #424242;
+    width: 60%;
+    text-align: center;
+    background: #c9c9c9;
+
+  }
+
+  .left {
+    float: left;
+    width: 50%;
+  }
+
+  .right {
+    float: left;
+    width: 50%;
+  }
+
+  .half {
+    min-height: 40px;
+    margin-bottom: 20px;
+  }
+
+  .description {
+    font-family: "Raleway", sans-serif;
+    font-weight: bolder;
+  }
+
+  .firstName {
+    color: #ff9800;
+    margin-right: 10px;
+  }
+
+  img {
+    max-width: 300px;
+    height: auto;
+    border-radius: 50%;
+  }
+}

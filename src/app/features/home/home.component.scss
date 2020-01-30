@@ -1,0 +1,74 @@
+#profileBt {
+  background-color: indianred;
+  border: 0;
+  border-radius: 30px;
+  padding: 15px 40px;
+  box-shadow: 0px 15px 25px #e6adad;
+
+  h3 {
+    color: whitesmoke;
+    margin: 0;
+  }
+}
+
+img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+  z-index: 5;
+}
+
+.description {
+  display: inline-block;
+  width: 40%;
+  text-align: left;
+  margin: auto;
+
+  p {
+    color: #6e7682;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+  }
+}
+
+i{
+  .fa .fa-angle-right{
+    font-weight: bold;
+  }
+}
+
+.page {
+  align-items: center;
+  width: 100%;
+  height: 80vh;
+  background: url("../../../assets/images/home/homePageBackground.png") no-repeat right;
+  background-size: 70% 100%;
+}
+
+.container {
+  display: flex;
+  width: 80%;
+}
+
+.headLine {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-wrap: break-spaces;
+
+  #headLineLeft {
+    color: rebeccapurple;
+    text-transform: capitalize;
+    z-index: 30;
+    font-size: 40px;
+    margin: 0;
+  }
+
+  #HeadLineRight {
+    color: indianred;
+    text-transform: capitalize;
+    font-weight: bold;
+    z-index: 30;
+    font-size: 38px;
+    margin: 0;
+  }
+}

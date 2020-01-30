@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {MatFormFieldControl} from "@angular/material";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatFormFieldControl} from '@angular/material';
 
 @Component({
   selector: 'app-gallery-edit',
@@ -11,8 +11,9 @@ import {MatFormFieldControl} from "@angular/material";
 export class GalleryEditComponent implements OnInit {
 
   @Input()
-  sectionData: Section;
+  sectionData;
 
+  // tslint:disable-next-line:no-output-on-prefix
   @Output()
   onSubmitEvent: EventEmitter<Section> = new EventEmitter<Section>();
 
@@ -22,7 +23,7 @@ export class GalleryEditComponent implements OnInit {
 
   itemArray: FormArray;
 
-  urlRegex = "^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?";
+  urlRegex = new RegExp('https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)');
 
   constructor(private fb: FormBuilder) {
     this.galleryForm = this.fb.group({
@@ -42,33 +43,25 @@ export class GalleryEditComponent implements OnInit {
       description: this.sectionData.description,
       background: this.sectionData.background,
     });
-    console.log(this.sectionData);
-    this.sectionData.galleryItems.forEach((item) => {
-      this.itemArray.push(this.createItem(item));
-    });
+    if (!!this.sectionData.galleryItems) {
+      this.sectionData.galleryItems.forEach((item) => {
+        this.itemArray.push(this.createItem(item));
+      });
+    }
   }
 
   createItem(item?: Section): FormGroup {
-    if (item != null) {
-      return this.fb.group({
-        title: item.title ? item.title : '',
-        imgUrl: item.imgUrl ? item.imgUrl : '',
-        description: item.description ? item.description : '',
-      });
-    }
     return this.fb.group({
-      title: '',
-      imgUrl: '',
-      description: '',
+      title: [item && item.title ? item.title : '', Validators.required],
+      imgUrl: [item && item.imgUrl ? item.imgUrl : '', [Validators.required, Validators.pattern(this.urlRegex)]],
+      description: [item && item.description ? item.description : '', Validators.required],
     });
   }
 
   submit(event) {
     event.preventDefault();
     event.stopPropagation();
-    console.log(this.galleryForm.value);
     this.onSubmitEvent.emit(this.galleryForm.value);
-
   }
 
   removeItem(event, index: number) {

@@ -1,6 +1,6 @@
 interface Section {
   title: string;
-  //subtitle: string;
+  // subtitle: string;
   imgUrl?: string;
   background?: string;
   galleryItems?: any;

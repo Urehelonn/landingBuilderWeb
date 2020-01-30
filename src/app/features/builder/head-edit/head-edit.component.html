@@ -1,1 +1,56 @@
-<p>head-edit works!</p>
+<section class="shop-content gallery_edit_section">
+  <div class="container">
+    <h3 class="text-center">Edit Header Content</h3>
+    <br>
+    <form (ngSubmit)="submit($event)" [formGroup]="headForm" class="general_form">
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input formControlName="title" matInput required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input formControlName="description" matInput required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Head Logo Image</mat-label>
+        <input formControlName="imgUrl" matInput>
+        <mat-error
+          *ngIf="headForm.get('imgUrl').dirty
+            && headForm.get('imgUrl').hasError('pattern')">
+          Not a valid URL
+        </mat-error>
+        <mat-hint>www.example.com</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Background Image</mat-label>
+        <input formControlName="background" matInput>
+        <mat-error
+          *ngIf="headForm.get('background').dirty
+            && headForm.get('background').hasError('pattern')
+            && headForm.get('background').value!==''">
+          Not a valid URL
+        </mat-error>
+        <mat-hint>
+          <p>www.example.com</p>
+          <p>Leave this field empty will keep default background image.</p></mat-hint>
+      </mat-form-field>
+
+      <!--  submit bt   -->
+      <div class="btn-wrap text-center row">
+        <button [disabled]="!headForm.valid" class="btn btn-success pull-right" type="submit">
+          Save Head
+        </button>
+      </div>
+
+      <p *ngIf="sectionData.imgUrl">{{ headForm.get('imgURL')}}</p>
+      <p *ngIf="sectionData.background">{{ headForm.get('background').value!==''}}</p>
+
+    </form>
+  </div>
+  <br>
+</section>

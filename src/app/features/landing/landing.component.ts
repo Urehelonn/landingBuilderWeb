@@ -12,7 +12,6 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   head: any;
   gallery: any;
-  toggleText = 'Edit';
   builderData: any;
 
   private routeSub: Subscription;
@@ -40,7 +39,6 @@ export class LandingComponent implements OnInit, OnDestroy {
           // console.log('Head from server : ' + JSON.stringify(this.head));
           // console.log('Gallery from server : ' + JSON.stringify(this.gallery));
         }
-
       }, err => {
         console.log(err);
         this.router.navigateByUrl('/notfound');
@@ -50,6 +48,35 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.routeSub.unsubscribe();
+  }
+
+  ifHeadShow(): boolean {
+    if (this.builderData.head && this.builderData.head.title
+      && this.builderData.head.description
+      && this.builderData.head.imgUrl) {
+      return true;
+    }
+    // console.log(this.builderData.head);
+    return false;
+  }
+
+  ifGalleryShow(): boolean {
+    if (this.builderData.gallery && this.builderData.gallery.title
+      && this.builderData.gallery.description
+      && this.builderData.gallery.background) {
+      return true;
+    }
+    // console.log(this.builderData.gallery);
+    return false;
+  }
+
+  ifMenuShow(): boolean {
+    if (this.builderData.menu && this.builderData.menu.title
+      && this.builderData.menu.description) {
+      return true;
+    }
+    // console.log(this.builderData.menu);
+    return false;
   }
 
 }

@@ -1,0 +1,24 @@
+<div id="fullProfile">
+  <br>
+  <div class="profileContainer" *ngIf="user">
+    <br>
+    <br>
+    <img src="https://res.cloudinary.com/dx55oi3py/image/upload/v1564097947/images/photo_dsxha7.png" alt="">
+    <h3><strong class="firstName">{{user.firstName}}</strong> <strong>{{user.lastName}}</strong></h3>
+    <p class="lead"></p>
+    <hr class="my-4">
+
+    <h6>Address: <span *ngIf="user.address">{{user.address}}</span></h6>
+    <h6>Phone: <span *ngIf="user.phone"> {{user.phone}}</span></h6>
+    <h6><a routerLink="/builder">Builder Page</a></h6>
+    <div class="description">
+      <p *ngIf="user.description">{{user.description}}</p>
+    </div>
+
+    <a class="btn btn-default form-control text-center"
+       routerLink="/profile/edit"
+       style="padding-top: 8px;">Edit</a>
+    <br>
+  </div>
+  <br>
+</div>

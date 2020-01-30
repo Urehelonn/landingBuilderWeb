@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BuilderService} from './builder.service';
+import {UserService} from '../auth/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-builder',
@@ -8,12 +10,12 @@ import {BuilderService} from './builder.service';
 })
 export class BuilderComponent implements OnInit {
   editModel = false;
-  head: any;
-  gallery: any;
   toggleText = 'Edit';
   builderData: any;
+  builderId: number;
 
-  constructor(private builderService: BuilderService) {
+  constructor(private builderService: BuilderService, private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -21,51 +23,92 @@ export class BuilderComponent implements OnInit {
       data => {
         if (data.result) {
           this.builderData = data.result;
-          this.head = data.result.head;
-          this.gallery = data.result.gallery;
+          this.builderId = data.result.id * 1;
 
-          console.log("builderData : " + JSON.stringify(this.builderData));
-          console.log("Head from server : " + JSON.stringify(this.head));
-          console.log("Gallery from server : " + JSON.stringify(this.gallery));
+        } else if (data.message === 'corresponding builder not found') {
+          this.editModel = true;
+          this.builderData = {
+            name: '',
+            head: {},
+            gallery: {},
+            menu: {}
+          };
+          console.log(this.builderData);
         }
+      }, err => {
+        console.log(err);
+        if (err.status === 401) {
+          alert('User invalid, please login to view the page.');
+          this.userService.logOut();
+        }
+        alert('Oops, something went wrong!');
+        this.router.navigateByUrl('/notfound');
       }
     );
   }
-
 
   toggleViewModel() {
     this.editModel = !this.editModel;
     this.toggleText = this.editModel ? 'Preview' : 'Edit';
   }
 
-  saveBuilder() {
-
+  headOnSave(head) {
+    this.builderData.head = head;
+    this.editModel = !this.editModel;
+    // console.log(head);
+    // console.log(this.builderData.head);
+    this.builderService.editBuilder(this.builderData).subscribe(res => {
+      console.log(this.builderData.head);
+      // console.log(res);
+    });
   }
-
 
   menuOnSave(menu: Section) {
     this.builderData.menu = menu;
     this.editModel = !this.editModel;
     this.builderService.editBuilder(this.builderData).subscribe(res => {
-      console.log(res);
+      // console.log(res);
     });
   }
 
   galleryOnSave(galleryData: Section) {
     this.builderData.gallery = galleryData;
-    console.log("builderData : " + JSON.stringify(this.builderData));
+    console.log(this.builderData);
     this.editModel = !this.editModel;
-    // todo: call service update
     this.builderService.editBuilder(this.builderData).subscribe(
       result => {
         if (result.result) {
-          console.log("result : " + JSON.stringify(result));
-          alert('You have successfully updated.');
-          window.location.reload();
+          console.log(result);
         }
       });
-
   }
 
+  ifHeadShow(): boolean {
+    if (this.builderData.head && this.builderData.head.title
+      && this.builderData.head.description) {
+      // console.log('imgurl from builderdata head', this.builderData.head.imgUrl);
+      return true;
+    }
+    // console.log(this.builderData.head);
+    return false;
+  }
 
+  ifGalleryShow(): boolean {
+    if (this.builderData.gallery && this.builderData.gallery.title
+      && this.builderData.gallery.description
+      && this.builderData.gallery.background) {
+      return true;
+    }
+    // console.log(this.builderData.gallery);
+    return false;
+  }
+
+  ifMenuShow(): boolean {
+    if (this.builderData.menu && this.builderData.menu.title
+      && this.builderData.menu.description) {
+      return true;
+    }
+    // console.log(this.builderData.menu);
+    return false;
+  }
 }
